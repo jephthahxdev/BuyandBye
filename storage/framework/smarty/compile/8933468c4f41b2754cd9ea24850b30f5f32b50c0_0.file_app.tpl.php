@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-17 13:47:11
+/* Smarty version 5.5.1, created on 2025-06-17 21:41:24
   from 'file:layouts/app.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_685171df6e78f7_98392745',
+  'unifunc' => 'content_6851e104308a03_57847270',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8933468c4f41b2754cd9ea24850b30f5f32b50c0' => 
     array (
       0 => 'layouts/app.tpl',
-      1 => 1750168029,
+      1 => 1750196481,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:partials/footer.tpl' => 1,
   ),
 ))) {
-function content_685171df6e78f7_98392745 (\Smarty\Template $_smarty_tpl) {
+function content_6851e104308a03_57847270 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty/layouts';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, false);
 ?>
@@ -33,6 +33,7 @@ $_smarty_tpl->getInheritance()->init($_smarty_tpl, false);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo (($tmp = $_smarty_tpl->getValue('title') ?? null)===null||$tmp==='' ? 'Buyandbye' ?? null : $tmp);?>
 </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <link href="<?php echo $_smarty_tpl->getSmarty()->getFunctionHandler('asset')->handle(array('path'=>'/css/output.css'), $_smarty_tpl);?>
 " rel="stylesheet">
 </head>
@@ -42,7 +43,7 @@ $_smarty_tpl->getInheritance()->init($_smarty_tpl, false);
     
     <main>
         <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_552097815685171df6e6364_71447356', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_15605691206851e104308196_00457304', "content");
 ?>
 
     </main>
@@ -52,7 +53,7 @@ $_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_5520978156851
 </body>
 </html> <?php }
 /* {block "content"} */
-class Block_552097815685171df6e6364_71447356 extends \Smarty\Runtime\Block
+class Block_15605691206851e104308196_00457304 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty/layouts';

@@ -49,3 +49,23 @@
     left: auto;
     right: 12px;
 }
+.glass-container {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.vertical-button {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+}
+
+.arrow-translate {
+    transition: transform 0.3s ease;
+}
+
+.vertical-button:hover .arrow-translate {
+    transform: translateY(16px);
+}
