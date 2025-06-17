@@ -9,3 +9,43 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+.hero-overlay {
+    background: rgba(0, 0, 0, 0.1);
+}
+.category-overlay {
+    background: rgba(0, 0, 0, 0.4);
+}
+.badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 2px;
+    letter-spacing: 0.5px;
+    z-index: 10;
+}
+.badge-new {
+    background-color: #f59e0b;
+    color: white;
+}
+.badge-popular {
+    background-color: #ef4444;
+    color: white;
+}
+.badge-recipe {
+    background-color: #10b981;
+    color: white;
+}
+.badge-candles {
+    background-color: #8b5cf6;
+    color: white;
+}
+.badge-exclusive {
+    background-color: #1f2937;
+    color: white;
+    left: auto;
+    right: 12px;
+}

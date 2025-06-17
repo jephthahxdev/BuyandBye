@@ -6,10 +6,10 @@
     <title>{$title|default:'Buyandbye'}</title>
     <link href="{asset path='/css/output.css'}" rel="stylesheet">
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="min-h-screen">
     {include file="partials/header.tpl"}
     
-    <main class="flex-grow container mx-auto px-4 py-8">
+    <main>
         {block name="content"}{/block}
     </main>
 
