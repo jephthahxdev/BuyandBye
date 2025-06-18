@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-18 21:24:04
-  from 'file:checkout.tpl' */
+/* Smarty version 5.5.1, created on 2025-06-18 22:20:07
+  from 'file:payment.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_68532e74dc1781_09596392',
+  'unifunc' => 'content_68533b97d0e5c7_34990223',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'e77fc47b3ea1eb5aa2f27b043d998276a320fada' => 
+    'afc7ede8d02a8becc1e2dd81da38f5cf1d7f3fde' => 
     array (
-      0 => 'checkout.tpl',
-      1 => 1750281841,
+      0 => 'payment.tpl',
+      1 => 1750285205,
       2 => 'file',
     ),
   ),
@@ -20,18 +20,18 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_68532e74dc1781_09596392 (\Smarty\Template $_smarty_tpl) {
+function content_68533b97d0e5c7_34990223 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_202830856568532e74dbf8f0_30066834', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_150719031768533b97d09865_97086953', "content");
 $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layouts/app.tpl", $_smarty_current_dir);
 }
 /* {block "content"} */
-class Block_202830856568532e74dbf8f0_30066834 extends \Smarty\Runtime\Block
+class Block_150719031768533b97d09865_97086953 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
@@ -43,9 +43,8 @@ $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smart
             class="absolute inset-0 w-full h-full object-cover" />
         <!-- Glass container at bottom left -->
         <div class="absolute bottom-8 left-8 p-8 rounded-2xl max-w-md">
-            <h1 class="text-4xl md:text-7xl font-serif mb-4 tracking-wide text-gray-900">CHECKOUT</h1>
-            <p class="text-lg md:text-base font-light opacity-90 text-black">Please fill in the details below to complete
-                your order</p>
+            <h1 class="text-4xl md:text-7xl font-serif mb-4 tracking-wide text-gray-900">PAYMENT</h1>
+            <p class="text-lg md:text-base font-light opacity-90 text-black">Proceed to payment to complete your order</p>
         </div>
     </section>
 
@@ -74,10 +73,10 @@ $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smart
                     <!-- Checkout Step -->
                     <div class="flex items-center">
                         <div
-                            class="flex items-center justify-center w-8 h-8 bg-black text-white rounded-full text-sm font-medium">
+                            class="flex items-center justify-center w-8 h-8 bg-gray-200 text-gray-500 rounded-full text-sm font-medium">
                             2
                         </div>
-                        <span class="ml-3 text-sm font-medium text-gray-900">Checkout</span>
+                        <span class="ml-3 text-sm font-medium text-gray-500">Checkout</span>
                     </div>
 
                     <!-- Arrow -->
@@ -90,10 +89,10 @@ $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smart
                     <!-- Payment Step -->
                     <div class="flex items-center">
                         <div
-                            class="flex items-center justify-center w-8 h-8 bg-gray-200 text-gray-500 rounded-full text-sm font-medium">
+                            class="flex items-center justify-center w-8 h-8 bg-black text-white rounded-full text-sm font-medium">
                             3
                         </div>
-                        <span class="ml-3 text-sm font-medium text-gray-500">Payment</span>
+                        <span class="ml-3 text-sm font-medium text-gray-900">Payment</span>
                     </div>
                 </div>
             </div>
@@ -104,66 +103,64 @@ $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smart
                     <div class="bg-white rounded-lg shadow-sm p-6">
                         <!-- Cart Header -->
                         <div class="flex items-center justify-between mb-6">
-                            <h1 class="text-2xl font-medium text-gray-900">Billing information</h1>
+                            <h1 class="text-2xl font-medium text-gray-900">Card Details</h1>
                             <button class="text-gray-500 hover:text-red-600 text-sm font-medium flex items-center gap-2"
-                                onclick="window.location.href='/cart'">
+                                onclick="window.location.href='/checkout'">
                                 <i class="fa fa-arrow-left" aria-hidden="true"></i>
                                 Go back
                             </button>
                         </div>
 
-                        <!-- Billing information -->
-                        <form method="post" action="/payment" class="space-y-6 bg-white py-6 px-4">
+                        <form class="p-6 w-full space-y-6" method="post" action="/pay">
                             <input type="hidden" name="_token" value="<?php echo $_smarty_tpl->getValue('csrf_token');?>
 ">
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                                <input type="text" name="name" required
-                                    class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black focus:border-transparent">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Email address</label>
                                 <input type="email" name="email" required
-                                    class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black focus:border-transparent">
+                                    class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    value="jenny@examle.com">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Address</label>
-                                <input type="text" name="address" required
-                                    class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black focus:border-transparent">
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Card number</label>
+                                <div class="flex items-center space-x-2">
+                                    <input type="text" name="card_number" required maxlength="19"
+                                        placeholder="1234 1234 1234 1234"
+                                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    <span class="flex space-x-1">
+                                        <img src="https://img.icons8.com/color/24/000000/visa.png" alt="Visa" />
+                                        <img src="https://img.icons8.com/color/24/000000/mastercard-logo.png"
+                                            alt="Mastercard" />
+                                        <img src="https://img.icons8.com/color/24/000000/discover.png" alt="Discover" />
+                                    </span>
+                                </div>
                             </div>
                             <div class="flex space-x-4">
                                 <div class="flex-1">
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">City</label>
-                                    <input type="text" name="city" required
-                                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black focus:border-transparent">
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Expiration date</label>
+                                    <input type="text" name="exp_date" required placeholder="MM / YYYY"
+                                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                                 </div>
                                 <div class="flex-1">
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">State</label>
-                                    <input type="text" name="state" required
-                                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black focus:border-transparent">
-                                </div>
-                                <div class="flex-1">
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">Zip</label>
-                                    <input type="text" name="zip" required
-                                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black focus:border-transparent">
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Security code</label>
+                                    <input type="text" name="cvc" required maxlength="4"
+                                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                                 </div>
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
-                                <input type="text" name="phone" required
-                                    class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black focus:border-transparent">
-                            </div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Cardholder name</label>
+                                <input type="text" name="cardholder" required
+                                    class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>                            
                             <button type="submit"
                                 class="w-full bg-black text-white py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors">
-                                Continue to payment
-                            </button>
-                        </form>
+                                Pay <?php echo (($tmp = $_smarty_tpl->getValue('total') ?? null)===null||$tmp==='' ? '$609.98' ?? null : $tmp);?>
 
-                        <!-- Already have an account? -->
-                        <div class="mt-6 text-center">
-                            <span class="text-gray-600">Already have an account?</span>
-                            <a href="/login" class="ml-2 text-black font-medium hover:underline">Sign in instead</a>
-                        </div>
+                            </button>
+                            <div class="mt-4 text-center text-xs text-gray-400">
+                                Powered by Jephthah I. &bull; <a href="#" class="hover:underline">Terms</a> &bull; <a href="#"
+                                    class="hover:underline">Privacy</a>
+                            </div>
+                        </form>
                     </div>
                 </div>
 
@@ -186,7 +183,8 @@ $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smart
                             <!-- Cart Items -->
                             <div class="p-6">
                                 <!-- PlayStation 5 Pro -->
-                                <div class="flex items-start space-x-2 justify-between pb-6 border-b border-gray-200 relative">
+                                <div
+                                    class="flex items-start space-x-2 justify-between pb-6 border-b border-gray-200 relative">
                                     <button
                                         class="absolute top-0 right-0 w-6 h-6 bg-black rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors">
                                         <i class="fas fa-times text-white text-xs"></i>

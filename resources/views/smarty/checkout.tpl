@@ -191,7 +191,7 @@
                                             Headset</h3>
                                         <p class="text-gray-600 text-sm mb-3">Standard Edition</p>
                                         <div class="flex items-center justify-between mt-3">
-                                            <div class="flex items-center space-x-2">
+                                            <div class="flex items-center">
                                                 <span class="text-gray-600 text-sm">Qty</span>
                                                 <span class="underline px-2 py-1 text-sm">1</span>
                                             </div>
