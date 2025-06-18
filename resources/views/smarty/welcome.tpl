@@ -51,7 +51,7 @@
                             <p class="text-xl font-semibold text-gray-900 mb-4">$87</p>
                         </div>
                         <button
-                            class="w-10 h-10 bg-gray-900 text-white rounded-sm hover:bg-gray-800 transition flex items-center justify-center">
+                            class="add-to-cart w-10 h-10 bg-gray-900 text-white rounded-sm hover:bg-gray-800 transition flex items-center justify-center" data-product="Ceramic jug">
                             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                         </button>
                     </div>
@@ -70,7 +70,7 @@
                             <p class="text-xl font-semibold text-gray-900 mb-4">$65</p>
                         </div>
                         <button
-                            class="w-10 h-10 bg-gray-900 text-white rounded-sm hover:bg-gray-800 transition flex items-center justify-center">
+                            class="add-to-cart w-10 h-10 bg-gray-900 text-white rounded-sm hover:bg-gray-800 transition flex items-center justify-center" data-product="Aromatic diffuser">
                             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                         </button>
                     </div>
@@ -90,7 +90,7 @@
                             <p class="text-xl font-semibold text-gray-900 mb-4">$40</p>
                         </div>
                         <button
-                            class="w-10 h-10 bg-gray-900 text-white rounded-sm hover:bg-gray-800 transition flex items-center justify-center">
+                            class="add-to-cart w-10 h-10 bg-gray-900 text-white rounded-sm hover:bg-gray-800 transition flex items-center justify-center" data-product="Handmade mug">
                             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                         </button>
                     </div>

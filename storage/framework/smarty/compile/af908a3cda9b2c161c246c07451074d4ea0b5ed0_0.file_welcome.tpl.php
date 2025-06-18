@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-17 21:44:02
+/* Smarty version 5.5.1, created on 2025-06-18 08:05:32
   from 'file:welcome.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_6851e1a290a147_10038047',
+  'unifunc' => 'content_6852734cedda79_92990864',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'af908a3cda9b2c161c246c07451074d4ea0b5ed0' => 
     array (
       0 => 'welcome.tpl',
-      1 => 1750196640,
+      1 => 1750233804,
       2 => 'file',
     ),
   ),
@@ -20,18 +20,18 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6851e1a290a147_10038047 (\Smarty\Template $_smarty_tpl) {
+function content_6852734cedda79_92990864 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_10560819316851e1a2909359_92761259', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_6306917816852734cedbed7_18727469', "content");
 $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layouts/app.tpl", $_smarty_current_dir);
 }
 /* {block "content"} */
-class Block_10560819316851e1a2909359_92761259 extends \Smarty\Runtime\Block
+class Block_6306917816852734cedbed7_18727469 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
@@ -88,7 +88,7 @@ $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smart
                             <p class="text-xl font-semibold text-gray-900 mb-4">$87</p>
                         </div>
                         <button
-                            class="w-10 h-10 bg-gray-900 text-white rounded-sm hover:bg-gray-800 transition flex items-center justify-center">
+                            class="add-to-cart w-10 h-10 bg-gray-900 text-white rounded-sm hover:bg-gray-800 transition flex items-center justify-center" data-product="Ceramic jug">
                             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                         </button>
                     </div>
@@ -107,7 +107,7 @@ $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smart
                             <p class="text-xl font-semibold text-gray-900 mb-4">$65</p>
                         </div>
                         <button
-                            class="w-10 h-10 bg-gray-900 text-white rounded-sm hover:bg-gray-800 transition flex items-center justify-center">
+                            class="add-to-cart w-10 h-10 bg-gray-900 text-white rounded-sm hover:bg-gray-800 transition flex items-center justify-center" data-product="Aromatic diffuser">
                             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                         </button>
                     </div>
@@ -127,7 +127,7 @@ $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smart
                             <p class="text-xl font-semibold text-gray-900 mb-4">$40</p>
                         </div>
                         <button
-                            class="w-10 h-10 bg-gray-900 text-white rounded-sm hover:bg-gray-800 transition flex items-center justify-center">
+                            class="add-to-cart w-10 h-10 bg-gray-900 text-white rounded-sm hover:bg-gray-800 transition flex items-center justify-center" data-product="Handmade mug">
                             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                         </button>
                     </div>
