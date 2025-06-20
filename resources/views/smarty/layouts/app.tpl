@@ -17,5 +17,6 @@
 
     {include file="partials/footer.tpl"}
     <script src="/js/addtoCart.js"></script>
+    <script src="/js/bb-config.js"></script>
 </body>
 </html> 
