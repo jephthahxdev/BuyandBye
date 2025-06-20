@@ -11,6 +11,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\BillingController;
 
 
 /* BOL Checking Database connection */
@@ -68,4 +69,7 @@ Route::middleware(['web'])->group(function () {
 
     // Dashboard routes
     Route::get('/account', [DashboardController::class, 'show']);
+
+    // Billing routes
+    Route::get('/account/billing', [BillingController::class, 'show']);
 });

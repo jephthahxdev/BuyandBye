@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-20 14:47:30
-  from 'file:dashboard.tpl' */
+/* Smarty version 5.5.1, created on 2025-06-20 16:00:03
+  from 'file:billing.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_68557482d2df89_79282917',
+  'unifunc' => 'content_6855858390a4b9_84451157',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '1f7f3e94e176bae2102c275298e9f9105a3c9385' => 
+    '7656b19389d9f22262521c5a4a4c0830b7a85dff' => 
     array (
-      0 => 'dashboard.tpl',
-      1 => 1750430126,
+      0 => 'billing.tpl',
+      1 => 1750435200,
       2 => 'file',
     ),
   ),
@@ -21,33 +21,33 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:partials/account-sidebar.tpl' => 1,
   ),
 ))) {
-function content_68557482d2df89_79282917 (\Smarty\Template $_smarty_tpl) {
+function content_6855858390a4b9_84451157 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_179211463968557482d0a023_44526480', "title");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_13398397968558583900399_55851170', "title");
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_164703398368557482d0d813_98312044', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_80967344068558583900a14_47466615', "content");
 $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layouts/app.tpl", $_smarty_current_dir);
 }
 /* {block "title"} */
-class Block_179211463968557482d0a023_44526480 extends \Smarty\Runtime\Block
+class Block_13398397968558583900399_55851170 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
 ?>
-Accounts - Buyandbye<?php
+Billing - Buyandbye<?php
 }
 }
 /* {/block "title"} */
 /* {block "content"} */
-class Block_164703398368557482d0d813_98312044 extends \Smarty\Runtime\Block
+class Block_80967344068558583900a14_47466615 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
@@ -82,12 +82,12 @@ $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smart
                                 d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
                                 clip-rule="evenodd" />
                         </svg>
-                        <span class="ml-4 text-black font-medium">Overview</span>
+                        <span class="ml-4 text-black font-medium">Billing</span>
                     </li>
                 </ol>
             </nav>
 
-                        <h1 class="text-3xl font-bold text-black mb-8">My account</h1>
+                        <h1 class="text-3xl font-bold text-black mb-8">Billing Details</h1>
 
             <div class="flex gap-8">
                                 <div class="w-80 h-[60%] bg-white flex-shrink-0 rounded-lg border border-gray-200">
@@ -114,192 +114,169 @@ $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smart
                         </div>
                     </div>
 
-                                        <?php $_smarty_tpl->renderSubTemplate("file:partials/account-sidebar.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('active_page'=>"overview"), (int) 0, $_smarty_current_dir);
+                                        <?php $_smarty_tpl->renderSubTemplate("file:partials/account-sidebar.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('active_page'=>"billing"), (int) 0, $_smarty_current_dir);
 ?>
                 </div>
 
                                 <div class="flex-1">
-                                        <div class="grid grid-cols-4 gap-6 mb-8 bg-white rounded-lg border border-gray-200 p-4">
-                        <div class="flex items-center">
-                            <div class="p-3 bg-gray-100 rounded-lg">
-                                <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-                                    <path
-                                        d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
-                                </svg>
-                            </div>
-                            <div class="ml-4">
-                                <p class="text-sm text-gray-600">Total Orders</p>
-                                <p class="text-2xl font-bold text-black"><?php echo $_smarty_tpl->getValue('stats')['total_orders'];?>
-</p>
-                            </div>
+                    <div class="bg-white rounded-lg border border-gray-200 mb-8">
+                                                <div class="p-6 border-b border-gray-200">
+                            <h2 class="text-xl font-bold text-black">Billing data</h2>
                         </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-6 divide-x divide-gray-200">
+                            <!-- Default Billing Address -->
+                            <div class="pr-4">
+                                <h3 class="text-lg font-semibold mb-4">Default billing address</h3>
+                                <?php if ($_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('billing_addresses')) == 0) {?>
+                                    <div class="flex items-center justify-between bg-gray-50 rounded-lg px-4 py-3 mb-4">
+                                        <span class="text-gray-700">There is no billing address yet</span>
+                                        <a href="<?php echo $_smarty_tpl->getValue('base_url');?>
+/account/billing/add" class="bg-gray-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-gray-700 transition">Add Billing Address</a>
+                                    </div>
+                                <?php } else { ?>
+                                    <?php
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('billing_addresses'), 'address');
+$foreach0DoElse = true;
+foreach ($_from ?? [] as $_smarty_tpl->getVariable('address')->value) {
+$foreach0DoElse = false;
+?>
+                                        <div class="border rounded-lg p-4 mb-4 <?php if ($_smarty_tpl->getValue('address')['is_default']) {?>border-gray-600 bg-gray-50<?php } else { ?>border-gray-200 bg-white<?php }?> flex items-start justify-between">
+                                            <div>
+                                                <div class="flex items-center mb-1">
+                                                    <?php if ($_smarty_tpl->getValue('address')['is_default']) {?>
+                                                        <svg class="w-5 h-5 text-gray-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                                        </svg>
+                                                    <?php }?>
+                                                    <span class="font-semibold text-gray-900"><?php echo $_smarty_tpl->getValue('address')['name'];?>
+</span>
+                                                    <?php if ($_smarty_tpl->getValue('address')['company']) {?>
+                                                        <span class="inline-block bg-gray-100 rounded-full px-2 py-1 ml-2 text-gray-700 text-xs"><?php echo $_smarty_tpl->getValue('address')['company'];?>
+</span>
+                                                    <?php }?>
+                                                </div>
+                                                <div class="text-sm text-gray-700">
+                                                    <?php echo $_smarty_tpl->getValue('address')['address'];?>
+<br>
+                                                    <?php echo $_smarty_tpl->getValue('address')['zip'];?>
+ <?php echo $_smarty_tpl->getValue('address')['city'];?>
+ - <?php echo $_smarty_tpl->getValue('address')['country'];?>
 
+                                                </div>
+                                            </div>
+                                            <button class="ml-4 text-gray-400 hover:text-red-600" title="Delete">
+                                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    <?php
+}
+$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
+                                    <a href="<?php echo $_smarty_tpl->getValue('base_url');?>
+/account/billing/add" class="text-gray-700 font-medium mt-2 inline-block hover:underline">+ Add Billing Address</a>
+                                <?php }?>
+                            </div>
 
-                        <div class="flex items-center">
-                            <div class="p-3 bg-gray-100 rounded-lg">
-                                <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                            <div class="ml-4">
-                                <p class="text-sm text-gray-600">Orders in transit</p>
-                                <p class="text-2xl font-bold text-black"><?php echo $_smarty_tpl->getValue('stats')['favorite_products'];?>
-</p>
-                            </div>
-                        </div>
-
-
-                        <div class="flex items-center">
-                            <div class="p-3 bg-gray-100 rounded-lg">
-                                <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                </svg>
-                            </div>
-                            <div class="ml-4">
-                                <p class="text-sm text-gray-600">Completed Orders</p>
-                                <p class="text-2xl font-bold text-black"><?php echo $_smarty_tpl->getValue('stats')['reviews_added'];?>
-</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center">
-                            <div class="p-3 bg-gray-100 rounded-lg">
-                                <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                            <div class="ml-4">
-                                <p class="text-sm text-gray-600">Cancelled Orders</p>
-                                <p class="text-2xl font-bold text-black"><?php echo $_smarty_tpl->getValue('stats')['returns'];?>
-</p>
+                            <!-- Default Payment Method -->
+                            <div>
+                                <h3 class="text-lg font-semibold mb-4">Default payment method</h3>
+                                <?php if ($_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('payment_methods')) == 0) {?>
+                                    <div class="flex items-center justify-between bg-gray-50 rounded-lg px-4 py-3 mb-4">
+                                        <span class="text-gray-700">There is no payment method yet</span>
+                                        <a href="<?php echo $_smarty_tpl->getValue('base_url');?>
+/account/payment/add" class="bg-gray-600 text-white px-4 py-2 rounded-lg font-medium shadow hover:bg-gray-700 transition">Add Payment Method</a>
+                                    </div>
+                                <?php } else { ?>
+                                    <?php
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('payment_methods'), 'method');
+$foreach1DoElse = true;
+foreach ($_from ?? [] as $_smarty_tpl->getVariable('method')->value) {
+$foreach1DoElse = false;
+?>
+                                        <div class="border rounded-lg px-4 py-6 mb-4 <?php if ($_smarty_tpl->getValue('method')['is_default']) {?>border-gray-600 bg-gray-50<?php } else { ?>border-gray-200 bg-white<?php }?> flex items-center justify-between">
+                                            <div class="flex items-center">
+                                                <?php if ($_smarty_tpl->getValue('method')['is_default']) {?>
+                                                    <svg class="w-5 h-5 text-gray-600 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                                    </svg>
+                                                <?php }?>
+                                                <span class="font-mono text-base tracking-widest">**** **** **** <?php echo $_smarty_tpl->getValue('method')['last4'];?>
+</span>
+                                                <span class="ml-2 text-xs text-gray-700 font-medium uppercase"><?php echo $_smarty_tpl->getValue('method')['brand'];?>
+</span>
+                                            </div>
+                                            <button class="ml-4 text-gray-400 hover:text-red-600" title="Delete">
+                                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    <?php
+}
+$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
+                                <?php }?>
                             </div>
                         </div>
                     </div>
-
-                    <div class="bg-white rounded-lg border border-gray-200">
-                        
+                                        <div class="mb-8 bg-white rounded-lg border border-gray-200 p-4">
                         <div class="p-6 border-b border-gray-200">
-                            <h2 class="text-xl font-bold text-black">Account data</h2>
-                        </div>
-                        <div class="grid grid-cols-2 gap-8 ">
-                            <div class="p-6">
-                                <div class="flex items-start mb-6">
-                                    <div class="w-16 h-16 bg-gray-200 rounded-lg overflow-hidden mr-4">
-                                        <?php if ($_smarty_tpl->getValue('account')['avatar']) {?>
-                                            <img src="<?php echo $_smarty_tpl->getValue('account')['avatar'];?>
-" alt="<?php echo $_smarty_tpl->getValue('account')['name'];?>
-"
-                                                class="w-full h-full object-cover">
-                                        <?php } else { ?>
-                                            <div class="w-full h-full bg-gray-300 flex items-center justify-center">
-                                                <svg class="w-8 h-8 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
-                                                    <path fill-rule="evenodd"
-                                                        d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                                                        clip-rule="evenodd" />
-                                                </svg>
-                                            </div>
-                                        <?php }?>
-                                    </div>
-                                    <div class="flex-1">
-                                        <span
-                                            class="inline-block bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded-full mb-2">Essentials</span>
-                                        <h3 class="text-lg font-semibold text-black"><?php echo $_smarty_tpl->getValue('account')['name'];?>
-</h3>
-                                    </div>
-                                </div>
-                                <div class="space-y-4">
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-1">Email
-                                            Address</label>
-                                        <p class="text-gray-600"><?php echo $_smarty_tpl->getValue('account')['email'];?>
-</p>
-                                    </div>
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-1">Delivery
-                                            Address</label>
-                                        <p class="text-gray-600"><?php echo $_smarty_tpl->getValue('account')['address'];?>
-</p>
-                                    </div>
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                                        <p class="text-gray-600"><?php echo $_smarty_tpl->getValue('account')['phone'];?>
-</p>
-                                    </div>
-                                </div>
-                                <button
-                                    class="mt-6 bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-700 flex items-center">
-                                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-                                    </svg>
-                                    Edit your data
-                                </button>
-                            </div>
-                                                        <div class="p-6">
-                                <div class="flex items-center mb-4">
-                                    <div class="w-8 h-8 bg-gray-600 rounded flex items-center justify-center mr-3">
-                                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd"
-                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <h3 class="text-lg font-semibold text-black">Buyandbye.</h3>
-                                        <span class="bg-gray-800 text-white text-xs px-2 py-1 rounded">PRO</span>
-                                    </div>
-                                </div>
-                                <div class="mb-6">
-                                    <p class="text-2xl font-bold text-black">Smile, be happy, be healthy.</p>
-                                </div>
-                                <div class="mb-6">
-                                    <h4 class="font-semibold text-black mb-3">PRO skin benefits</h4>
-                                    <ul class="space-y-2">
-                                        <li class="flex items-center text-sm text-gray-600">
-                                            <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor"
-                                                viewBox="0 0 20 20">
-                                                <path fill-rule="evenodd"
-                                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                                    clip-rule="evenodd" />
-                                            </svg>
-                                            Free shipping all over the country
-                                        </li>
-                                        <li class="flex items-center text-sm text-gray-600">
-                                            <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor"
-                                                viewBox="0 0 20 20">
-                                                <path fill-rule="evenodd"
-                                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                                    clip-rule="evenodd" />
-                                            </svg>
-                                            Testing the product for 5 days
-                                        </li>
-                                        <li class="flex items-center text-sm text-gray-600">
-                                            <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor"
-                                                viewBox="0 0 20 20">
-                                                <path fill-rule="evenodd"
-                                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                                    clip-rule="evenodd" />
-                                            </svg>
-                                            Exclusive offers
-                                        </li>
-                                    </ul>
-                                </div>
-                                <button
-                                    class="w-full bg-black text-white py-2 px-4 rounded-lg hover:bg-gray-800 flex items-center justify-center">
-                                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <div class="flex items-center">
+                                <h2 class="text-xl font-bold text-black">Add billing address</h2>
+                                <div class="ml-2 w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center">
+                                    <svg class="w-4 h-4 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd"
-                                            d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
+                                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
                                             clip-rule="evenodd" />
                                     </svg>
-                                    Subscribe to PRO
-                                </button>
+                                </div>
                             </div>
                         </div>
+                        <form method="post" action="/account/billing" class="space-y-6 bg-white py-6 px-4">
+                            <input type="hidden" name="_token" value="<?php echo $_smarty_tpl->getValue('csrf_token');?>
+">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                                <input type="text" name="name" required
+                                    class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                                <input type="email" name="email" required
+                                    class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Address</label>
+                                <input type="text" name="address" required
+                                    class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black focus:border-transparent">
+                            </div>
+                            <div class="flex space-x-4">
+                                <div class="flex-1">
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">City</label>
+                                    <input type="text" name="city" required
+                                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black focus:border-transparent">
+                                </div>
+                                <div class="flex-1">
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">State</label>
+                                    <input type="text" name="state" required
+                                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black focus:border-transparent">
+                                </div>
+                                <div class="flex-1">
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Zip</label>
+                                    <input type="text" name="zip" required
+                                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black focus:border-transparent">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                                <input type="text" name="phone" required
+                                    class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black focus:border-transparent">
+                            </div>
+                            <button type="submit"
+                                class="w-full bg-black text-white py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors">
+                                Submit
+                            </button>
+                        </form>
                     </div>
 
                                         <div class="mt-8 bg-white rounded-lg border border-gray-200">
@@ -341,9 +318,9 @@ $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smart
                                     <tbody class="bg-white divide-y divide-gray-200">
                                         <?php
 $_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('active_orders'), 'order');
-$foreach0DoElse = true;
+$foreach2DoElse = true;
 foreach ($_from ?? [] as $_smarty_tpl->getVariable('order')->value) {
-$foreach0DoElse = false;
+$foreach2DoElse = false;
 ?>
                                             <tr class="hover:bg-gray-50">
                                                 <td class="px-6 py-4 whitespace-nowrap">
