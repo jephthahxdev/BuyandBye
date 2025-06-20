@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\SmartyRenderer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PaymentController extends Controller
 {
@@ -21,6 +22,8 @@ class PaymentController extends Controller
             'subtotal' => '$609.98',
             'total' => '$609.98',
             'csrf_token' => csrf_token(),
+            'is_logged_in' => Auth::check(),
+            'user' => Auth::user(),
         ];
         $content = $this->smarty->render('payment.tpl', $data);
         return response($content);

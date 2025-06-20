@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-18 10:17:58
+/* Smarty version 5.5.1, created on 2025-06-20 12:27:41
   from 'file:layouts/app.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_68529256dd7845_61318582',
+  'unifunc' => 'content_685553bdb29015_17345001',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8933468c4f41b2754cd9ea24850b30f5f32b50c0' => 
     array (
       0 => 'layouts/app.tpl',
-      1 => 1750241824,
+      1 => 1750418917,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:partials/footer.tpl' => 1,
   ),
 ))) {
-function content_68529256dd7845_61318582 (\Smarty\Template $_smarty_tpl) {
+function content_685553bdb29015_17345001 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty/layouts';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, false);
 ?>
@@ -45,7 +45,7 @@ $_smarty_tpl->getInheritance()->init($_smarty_tpl, false);
     
     <main>
         <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_187536374868529256dd2424_51244396', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_1239288927685553bdb27360_77863337', "content");
 ?>
 
     </main>
@@ -55,10 +55,13 @@ $_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_1875363748685
     <?php echo '<script'; ?>
  src="/js/addtoCart.js"><?php echo '</script'; ?>
 >
+    <?php echo '<script'; ?>
+ src="/js/bb-config.js"><?php echo '</script'; ?>
+>
 </body>
 </html> <?php }
 /* {block "content"} */
-class Block_187536374868529256dd2424_51244396 extends \Smarty\Runtime\Block
+class Block_1239288927685553bdb27360_77863337 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty/layouts';

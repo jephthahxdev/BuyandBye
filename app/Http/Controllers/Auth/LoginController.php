@@ -27,6 +27,8 @@ class LoginController extends Controller
             'base_url' => url('/'),
             'assets_url' => asset(''),
             'csrf_token' => csrf_token(),
+            'is_logged_in' => Auth::check(),
+            'user' => Auth::user(),
         ];
         $content = $this->smarty->render('auth/login.tpl', $data);
         return response($content);
@@ -43,7 +45,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
-            return redirect('dashboard.tpl'); // or wherever you want to redirect after login
+            return redirect('account'); // or wherever you want to redirect after login
         }
 
         return redirect()->back()

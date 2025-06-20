@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Routing\Controller as BaseController;
-
+use Illuminate\Support\Facades\Auth;
 
 class WelcomeController extends BaseController
 {
@@ -23,10 +23,9 @@ class WelcomeController extends BaseController
     public function index()
     {
         $data = [
-            'title' => 'Welcome to Laravel + Smarty',
-            'message' => 'This is rendered with Smarty template engine!',
-            'users' => ['John', 'Jane', 'Bob'],
             'csrf_token' => csrf_token(),
+            'is_logged_in' => Auth::check(),
+            'user' => Auth::user(),
         ];
 
         $content = $this->smarty->render('welcome.tpl', $data);

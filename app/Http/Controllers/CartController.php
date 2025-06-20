@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\SmartyRenderer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
@@ -26,6 +27,8 @@ class CartController extends Controller
             'cart_count' => $cart_count,
             // Add csrf_token if you need AJAX in cart.tpl
             'csrf_token' => csrf_token(),
+            'is_logged_in' => Auth::check(),
+            'user' => Auth::user(),
         ];
 
         $content = $this->smarty->render('cart.tpl', $data);

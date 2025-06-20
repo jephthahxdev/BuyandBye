@@ -10,6 +10,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\DashboardController;
 
 
 /* BOL Checking Database connection */
@@ -64,4 +65,7 @@ Route::middleware(['web'])->group(function () {
 
     Route::get('/login', [LoginController::class, 'show']);
     Route::post('/login', [LoginController::class, 'login']);
+
+    // Dashboard routes
+    Route::get('/account', [DashboardController::class, 'show']);
 });

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\SmartyRenderer;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -78,6 +79,8 @@ class ProductController extends Controller
         $data = [
             'product' => $product,
             'csrf_token' => csrf_token(),
+            'is_logged_in' => Auth::check(),
+            'user' => Auth::user(),
         ];
 
         $content = $this->smarty->render('product-details.tpl', $data);

@@ -29,6 +29,8 @@ class RegisterController extends Controller
             'base_url' => url('/'),
             'assets_url' => asset(''),
             'csrf_token' => csrf_token(),
+            'is_logged_in' => Auth::check(),
+            'user' => Auth::user(),
         ];
         $content = $this->smarty->render('auth/register.tpl', $data);
         return response($content);
