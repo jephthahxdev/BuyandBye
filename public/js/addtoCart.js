@@ -34,12 +34,18 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     }
 
-    // Add to cart AJAX
-    document.querySelectorAll('.add-to-cart').forEach(btn => {
+    // Add to cart AJAX - only for buttons that haven't been processed yet
+    document.querySelectorAll('.add-to-cart:not([data-cart-initialized])').forEach(btn => {
+        // Mark this button as initialized to prevent double binding
+        btn.setAttribute('data-cart-initialized', 'true');
+        
         btn.addEventListener('click', function (e) {
             e.preventDefault();
+            e.stopPropagation(); // Prevent event bubbling
             
             const product = this.dataset.product;
+            const quantity = document.getElementById('quantity') ? document.getElementById('quantity').value : 1;
+            const selectedSize = document.querySelector('.size-button.bg-gray-900')?.textContent.trim();
             const csrfToken = getCSRFToken();
             
             if (!csrfToken) {
@@ -50,7 +56,13 @@ document.addEventListener('DOMContentLoaded', function () {
             // Disable button during request
             this.disabled = true;
             const originalText = this.innerHTML;
-            this.innerHTML = '<i class="fa fa-spinner fa-spin" aria-hidden="true"></i>';
+            this.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Adding...';
+
+            const cartData = {
+                product: product,
+                quantity: parseInt(quantity),
+                size: selectedSize || null
+            };
 
             fetch('/cart/add', {
                 method: 'POST',
@@ -58,9 +70,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
                     'X-Requested-With': 'XMLHttpRequest',
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    'X-CSRF-TOKEN': csrfToken
                 },
-                body: JSON.stringify({ product })
+                body: JSON.stringify(cartData)
             })
             .then(res => {
                 if (!res.ok) {
@@ -72,19 +84,32 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.log('Product added to cart successfully');
                 updateCartCount();
                 
-                // Re-enable button
-                this.disabled = false;
-                this.innerHTML = originalText;
+                // Show success message
+                this.textContent = 'Added to Cart!';
+                this.classList.remove('bg-gray-900', 'hover:bg-gray-800');
+                this.classList.add('bg-green-600');
+                
+                setTimeout(() => {
+                    this.textContent = originalText;
+                    this.classList.remove('bg-green-600');
+                    this.classList.add('bg-gray-900', 'hover:bg-gray-800');
+                    this.disabled = false;
+                }, 2000);
             })
             .catch(error => {
                 console.error('Error adding to cart:', error);
                 
-                // Re-enable button
-                this.disabled = false;
-                this.innerHTML = originalText;
+                // Show error message
+                this.textContent = 'Error!';
+                this.classList.remove('bg-gray-900', 'hover:bg-gray-800');
+                this.classList.add('bg-red-600');
                 
-                // Show user-friendly error message
-                alert('Error adding product to cart. Please try again.');
+                setTimeout(() => {
+                    this.textContent = originalText;
+                    this.classList.remove('bg-red-600');
+                    this.classList.add('bg-gray-900', 'hover:bg-gray-800');
+                    this.disabled = false;
+                }, 2000);
             });
         });
     });

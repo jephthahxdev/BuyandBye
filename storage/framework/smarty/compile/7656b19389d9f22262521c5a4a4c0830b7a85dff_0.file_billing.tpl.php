@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-20 16:00:03
+/* Smarty version 5.5.1, created on 2025-06-20 22:35:30
   from 'file:billing.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_6855858390a4b9_84451157',
+  'unifunc' => 'content_6855e232a84719_82916128',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7656b19389d9f22262521c5a4a4c0830b7a85dff' => 
     array (
       0 => 'billing.tpl',
-      1 => 1750435200,
+      1 => 1750458927,
       2 => 'file',
     ),
   ),
@@ -21,23 +21,23 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:partials/account-sidebar.tpl' => 1,
   ),
 ))) {
-function content_6855858390a4b9_84451157 (\Smarty\Template $_smarty_tpl) {
+function content_6855e232a84719_82916128 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_13398397968558583900399_55851170', "title");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_12793890466855e232a71373_40208941', "title");
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_80967344068558583900a14_47466615', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_21158718256855e232a72680_51610487', "content");
 $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layouts/app.tpl", $_smarty_current_dir);
 }
 /* {block "title"} */
-class Block_13398397968558583900399_55851170 extends \Smarty\Runtime\Block
+class Block_12793890466855e232a71373_40208941 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
@@ -47,12 +47,18 @@ Billing - Buyandbye<?php
 }
 /* {/block "title"} */
 /* {block "content"} */
-class Block_80967344068558583900a14_47466615 extends \Smarty\Runtime\Block
+class Block_21158718256855e232a72680_51610487 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
 ?>
 
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 
     <div class="bg-gray-50 min-h-screen py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
@@ -173,8 +179,7 @@ $foreach0DoElse = false;
                                     <?php
 }
 $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
-                                    <a href="<?php echo $_smarty_tpl->getValue('base_url');?>
-/account/billing/add" class="text-gray-700 font-medium mt-2 inline-block hover:underline">+ Add Billing Address</a>
+                                    <a href="#billing-form" class="text-gray-700 font-medium mt-2 inline-block hover:underline">+ Add Billing Address</a>
                                 <?php }?>
                             </div>
 
@@ -219,7 +224,7 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                             </div>
                         </div>
                     </div>
-                                        <div class="mb-8 bg-white rounded-lg border border-gray-200 p-4">
+                                        <div id="billing-form" class="mb-8 bg-white rounded-lg border border-gray-200 p-4 scroll-mt-24">
                         <div class="p-6 border-b border-gray-200">
                             <div class="flex items-center">
                                 <h2 class="text-xl font-bold text-black">Add billing address</h2>

@@ -12,6 +12,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BillingController;
+use App\Http\Controllers\ProfileController;
 
 
 /* BOL Checking Database connection */
@@ -59,6 +60,11 @@ Route::middleware(['web'])->group(function () {
 
     // Product routes
     Route::get('/product/{id}', [ProductController::class, 'show']);
+    
+    // Review routes
+    Route::post('/product/review', [ProductController::class, 'submitReview'])->middleware('auth');
+    Route::post('/review/like', [ProductController::class, 'likeReview'])->middleware('auth');
+    Route::post('/review/reply', [ProductController::class, 'replyReview'])->middleware('auth');
 
     // Auth routes
     Route::get('/register', [RegisterController::class, 'show']);
@@ -72,4 +78,7 @@ Route::middleware(['web'])->group(function () {
 
     // Billing routes
     Route::get('/account/billing', [BillingController::class, 'show']);
+
+    // Profile routes
+    Route::get('/account/profile', [ProfileController::class, 'show']);
 });

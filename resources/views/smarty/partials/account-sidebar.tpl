@@ -22,7 +22,7 @@
             </a>
         </li>
         <li>
-            <a href="{$base_url}/account/addresses" class="flex items-center px-4 py-3 {if $active_page == 'addresses'}bg-gray-50 text-black font-medium{else}text-gray-700 hover:bg-gray-50{/if}">
+            <a href="{$base_url}/account/billing" class="flex items-center px-4 py-3 {if $active_page == 'billing'}bg-gray-50 text-black font-medium{else}text-gray-700 hover:bg-gray-50{/if}">
                 <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd"
                         d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-20 14:50:12
+/* Smarty version 5.5.1, created on 2025-06-20 23:11:16
   from 'file:partials/account-sidebar.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_68557524eaf220_13532178',
+  'unifunc' => 'content_6855ea94201aa5_01908364',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '779e1a53896cd43384462ba7604b087dddb40e7e' => 
     array (
       0 => 'partials/account-sidebar.tpl',
-      1 => 1750430995,
+      1 => 1750460061,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_68557524eaf220_13532178 (\Smarty\Template $_smarty_tpl) {
+function content_6855ea94201aa5_01908364 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty/partials';
 ?><nav>
     <ul class="py-2">
@@ -48,7 +48,7 @@ $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smart
         </li>
         <li>
             <a href="<?php echo $_smarty_tpl->getValue('base_url');?>
-/account/addresses" class="flex items-center px-4 py-3 <?php if ($_smarty_tpl->getValue('active_page') == 'addresses') {?>bg-gray-50 text-black font-medium<?php } else { ?>text-gray-700 hover:bg-gray-50<?php }?>">
+/account/billing" class="flex items-center px-4 py-3 <?php if ($_smarty_tpl->getValue('active_page') == 'billing') {?>bg-gray-50 text-black font-medium<?php } else { ?>text-gray-700 hover:bg-gray-50<?php }?>">
                 <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd"
                         d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
