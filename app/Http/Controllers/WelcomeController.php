@@ -54,18 +54,22 @@ class WelcomeController extends BaseController
             // Get current cart from session
             $cart = session()->get('cart', []);
             
-            // Ensure quantity is always set
-            $quantity = isset($data['quantity']) ? (int)$data['quantity'] : 1;
+            // Ensure cart is an array
+            if (!is_array($cart)) {
+                $cart = [];
+            }
+            
+            // Ensure quantity is always set and valid
+            $quantity = isset($data['quantity']) ? max(1, (int)$data['quantity']) : 1;
 
             // Check if product is already in cart
-            if (isset($cart[$data['product_id']])) {
-                // Update quantity - ensure quantity key exists
-                if (!isset($cart[$data['product_id']]['quantity'])) {
-                    $cart[$data['product_id']]['quantity'] = 0;
-                }
-                $cart[$data['product_id']]['quantity'] += $quantity;
+            if (isset($cart[$data['product_id']]) && is_array($cart[$data['product_id']])) {
+                // Update quantity - ensure quantity key exists and is valid
+                $currentQuantity = isset($cart[$data['product_id']]['quantity']) ? 
+                    max(0, (int)$cart[$data['product_id']]['quantity']) : 0;
+                $cart[$data['product_id']]['quantity'] = $currentQuantity + $quantity;
             } else {
-                // Add new product to cart
+                // Add new product to cart with complete structure
                 $cart[$data['product_id']] = [
                     'id' => $product->id,
                     'name' => $product->name,

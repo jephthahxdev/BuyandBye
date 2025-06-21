@@ -54,7 +54,13 @@ Route::middleware(['web'])->group(function () {
     Route::get('/', [WelcomeController::class, 'index']);
     Route::post('/cart/add', [WelcomeController::class, 'addToCart']);
     Route::get('/cart/count', [WelcomeController::class, 'cartCount']);
+
+    // Cart routes
     Route::get('/cart', [CartController::class, 'show']);
+    Route::post('/cart/update-quantity', [CartController::class, 'updateQuantity']);
+    Route::post('/cart/remove-item', [CartController::class, 'removeItem']);
+    Route::post('/cart/clear', [CartController::class, 'clearCart']);
+    Route::get('/cart/info', [CartController::class, 'getCartInfo']);
     Route::get('/checkout', [CheckoutController::class, 'show']);
     Route::get('/payment', [CheckoutController::class, 'payment']);
 

@@ -133,4 +133,159 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Initial cart count update
     updateCartCount();
+
+    // Cart page functionality
+    if (window.location.pathname === '/cart') {
+        // Update quantity
+        document.querySelectorAll('.increase-quantity, .decrease-quantity').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const productId = this.dataset.productId;
+                const isIncrease = this.classList.contains('increase-quantity');
+                
+                updateCartItemQuantity(productId, isIncrease ? 1 : -1);
+            });
+        });
+
+        // Remove item
+        document.querySelectorAll('.remove-item').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const productId = this.dataset.productId;
+                removeCartItem(productId);
+            });
+        });
+
+        // Clear cart
+        const clearCartBtn = document.querySelector('.clear-cart-btn');
+        if (clearCartBtn) {
+            clearCartBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                clearCart();
+            });
+        }
+    }
+
+    // Function to update cart item quantity
+    function updateCartItemQuantity(productId, change) {
+        const csrfToken = getCSRFToken();
+        if (!csrfToken) return;
+
+        fetch('/cart/update-quantity', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRF-TOKEN': csrfToken
+            },
+            body: JSON.stringify({
+                product_id: parseInt(productId),
+                change: change
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                updateCartDisplay(data.cart);
+                updateCartCount();
+            }
+        })
+        .catch(error => {
+            console.error('Error updating quantity:', error);
+        });
+    }
+
+    // Function to remove cart item
+    function removeCartItem(productId) {
+        const csrfToken = getCSRFToken();
+        if (!csrfToken) return;
+
+        fetch('/cart/remove-item', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRF-TOKEN': csrfToken
+            },
+            body: JSON.stringify({
+                product_id: parseInt(productId)
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                updateCartDisplay(data.cart);
+                updateCartCount();
+            }
+        })
+        .catch(error => {
+            console.error('Error removing item:', error);
+        });
+    }
+
+    // Function to clear cart
+    function clearCart() {
+        const csrfToken = getCSRFToken();
+        if (!csrfToken) return;
+
+        fetch('/cart/clear', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRF-TOKEN': csrfToken
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                location.reload();
+            }
+        })
+        .catch(error => {
+            console.error('Error clearing cart:', error);
+        });
+    }
+
+    // Function to update cart display
+    function updateCartDisplay(cart) {
+        if (Object.keys(cart).length === 0) {
+            location.reload(); // Reload to show empty cart
+            return;
+        }
+
+        // Update cart count in header
+        const cartCountElement = document.querySelector('h1');
+        if (cartCountElement) {
+            const itemCount = Object.keys(cart).length;
+            cartCountElement.textContent = `Cart (${itemCount} products)`;
+        }
+
+        // Update totals
+        let subtotal = 0;
+        Object.values(cart).forEach(item => {
+            subtotal += item.price * item.quantity;
+        });
+
+        const subtotalElement = document.querySelector('.cart-subtotal');
+        const totalElement = document.querySelector('.cart-total');
+        
+        if (subtotalElement) subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+        if (totalElement) totalElement.textContent = `$${subtotal.toFixed(2)}`;
+
+        // Update individual item quantities and prices
+        Object.entries(cart).forEach(([productId, item]) => {
+            const itemElement = document.querySelector(`[data-product-id="${productId}"]`);
+            if (itemElement) {
+                const quantityElement = itemElement.querySelector('.item-quantity');
+                const priceElement = itemElement.querySelector('.item-price');
+                
+                if (quantityElement) quantityElement.textContent = item.quantity;
+                if (priceElement) priceElement.textContent = `$${(item.price * item.quantity).toFixed(2)}`;
+            }
+        });
+    }
 });

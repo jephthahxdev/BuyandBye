@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-21 17:32:59
+/* Smarty version 5.5.1, created on 2025-06-22 00:08:06
   from 'file:welcome.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_6856debb8bc442_82133676',
+  'unifunc' => 'content_68573b560eac83_74041189',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'af908a3cda9b2c161c246c07451074d4ea0b5ed0' => 
     array (
       0 => 'welcome.tpl',
-      1 => 1750523471,
+      1 => 1750547284,
       2 => 'file',
     ),
   ),
@@ -20,18 +20,18 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6856debb8bc442_82133676 (\Smarty\Template $_smarty_tpl) {
+function content_68573b560eac83_74041189 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_15692436676856debb8b85d6_96923521', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_184379267068573b560e2337_91941421', "content");
 $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layouts/app.tpl", $_smarty_current_dir);
 }
 /* {block "content"} */
-class Block_15692436676856debb8b85d6_96923521 extends \Smarty\Runtime\Block
+class Block_184379267068573b560e2337_91941421 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
@@ -98,8 +98,11 @@ echo $_smarty_tpl->getSmarty()->getFunctionHandler('asset')->handle(array('path'
                         </div>
                         <div class="flex justify-between p-6">
                             <div>
-                                <h3 class="font-medium mb-3 text-lg"><?php echo $_smarty_tpl->getValue('product')->name;?>
+                                <a href="/product/<?php echo $_smarty_tpl->getValue('product')->slug;?>
+" class="hover:underline">
+                                    <h3 class="font-medium mb-3 text-lg"><?php echo $_smarty_tpl->getValue('product')->name;?>
 </h3>
+                                </a>
                                 <p class="text-xl font-semibold text-gray-900 mb-4">$<?php echo sprintf("%.2f",$_smarty_tpl->getValue('product')->price);?>
 </p>
                             </div>
@@ -121,15 +124,16 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
         <!-- Categories Section -->
         <section class="mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-3">
-                <!-- Vases -->
+                <!-- Serum -->
                 <div class="category-card relative h-150 overflow-hidden cursor-pointer group">
-                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                        alt="Vases collection"
+                    <img src="<?php echo $_smarty_tpl->getSmarty()->getFunctionHandler('asset')->handle(array('path'=>'/images/serum.jpg'), $_smarty_tpl);?>
+"
+                        alt="Serum collection"
                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                     <div class="category-overlay absolute inset-0 group-hover:bg-black/50 transition-colors duration-300">
                     </div>
                     <div class="absolute inset-0 flex items-center justify-center">
-                        <h3 class="text-white text-4xl font-light tracking-widest">VASES</h3>
+                        <h3 class="text-white text-4xl font-light tracking-widest">SERUM</h3>
                     </div>
                     <div
                         class="absolute bottom-6 right-6 w-12 h-12 bg-white/20 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -140,15 +144,16 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                     </div>
                 </div>
 
-                <!-- Candles -->
+                <!-- Moisturizer -->
                 <div class="category-card relative h-150 overflow-hidden cursor-pointer group">
-                    <img src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                        alt="Candles collection"
+                    <img src="<?php echo $_smarty_tpl->getSmarty()->getFunctionHandler('asset')->handle(array('path'=>'/images/moisturizer.jpg'), $_smarty_tpl);?>
+"
+                        alt="Moisturizer collection"
                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                     <div class="category-overlay absolute inset-0 group-hover:bg-black/50 transition-colors duration-300">
                     </div>
                     <div class="absolute inset-0 flex items-center justify-center">
-                        <h3 class="text-white text-4xl font-light tracking-widest">CANDLES</h3>
+                        <h3 class="text-white text-4xl font-light tracking-widest">MOISTURIZER</h3>
                     </div>
                     <div
                         class="absolute bottom-6 right-6 w-12 h-12 bg-white/20 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -159,15 +164,16 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                     </div>
                 </div>
 
-                <!-- Ceramics -->
+                <!-- Cleanser -->
                 <div class="category-card relative h-150 overflow-hidden cursor-pointer group">
-                    <img src="https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                        alt="Ceramics collection"
+                    <img src="<?php echo $_smarty_tpl->getSmarty()->getFunctionHandler('asset')->handle(array('path'=>'/images/cleansers.jpg'), $_smarty_tpl);?>
+"
+                        alt="Cleanser collection"
                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                     <div class="category-overlay absolute inset-0 group-hover:bg-black/50 transition-colors duration-300">
                     </div>
                     <div class="absolute inset-0 flex items-center justify-center">
-                        <h3 class="text-white text-4xl font-light tracking-widest">CERAMICS</h3>
+                        <h3 class="text-white text-4xl font-light tracking-widest">CLEANSER</h3>
                     </div>
                     <div
                         class="absolute bottom-6 right-6 w-12 h-12 bg-white/20 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">

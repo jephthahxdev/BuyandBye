@@ -53,7 +53,9 @@
                         </div>
                         <div class="flex justify-between p-6">
                             <div>
-                                <h3 class="font-medium mb-3 text-lg">{$product->name}</h3>
+                                <a href="/product/{$product->slug}" class="hover:underline">
+                                    <h3 class="font-medium mb-3 text-lg">{$product->name}</h3>
+                                </a>
                                 <p class="text-xl font-semibold text-gray-900 mb-4">${$product->price|string_format:"%.2f"}</p>
                             </div>
                             <button
@@ -70,15 +72,15 @@
         <!-- Categories Section -->
         <section class="mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-3">
-                <!-- Vases -->
+                <!-- Serum -->
                 <div class="category-card relative h-150 overflow-hidden cursor-pointer group">
-                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                        alt="Vases collection"
+                    <img src="{asset path='/images/serum.jpg'}"
+                        alt="Serum collection"
                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                     <div class="category-overlay absolute inset-0 group-hover:bg-black/50 transition-colors duration-300">
                     </div>
                     <div class="absolute inset-0 flex items-center justify-center">
-                        <h3 class="text-white text-4xl font-light tracking-widest">VASES</h3>
+                        <h3 class="text-white text-4xl font-light tracking-widest">SERUM</h3>
                     </div>
                     <div
                         class="absolute bottom-6 right-6 w-12 h-12 bg-white/20 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -89,15 +91,15 @@
                     </div>
                 </div>
 
-                <!-- Candles -->
+                <!-- Moisturizer -->
                 <div class="category-card relative h-150 overflow-hidden cursor-pointer group">
-                    <img src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                        alt="Candles collection"
+                    <img src="{asset path='/images/moisturizer.jpg'}"
+                        alt="Moisturizer collection"
                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                     <div class="category-overlay absolute inset-0 group-hover:bg-black/50 transition-colors duration-300">
                     </div>
                     <div class="absolute inset-0 flex items-center justify-center">
-                        <h3 class="text-white text-4xl font-light tracking-widest">CANDLES</h3>
+                        <h3 class="text-white text-4xl font-light tracking-widest">MOISTURIZER</h3>
                     </div>
                     <div
                         class="absolute bottom-6 right-6 w-12 h-12 bg-white/20 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -108,15 +110,15 @@
                     </div>
                 </div>
 
-                <!-- Ceramics -->
+                <!-- Cleanser -->
                 <div class="category-card relative h-150 overflow-hidden cursor-pointer group">
-                    <img src="https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                        alt="Ceramics collection"
+                    <img src="{asset path='/images/cleansers.jpg'}"
+                        alt="Cleanser collection"
                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                     <div class="category-overlay absolute inset-0 group-hover:bg-black/50 transition-colors duration-300">
                     </div>
                     <div class="absolute inset-0 flex items-center justify-center">
-                        <h3 class="text-white text-4xl font-light tracking-widest">CERAMICS</h3>
+                        <h3 class="text-white text-4xl font-light tracking-widest">CLEANSER</h3>
                     </div>
                     <div
                         class="absolute bottom-6 right-6 w-12 h-12 bg-white/20 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
