@@ -8,6 +8,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Product;
 
 class WelcomeController extends BaseController
 {
@@ -22,10 +23,13 @@ class WelcomeController extends BaseController
 
     public function index()
     {
+        $products = Product::with('images')->inRandomOrder()->limit(3)->get();
+
         $data = [
             'csrf_token' => csrf_token(),
             'is_logged_in' => Auth::check(),
             'user' => Auth::user(),
+            'products' => $products,
         ];
 
         $content = $this->smarty->render('welcome.tpl', $data);
@@ -37,20 +41,36 @@ class WelcomeController extends BaseController
     {
         try {
             // Validate request
-            $request->validate([
-                'product' => 'required|string|max:255'
+            $data = $request->validate([
+                'product_id' => 'required|integer|exists:products,id',
+                'product_name' => 'required|string|max:255',
+                'quantity' => 'sometimes|integer|min:1',
+                'size' => 'nullable|string',
             ]);
 
-            $product = $request->input('product');
+            $product = Product::find($data['product_id']);
 
             // Get current cart from session
             $cart = session()->get('cart', []);
+            
+            $quantity = $data['quantity'] ?? 1;
 
-            // Add product to cart (you might want to add quantity, ID, etc.)
-            $cart[] = [
-                'name' => $product,
-                'added_at' => now()->toISOString()
-            ];
+            // Check if product is already in cart
+            if (isset($cart[$data['product_id']])) {
+                // Update quantity
+                $cart[$data['product_id']]['quantity'] += $quantity;
+            } else {
+                // Add new product to cart
+                $cart[$data['product_id']] = [
+                    'id' => $product->id,
+                    'name' => $product->name,
+                    'price' => $product->price,
+                    'quantity' => $quantity,
+                    'size' => $data['size'] ?? null,
+                    'image' => $product->images->first()?->image_path,
+                    'added_at' => now()->toISOString()
+                ];
+            }
 
             // Save cart back to session
             session(['cart' => $cart]);

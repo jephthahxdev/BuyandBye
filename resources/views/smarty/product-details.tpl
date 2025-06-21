@@ -109,7 +109,7 @@
                     </div>
                     <button
                         class="bg-gray-900 text-white px-6 py-2 rounded hover:bg-gray-800 transition-colors add-to-cart-btn add-to-cart"
-                        data-product="{$product.name|lower|replace:' ':'-'}">
+                        data-product-id="{$product.id}" data-product-name="{$product.name}">
                         Add to cart
                     </button>
                 </div>
@@ -347,22 +347,22 @@
                     {* Pagination of 5 per page *}
                     {if $product.review_pagination.total_pages > 1}
                         <div class="pagination flex items-center justify-center mt-8 space-x-2">
-                            <a href="?page={$product.review_pagination.previous_page}" 
-                               class="px-3 py-2 text-sm rounded transition-colors {if $product.review_pagination.has_previous}text-gray-700 hover:bg-gray-100{else}text-gray-400 cursor-not-allowed{/if}"
-                               {if not $product.review_pagination.has_previous}onclick="return false;"{/if}>
+                            <a href="?page={$product.review_pagination.previous_page}"
+                                class="px-3 py-2 text-sm rounded transition-colors {if $product.review_pagination.has_previous}text-gray-700 hover:bg-gray-100{else}text-gray-400 cursor-not-allowed{/if}"
+                                {if not $product.review_pagination.has_previous}onclick="return false;" {/if}>
                                 Previous
                             </a>
-                            
+
                             {foreach from=$product.review_pagination.pages item=page}
-                                <a href="?page={$page.number}" 
-                                   class="px-3 py-2 text-sm rounded transition-colors {if $page.current}bg-gray-900 text-white{else}text-gray-700 hover:bg-gray-100{/if}">
+                                <a href="?page={$page.number}"
+                                    class="px-3 py-2 text-sm rounded transition-colors {if $page.current}bg-gray-900 text-white{else}text-gray-700 hover:bg-gray-100{/if}">
                                     {$page.number}
                                 </a>
                             {/foreach}
-                            
-                            <a href="?page={$product.review_pagination.next_page}" 
-                               class="px-3 py-2 text-sm rounded transition-colors {if $product.review_pagination.has_next}text-gray-700 hover:bg-gray-100{else}text-gray-400 cursor-not-allowed{/if}"
-                               {if not $product.review_pagination.has_next}onclick="return false;"{/if}>
+
+                            <a href="?page={$product.review_pagination.next_page}"
+                                class="px-3 py-2 text-sm rounded transition-colors {if $product.review_pagination.has_next}text-gray-700 hover:bg-gray-100{else}text-gray-400 cursor-not-allowed{/if}"
+                                {if not $product.review_pagination.has_next}onclick="return false;" {/if}>
                                 Next
                             </a>
                         </div>
@@ -437,5 +437,4 @@
     </div>
 
     <script src="/js/product-details.js"></script>
-    <script src="/js/addtoCart.js"></script>
 {/block}

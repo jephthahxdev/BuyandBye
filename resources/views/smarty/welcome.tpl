@@ -33,68 +33,37 @@
                         <p class="text-gray-600">We have made a selection of our customers' favorite products</p>
                     </div>
                     <div>
-                        <a href="/favorites" class="text-sm text-gray-600 hover:text-gray-900 font-medium tracking-wide underline">SEE
+                        <a href="/favorites"
+                            class="text-sm text-gray-600 hover:text-gray-900 font-medium tracking-wide underline">SEE
                             ALL</a>
                     </div>
                 </div>
-                <!-- Product 1 -->
-                <div class="product-card bg-white overflow-hidden relative group">
-                    <div class="badge badge-new">NEW!</div>
-                    <div class="relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                            alt="Ceramic jug"
-                            class="w-full h-110 object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="flex justify-between p-6">
-                        <div>
-                            <h3 class="font-medium mb-3 text-lg">Ceramic jug</h3>
-                            <p class="text-xl font-semibold text-gray-900 mb-4">$87</p>
-                        </div>
-                        <button
-                            class="add-to-cart w-10 h-10 bg-gray-900 text-white rounded-sm hover:bg-gray-800 transition flex items-center justify-center" data-product="Ceramic jug">
-                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                        </button>
-                    </div>
-                </div>
 
-                <!-- Product 2 -->
-                <div class="product-card bg-white overflow-hidden relative group">
-                    <div class="relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                            alt="Aromatic diffuser"
-                            class="w-full h-110 object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="flex justify-between p-6">
-                        <div>
-                            <h3 class="font-medium mb-3 text-lg">Aromatic diffuser</h3>
-                            <p class="text-xl font-semibold text-gray-900 mb-4">$65</p>
+                {foreach $products as $product}
+                    <div class="product-card bg-white overflow-hidden relative group">
+                        {if $product->new}
+                            <div class="badge badge-new">NEW!</div>
+                        {elseif $product->popular}
+                            <div class="badge badge-popular">POPULAR</div>
+                        {/if}
+                        <div class="relative overflow-hidden">
+                            <img src="{if $product->images->isNotEmpty()}{asset path=$product->images[0]->image_path}{else}https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80{/if}"
+                                alt="{$product->name}"
+                                class="w-full h-110 object-cover group-hover:scale-105 transition-transform duration-500">
                         </div>
-                        <button
-                            class="add-to-cart w-10 h-10 bg-gray-900 text-white rounded-sm hover:bg-gray-800 transition flex items-center justify-center" data-product="Aromatic diffuser">
-                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Product 3 -->
-                <div class="product-card bg-white overflow-hidden relative group">
-                    <div class="badge badge-popular">POPULAR</div>
-                    <div class="relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                            alt="Handmade mug"
-                            class="w-full h-110 object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="flex justify-between p-6">
-                        <div>
-                            <h3 class="font-medium mb-3 text-lg">Handmade mug</h3>
-                            <p class="text-xl font-semibold text-gray-900 mb-4">$40</p>
+                        <div class="flex justify-between p-6">
+                            <div>
+                                <h3 class="font-medium mb-3 text-lg">{$product->name}</h3>
+                                <p class="text-xl font-semibold text-gray-900 mb-4">${$product->price|string_format:"%.2f"}</p>
+                            </div>
+                            <button
+                                class="add-to-cart w-10 h-10 bg-gray-900 text-white rounded-sm hover:bg-gray-800 transition flex items-center justify-center"
+                                data-product-id="{$product.id}" data-product-name="{$product.name}">
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                            </button>
                         </div>
-                        <button
-                            class="add-to-cart w-10 h-10 bg-gray-900 text-white rounded-sm hover:bg-gray-800 transition flex items-center justify-center" data-product="Handmade mug">
-                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                        </button>
                     </div>
-                </div>
+                {/foreach}
             </div>
         </section>
 

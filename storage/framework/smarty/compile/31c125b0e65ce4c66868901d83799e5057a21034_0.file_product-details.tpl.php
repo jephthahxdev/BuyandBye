@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-21 15:10:10
+/* Smarty version 5.5.1, created on 2025-06-21 17:18:05
   from 'file:product-details.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_6856bd42d5e856_40048049',
+  'unifunc' => 'content_6856db3dd24830_44233046',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '31c125b0e65ce4c66868901d83799e5057a21034' => 
     array (
       0 => 'product-details.tpl',
-      1 => 1750514027,
+      1 => 1750522541,
       2 => 'file',
     ),
   ),
@@ -20,18 +20,18 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6856bd42d5e856_40048049 (\Smarty\Template $_smarty_tpl) {
+function content_6856db3dd24830_44233046 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_12484004616856bd42d32fd7_15200952', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_11323223396856db3dd0cc83_54834430', "content");
 $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layouts/app.tpl", $_smarty_current_dir);
 }
 /* {block "content"} */
-class Block_12484004616856bd42d32fd7_15200952 extends \Smarty\Runtime\Block
+class Block_11323223396856db3dd0cc83_54834430 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
@@ -165,7 +165,8 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                     </div>
                     <button
                         class="bg-gray-900 text-white px-6 py-2 rounded hover:bg-gray-800 transition-colors add-to-cart-btn add-to-cart"
-                        data-product="<?php echo $_smarty_tpl->getSmarty()->getModifierCallback('replace')(mb_strtolower((string) $_smarty_tpl->getValue('product')['name'], 'UTF-8'),' ','-');?>
+                        data-product-id="<?php echo $_smarty_tpl->getValue('product')['id'];?>
+" data-product-name="<?php echo $_smarty_tpl->getValue('product')['name'];?>
 ">
                         Add to cart
                     </button>
@@ -472,12 +473,12 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                                         <?php if ($_smarty_tpl->getValue('product')['review_pagination']['total_pages'] > 1) {?>
                         <div class="pagination flex items-center justify-center mt-8 space-x-2">
                             <a href="?page=<?php echo $_smarty_tpl->getValue('product')['review_pagination']['previous_page'];?>
-" 
-                               class="px-3 py-2 text-sm rounded transition-colors <?php if ($_smarty_tpl->getValue('product')['review_pagination']['has_previous']) {?>text-gray-700 hover:bg-gray-100<?php } else { ?>text-gray-400 cursor-not-allowed<?php }?>"
-                               <?php if (!$_smarty_tpl->getValue('product')['review_pagination']['has_previous']) {?>onclick="return false;"<?php }?>>
+"
+                                class="px-3 py-2 text-sm rounded transition-colors <?php if ($_smarty_tpl->getValue('product')['review_pagination']['has_previous']) {?>text-gray-700 hover:bg-gray-100<?php } else { ?>text-gray-400 cursor-not-allowed<?php }?>"
+                                <?php if (!$_smarty_tpl->getValue('product')['review_pagination']['has_previous']) {?>onclick="return false;" <?php }?>>
                                 Previous
                             </a>
-                            
+
                             <?php
 $_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('product')['review_pagination']['pages'], 'page');
 $foreach7DoElse = true;
@@ -485,19 +486,19 @@ foreach ($_from ?? [] as $_smarty_tpl->getVariable('page')->value) {
 $foreach7DoElse = false;
 ?>
                                 <a href="?page=<?php echo $_smarty_tpl->getValue('page')['number'];?>
-" 
-                                   class="px-3 py-2 text-sm rounded transition-colors <?php if ($_smarty_tpl->getValue('page')['current']) {?>bg-gray-900 text-white<?php } else { ?>text-gray-700 hover:bg-gray-100<?php }?>">
+"
+                                    class="px-3 py-2 text-sm rounded transition-colors <?php if ($_smarty_tpl->getValue('page')['current']) {?>bg-gray-900 text-white<?php } else { ?>text-gray-700 hover:bg-gray-100<?php }?>">
                                     <?php echo $_smarty_tpl->getValue('page')['number'];?>
 
                                 </a>
                             <?php
 }
 $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
-                            
+
                             <a href="?page=<?php echo $_smarty_tpl->getValue('product')['review_pagination']['next_page'];?>
-" 
-                               class="px-3 py-2 text-sm rounded transition-colors <?php if ($_smarty_tpl->getValue('product')['review_pagination']['has_next']) {?>text-gray-700 hover:bg-gray-100<?php } else { ?>text-gray-400 cursor-not-allowed<?php }?>"
-                               <?php if (!$_smarty_tpl->getValue('product')['review_pagination']['has_next']) {?>onclick="return false;"<?php }?>>
+"
+                                class="px-3 py-2 text-sm rounded transition-colors <?php if ($_smarty_tpl->getValue('product')['review_pagination']['has_next']) {?>text-gray-700 hover:bg-gray-100<?php } else { ?>text-gray-400 cursor-not-allowed<?php }?>"
+                                <?php if (!$_smarty_tpl->getValue('product')['review_pagination']['has_next']) {?>onclick="return false;" <?php }?>>
                                 Next
                             </a>
                         </div>
@@ -582,9 +583,6 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 
 
     <?php echo '<script'; ?>
  src="/js/product-details.js"><?php echo '</script'; ?>
->
-    <?php echo '<script'; ?>
- src="/js/addtoCart.js"><?php echo '</script'; ?>
 >
 <?php
 }
