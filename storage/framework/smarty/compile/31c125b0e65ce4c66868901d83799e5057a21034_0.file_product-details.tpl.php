@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-21 14:21:35
+/* Smarty version 5.5.1, created on 2025-06-21 15:10:10
   from 'file:product-details.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_6856b1df1705a2_30859947',
+  'unifunc' => 'content_6856bd42d5e856_40048049',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '31c125b0e65ce4c66868901d83799e5057a21034' => 
     array (
       0 => 'product-details.tpl',
-      1 => 1750511999,
+      1 => 1750514027,
       2 => 'file',
     ),
   ),
@@ -20,18 +20,18 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6856b1df1705a2_30859947 (\Smarty\Template $_smarty_tpl) {
+function content_6856bd42d5e856_40048049 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_17615506426856b1df106be7_28448446', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_12484004616856bd42d32fd7_15200952', "content");
 $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layouts/app.tpl", $_smarty_current_dir);
 }
 /* {block "content"} */
-class Block_17615506426856b1df106be7_28448446 extends \Smarty\Runtime\Block
+class Block_12484004616856bd42d32fd7_15200952 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
