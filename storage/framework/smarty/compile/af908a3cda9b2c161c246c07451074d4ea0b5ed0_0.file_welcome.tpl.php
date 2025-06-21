@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-21 17:16:11
+/* Smarty version 5.5.1, created on 2025-06-21 17:32:59
   from 'file:welcome.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_6856dacbcfcd67_82819543',
+  'unifunc' => 'content_6856debb8bc442_82133676',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'af908a3cda9b2c161c246c07451074d4ea0b5ed0' => 
     array (
       0 => 'welcome.tpl',
-      1 => 1750522558,
+      1 => 1750523471,
       2 => 'file',
     ),
   ),
@@ -20,18 +20,18 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6856dacbcfcd67_82819543 (\Smarty\Template $_smarty_tpl) {
+function content_6856debb8bc442_82133676 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_551009986856dacbcf1642_13135928', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_15692436676856debb8b85d6_96923521', "content");
 $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layouts/app.tpl", $_smarty_current_dir);
 }
 /* {block "content"} */
-class Block_551009986856dacbcf1642_13135928 extends \Smarty\Runtime\Block
+class Block_15692436676856debb8b85d6_96923521 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
@@ -105,8 +105,8 @@ echo $_smarty_tpl->getSmarty()->getFunctionHandler('asset')->handle(array('path'
                             </div>
                             <button
                                 class="add-to-cart w-10 h-10 bg-gray-900 text-white rounded-sm hover:bg-gray-800 transition flex items-center justify-center"
-                                data-product-id="<?php echo $_smarty_tpl->getValue('product')['id'];?>
-" data-product-name="<?php echo $_smarty_tpl->getValue('product')['name'];?>
+                                data-product-id="<?php echo $_smarty_tpl->getValue('product')->id;?>
+" data-product-name="<?php echo $_smarty_tpl->getValue('product')->name;?>
 ">
                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                             </button>

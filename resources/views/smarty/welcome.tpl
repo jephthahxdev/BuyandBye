@@ -58,7 +58,7 @@
                             </div>
                             <button
                                 class="add-to-cart w-10 h-10 bg-gray-900 text-white rounded-sm hover:bg-gray-800 transition flex items-center justify-center"
-                                data-product-id="{$product.id}" data-product-name="{$product.name}">
+                                data-product-id="{$product->id}" data-product-name="{$product->name}">
                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                             </button>
                         </div>

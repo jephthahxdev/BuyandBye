@@ -39,6 +39,7 @@ class WelcomeController extends BaseController
 
     public function addToCart(Request $request): JsonResponse
     {
+        Log::info('Add to cart request received', $request->all());
         try {
             // Validate request
             $data = $request->validate([
@@ -53,11 +54,15 @@ class WelcomeController extends BaseController
             // Get current cart from session
             $cart = session()->get('cart', []);
             
-            $quantity = $data['quantity'] ?? 1;
+            // Ensure quantity is always set
+            $quantity = isset($data['quantity']) ? (int)$data['quantity'] : 1;
 
             // Check if product is already in cart
             if (isset($cart[$data['product_id']])) {
-                // Update quantity
+                // Update quantity - ensure quantity key exists
+                if (!isset($cart[$data['product_id']]['quantity'])) {
+                    $cart[$data['product_id']]['quantity'] = 0;
+                }
                 $cart[$data['product_id']]['quantity'] += $quantity;
             } else {
                 // Add new product to cart
@@ -72,7 +77,6 @@ class WelcomeController extends BaseController
                 ];
             }
 
-            // Save cart back to session
             session(['cart' => $cart]);
 
             return response()->json([
@@ -100,10 +104,15 @@ class WelcomeController extends BaseController
     {
         try {
             $cart = session()->get('cart', []);
+            
+            $totalQuantity = 0;
+            foreach ($cart as $item) {
+                $totalQuantity += $item['quantity'] ?? 0;
+            }
 
             return response()->json([
                 'success' => true,
-                'count' => count($cart)
+                'count' => $totalQuantity
             ]);
         } catch (\Exception $e) {
             Log::error('Error getting cart count: ' . $e->getMessage());

@@ -27,6 +27,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     } else {
                         badge.style.display = 'none';
                     }
+                } else {
+                    console.error('Cart count badge not found');
                 }
             })
             .catch(error => {
@@ -43,7 +45,9 @@ document.addEventListener('DOMContentLoaded', function () {
             e.preventDefault();
             e.stopPropagation(); // Prevent event bubbling
             
-            const product = this.dataset.product;
+            // Get product data from data attributes
+            const productId = this.dataset.productId;
+            const productName = this.dataset.productName;
             const quantity = document.getElementById('quantity') ? document.getElementById('quantity').value : 1;
             const selectedSize = document.querySelector('.size-button.bg-gray-900')?.textContent.trim();
             const csrfToken = getCSRFToken();
@@ -53,13 +57,20 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
+            if (!productId || !productName) {
+                console.error('Missing product data');
+                return;
+            }
+
             // Disable button during request
             this.disabled = true;
             const originalText = this.innerHTML;
-            this.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Adding...';
+            this.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
 
+            // Prepare data matching the controller's validation rules
             const cartData = {
-                product: product,
+                product_id: parseInt(productId),
+                product_name: productName,
                 quantity: parseInt(quantity),
                 size: selectedSize || null
             };
@@ -81,17 +92,23 @@ document.addEventListener('DOMContentLoaded', function () {
                 return res.json();
             })
             .then(data => {
-                console.log('Product added to cart successfully');
                 updateCartCount();
                 
+                // Check if button contains an icon or text to determine success message format
+                const hasIcon = this.querySelector('i') !== null;
+                
                 // Show success message
-                this.textContent = 'Added to Cart!';
+                if (hasIcon) {
+                    this.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+                } else {
+                    this.innerHTML = 'Added to Cart!';
+                }
                 this.classList.remove('bg-gray-900', 'hover:bg-gray-800');
-                this.classList.add('bg-green-600');
+                this.classList.add('bg-gray-600');
                 
                 setTimeout(() => {
-                    this.textContent = originalText;
-                    this.classList.remove('bg-green-600');
+                    this.innerHTML = originalText;
+                    this.classList.remove('bg-gray-600');
                     this.classList.add('bg-gray-900', 'hover:bg-gray-800');
                     this.disabled = false;
                 }, 2000);
@@ -100,12 +117,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.error('Error adding to cart:', error);
                 
                 // Show error message
-                this.textContent = 'Error!';
+                this.innerHTML = '<i class="fa-solid fa-exclamation-triangle"></i> Error!';
                 this.classList.remove('bg-gray-900', 'hover:bg-gray-800');
                 this.classList.add('bg-red-600');
                 
                 setTimeout(() => {
-                    this.textContent = originalText;
+                    this.innerHTML = originalText;
                     this.classList.remove('bg-red-600');
                     this.classList.add('bg-gray-900', 'hover:bg-gray-800');
                     this.disabled = false;
