@@ -240,9 +240,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            // Get product ID from URL
-            const pathParts = window.location.pathname.split('/');
-            const productId = pathParts[pathParts.length - 1];
+            // Get product slug from form
+            const productSlug = this.querySelector('input[name="product_slug"]').value;
 
             // Disable submit button
             const submitBtn = this.querySelector('button[type="submit"]');
@@ -254,7 +253,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const reviewData = {
                 rating: selectedRating,
                 comment: reviewText,
-                product_id: productId,
+                product_slug: productSlug,
                 _token: csrfToken
             };
 

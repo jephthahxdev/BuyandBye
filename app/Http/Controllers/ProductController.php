@@ -20,11 +20,10 @@ class ProductController extends Controller
         $this->smarty = $smarty;
     }
 
-    public function show($id)
+    public function show($slug)
     {
         $product = Product::with(['images', 'reviews.user'])
-            ->where('slug', $id)
-            ->orWhere('id', $id)
+            ->where('slug', $slug)
             ->where('is_active', true)
             ->first();
 
@@ -57,6 +56,7 @@ class ProductController extends Controller
         // Format product data for the template
         $formattedProduct = [
             'id' => $product->id,
+            'slug' => $product->slug,
             'name' => $product->name,
             'category' => $product->category,
             'featured_image' => $product->featured_image,
@@ -130,11 +130,11 @@ class ProductController extends Controller
         $request->validate([
             'rating' => 'required|integer|min:1|max:5',
             'comment' => 'required|string|min:10|max:1000',
-            'product_id' => 'required',
+            'product_slug' => 'required|string',
         ]);
 
-        $product = Product::where('slug', $request->input('product_id'))
-            ->orWhere('id', $request->input('product_id'))
+        $product = Product::where('slug', $request->input('product_slug'))
+            ->where('is_active', true)
             ->first();
 
         if (!$product) {

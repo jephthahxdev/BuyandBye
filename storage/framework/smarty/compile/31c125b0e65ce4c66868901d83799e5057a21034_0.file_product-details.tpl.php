@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-21 13:02:12
+/* Smarty version 5.5.1, created on 2025-06-21 14:21:35
   from 'file:product-details.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_6856ad547d4657_19784994',
+  'unifunc' => 'content_6856b1df1705a2_30859947',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '31c125b0e65ce4c66868901d83799e5057a21034' => 
     array (
       0 => 'product-details.tpl',
-      1 => 1750510924,
+      1 => 1750511999,
       2 => 'file',
     ),
   ),
@@ -20,18 +20,18 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6856ad547d4657_19784994 (\Smarty\Template $_smarty_tpl) {
+function content_6856b1df1705a2_30859947 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_5031067606856ad547b07c7_00707748', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_17615506426856b1df106be7_28448446', "content");
 $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layouts/app.tpl", $_smarty_current_dir);
 }
 /* {block "content"} */
-class Block_5031067606856ad547b07c7_00707748 extends \Smarty\Runtime\Block
+class Block_17615506426856b1df106be7_28448446 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
@@ -507,7 +507,7 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                         <?php if ($_smarty_tpl->getValue('is_logged_in')) {?>
                             <h3 class="text-lg font-medium text-gray-900 mb-4">Write a Review</h3>
                             <form id="review-form" class="space-y-4">
-                                <input type="hidden" name="product_id" value="<?php echo $_smarty_tpl->getValue('product')['id'];?>
+                                <input type="hidden" name="product_slug" value="<?php echo $_smarty_tpl->getValue('product')['slug'];?>
 ">
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>

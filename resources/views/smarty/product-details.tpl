@@ -373,7 +373,7 @@
                         {if $is_logged_in}
                             <h3 class="text-lg font-medium text-gray-900 mb-4">Write a Review</h3>
                             <form id="review-form" class="space-y-4">
-                                <input type="hidden" name="product_id" value="{$product.id}">
+                                <input type="hidden" name="product_slug" value="{$product.slug}">
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
                                         <label for="reviewer-name"

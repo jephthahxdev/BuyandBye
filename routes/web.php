@@ -59,7 +59,7 @@ Route::middleware(['web'])->group(function () {
     Route::get('/payment', [CheckoutController::class, 'payment']);
 
     // Product routes
-    Route::get('/product/{id}', [ProductController::class, 'show']);
+    Route::get('/product/{slug}', [ProductController::class, 'show']);
     
     // Review routes
     Route::post('/product/review', [ProductController::class, 'submitReview'])->middleware('auth');
