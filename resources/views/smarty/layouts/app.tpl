@@ -7,6 +7,7 @@
     <title>{$title|default:'Buyandbye'}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <link href="{asset path='/css/output.css'}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
 </head>
 <body class="min-h-screen">
     {include file="partials/header.tpl"}
@@ -16,6 +17,7 @@
     </main>
 
     {include file="partials/footer.tpl"}
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
     <script src="/js/addtoCart.js"></script>
     <script src="/js/bb-config.js"></script>
 </body>

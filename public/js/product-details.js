@@ -1,5 +1,31 @@
 // Product Details Page JavaScript
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize Notyf
+    const notyf = new Notyf({
+        duration: 4000,
+        position: {
+            x: 'center',
+            y: 'bottom',
+        },
+        types: [
+            {
+                type: 'success',
+                background: '#10b981',
+                icon: false
+            },
+            {
+                type: 'error',
+                background: '#000',
+                icon: false
+            },
+            {
+                type: 'warning',
+                background: '#f59e0b',
+                icon: false
+            }
+        ]
+    });
+
     // Image Gallery Navigation
     const mainImage = document.querySelector('.main-product-image img');
     const thumbnailImages = document.querySelectorAll('.thumbnail-image');
@@ -197,20 +223,20 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             
             if (selectedRating === 0) {
-                alert('Please select a rating before submitting your review.');
+                notyf.error('Please select a rating before submitting your review.');
                 return;
             }
 
             const reviewText = document.getElementById('review-text').value.trim();
             if (!reviewText) {
-                alert('Please write a review before submitting.');
+                notyf.error('Please write a review before submitting.');
                 return;
             }
 
             // Get CSRF token from meta tag
             const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
             if (!csrfToken) {
-                alert('Security token not found. Please refresh the page and try again.');
+                notyf.error('Security token not found. Please refresh the page and try again.');
                 return;
             }
 
@@ -247,8 +273,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(data => {
                 if (data.success) {
                     // Show success message
-                    submitBtn.textContent = 'Review Submitted!';
-                    submitBtn.classList.add('bg-green-600');
+                    notyf.success('Review submitted successfully!');
                     
                     // Reset form
                     selectedRating = 0;
@@ -257,7 +282,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     setTimeout(() => {
                         submitBtn.textContent = originalText;
-                        submitBtn.classList.remove('bg-green-600');
                         submitBtn.disabled = false;
                         
                         // Reload the page to show the new review
@@ -269,7 +293,7 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .catch(error => {
                 console.error('Error submitting review:', error);
-                alert('Failed to submit review. Please try again.');
+                notyf.error('Failed to submit review. Please try again.');
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
             });
@@ -301,7 +325,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
 
-            // Send like to server (you'll need to create this endpoint)
+            // Send like to server
             fetch('/review/like', {
                 method: 'POST',
                 headers: {
@@ -312,8 +336,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 },
                 body: JSON.stringify({ review_id: reviewId })
             })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Update like count if needed
+                    if (likeCount) {
+                        likeCount.textContent = `(${data.likes_count})`;
+                    }
+                } else {
+                    notyf.error('Failed to update like. Please login & try again.');
+                }
+            })
             .catch(error => {
                 console.error('Error liking review:', error);
+                notyf.error('Failed to update like. Please login & try again.');
             });
         });
     });
@@ -353,7 +389,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const replyText = this.querySelector('textarea').value.trim();
             if (!replyText) {
-                alert('Please write a reply before submitting.');
+                notyf.error('Please write a reply before submitting.');
                 return;
             }
 
@@ -364,7 +400,7 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.disabled = true;
             submitBtn.textContent = 'Submitting...';
 
-            // Submit reply (you'll need to create this endpoint)
+            // Submit reply
             fetch('/review/reply', {
                 method: 'POST',
                 headers: {
@@ -381,11 +417,13 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
+                    notyf.success('Reply submitted successfully!');
+                    
                     // Hide form and show success
                     this.closest('.reply-form').classList.add('hidden');
                     this.querySelector('textarea').value = '';
                     
-                    // Optionally reload to show the new reply
+                    // Reload to show the new reply
                     location.reload();
                 } else {
                     throw new Error(data.message || 'Failed to submit reply');
@@ -393,10 +431,32 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .catch(error => {
                 console.error('Error submitting reply:', error);
-                alert('Failed to submit reply. Please try again.');
+                notyf.error('Failed to submit reply. Please login & try again.');
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
             });
+        });
+    });
+
+    // Pagination functionality
+    const paginationLinks = document.querySelectorAll('.pagination a');
+    paginationLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const href = this.getAttribute('href');
+            if (!href || this.classList.contains('cursor-not-allowed')) {
+                return;
+            }
+
+            // Show loading state
+            const reviewsContainer = document.getElementById('reviews-container');
+            if (reviewsContainer) {
+                reviewsContainer.innerHTML = '<div class="text-center py-8"><div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div><p class="mt-2 text-gray-600">Loading reviews...</p></div>';
+            }
+
+            // Navigate to the page
+            window.location.href = href;
         });
     });
 }); 

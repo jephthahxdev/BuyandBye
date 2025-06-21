@@ -57,7 +57,7 @@
 
                 {* Price *}
                 <div class="text-3xl font-bold text-gray-900">
-                    ${$product.price}
+                    ₦{$product.price}
                     {if $product.short_description}
                         <p class="text-base font-normal text-gray-700 mt-4">{$product.short_description}</p>
                     {/if}
@@ -236,7 +236,7 @@
                         <div class="flex items-center space-x-4">
                             <label for="sort-reviews" class="text-sm text-gray-600">Sort by:</label>
                             <select id="sort-reviews"
-                                class="border border-gray-300 rounded px-3 py-1 text-sm focus:outline-none focus:border-gray-900">
+                                class="border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:border-gray-900">
                                 <option value="newest">Newest</option>
                                 <option value="oldest">Oldest</option>
                                 <option value="highest">Highest Rated</option>
@@ -249,7 +249,8 @@
                     {* Individual Reviews *}
                     <div id="reviews-container" class="space-y-6">
                         {foreach from=$product.reviews item=review}
-                            <div class="border-b border-gray-200 pb-6 review-item" data-rating="{$review.rating}" data-date="{$review.date}" data-helpful="{$review.helpful_count}">
+                            <div class="border-b border-gray-200 pb-6 review-item" data-rating="{$review.rating}"
+                                data-date="{$review.date}" data-helpful="{$review.helpful_count}">
                                 <div class="flex items-start space-x-4">
                                     <div class="flex-shrink-0">
                                         <div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center">
@@ -307,15 +308,16 @@
                                         {* Reply Form (Hidden by default) *}
                                         <div class="reply-form hidden mt-4 ml-6" data-review-id="{$review.id}">
                                             <form class="space-y-3">
-                                                <textarea 
-                                                    class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:border-gray-900" 
-                                                    rows="2" 
-                                                    placeholder="Write your reply..."></textarea>
+                                                <textarea
+                                                    class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:border-gray-900"
+                                                    rows="2" placeholder="Write your reply..."></textarea>
                                                 <div class="flex space-x-2">
-                                                    <button type="submit" class="px-3 py-1 bg-gray-900 text-white text-sm rounded hover:bg-gray-800">
+                                                    <button type="submit"
+                                                        class="px-3 py-1 bg-gray-900 text-white text-sm rounded hover:bg-gray-800">
                                                         Submit Reply
                                                     </button>
-                                                    <button type="button" class="px-3 py-1 text-gray-600 text-sm hover:text-gray-800 cancel-reply-btn">
+                                                    <button type="button"
+                                                        class="px-3 py-1 text-gray-600 text-sm hover:text-gray-800 cancel-reply-btn">
                                                         Cancel
                                                     </button>
                                                 </div>
@@ -342,22 +344,27 @@
                         {/foreach}
                     </div>
 
-                    {* Pagination *}
-                    {if $product.review_pagination}
-                        <div class="flex items-center justify-center mt-8 space-x-2">
-                            <button
-                                class="px-3 py-2 text-sm text-gray-500 hover:text-gray-700 {if $product.review_pagination.current_page == 1}cursor-not-allowed{/if}">
+                    {* Pagination of 5 per page *}
+                    {if $product.review_pagination.total_pages > 1}
+                        <div class="pagination flex items-center justify-center mt-8 space-x-2">
+                            <a href="?page={$product.review_pagination.previous_page}" 
+                               class="px-3 py-2 text-sm rounded transition-colors {if $product.review_pagination.has_previous}text-gray-700 hover:bg-gray-100{else}text-gray-400 cursor-not-allowed{/if}"
+                               {if not $product.review_pagination.has_previous}onclick="return false;"{/if}>
                                 Previous
-                            </button>
+                            </a>
+                            
                             {foreach from=$product.review_pagination.pages item=page}
-                                <button
-                                    class="px-3 py-2 text-sm rounded {if $page.current}bg-gray-900 text-white{else}text-gray-700 hover:bg-gray-100{/if}">
+                                <a href="?page={$page.number}" 
+                                   class="px-3 py-2 text-sm rounded transition-colors {if $page.current}bg-gray-900 text-white{else}text-gray-700 hover:bg-gray-100{/if}">
                                     {$page.number}
-                                </button>
+                                </a>
                             {/foreach}
-                            <button class="px-3 py-2 text-sm text-gray-500 hover:text-gray-700">
+                            
+                            <a href="?page={$product.review_pagination.next_page}" 
+                               class="px-3 py-2 text-sm rounded transition-colors {if $product.review_pagination.has_next}text-gray-700 hover:bg-gray-100{else}text-gray-400 cursor-not-allowed{/if}"
+                               {if not $product.review_pagination.has_next}onclick="return false;"{/if}>
                                 Next
-                            </button>
+                            </a>
                         </div>
                     {/if}
 
@@ -409,12 +416,16 @@
                             </form>
                         {else}
                             <div class="text-center py-8">
-                                <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                                 </svg>
                                 <h3 class="text-lg font-medium text-gray-900 mb-2">Sign in to leave a review</h3>
-                                <p class="text-gray-600 mb-4">You need to be signed in to share your thoughts about this product.</p>
-                                <a href="/login" class="inline-flex items-center px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800">
+                                <p class="text-gray-600 mb-4">You need to be signed in to share your thoughts about this
+                                    product.</p>
+                                <a href="/login"
+                                    class="inline-flex items-center px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800">
                                     Sign In
                                 </a>
                             </div>

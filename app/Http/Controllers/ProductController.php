@@ -32,6 +32,28 @@ class ProductController extends Controller
             abort(404);
         }
 
+        // Pagination settings
+        $reviewsPerPage = 5;
+        $currentPage = request()->get('page', 1);
+        
+        // Get paginated reviews
+        $reviews = $product->reviews()
+            ->with(['user', 'replies.user'])
+            ->orderBy('created_at', 'desc')
+            ->paginate($reviewsPerPage, ['*'], 'page', $currentPage);
+
+        // Calculate total pages
+        $totalPages = ceil($reviews->total() / $reviewsPerPage);
+        
+        // Build pagination data
+        $paginationData = [];
+        for ($i = 1; $i <= $totalPages; $i++) {
+            $paginationData[] = [
+                'number' => $i,
+                'current' => $i == $currentPage
+            ];
+        }
+
         // Format product data for the template
         $formattedProduct = [
             'id' => $product->id,
@@ -63,7 +85,7 @@ class ProductController extends Controller
             'care_instructions' => $product->care_instructions,
             'specifications' => $product->specifications,
             'rating_breakdown' => $product->rating_breakdown,
-            'reviews' => $product->reviews->map(function ($review) {
+            'reviews' => $reviews->map(function ($review) {
                 return [
                     'id' => $review->id,
                     'author' => $review->user->name,
@@ -82,10 +104,13 @@ class ProductController extends Controller
                 ];
             })->toArray(),
             'review_pagination' => [
-                'current_page' => 1,
-                'pages' => [
-                    ['number' => 1, 'current' => true],
-                ],
+                'current_page' => $currentPage,
+                'total_pages' => $totalPages,
+                'has_previous' => $currentPage > 1,
+                'has_next' => $currentPage < $totalPages,
+                'previous_page' => $currentPage > 1 ? $currentPage - 1 : null,
+                'next_page' => $currentPage < $totalPages ? $currentPage + 1 : null,
+                'pages' => $paginationData,
             ],
         ];
 
