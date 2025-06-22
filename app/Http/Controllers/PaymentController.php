@@ -14,6 +14,7 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use Illuminate\Support\Str;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PaymentController extends Controller
 {
@@ -494,5 +495,27 @@ class PaymentController extends Controller
         
         $content = $this->smarty->render('payment-success.tpl', $data);
         return response($content);
+    }
+
+    public function downloadOrderPdf(Order $order)
+    {
+        // Ensure user can only download their own orders
+        if (Auth::check() && $order->user_id !== Auth::id()) {
+            abort(403);
+        }
+
+        // Load order relationships
+        $order->load(['items', 'payment']);
+
+        $data = [
+            'order' => $order,
+            'payment' => $order->payment,
+        ];
+
+        $pdf = Pdf::loadView('pdf.order-details', $data);
+        
+        $filename = 'order-' . ($order->order_number ?? 'ORD-' . $order->id) . '.pdf';
+        
+        return $pdf->download($filename);
     }
 }

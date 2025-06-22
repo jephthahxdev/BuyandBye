@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-23 00:13:20
+/* Smarty version 5.5.1, created on 2025-06-23 00:22:19
   from 'file:payment-success.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_68588e10258187_86754633',
+  'unifunc' => 'content_6858902bdc9999_09911086',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ad1aee59ccf6d2fa896f6b42039daaa93c856711' => 
     array (
       0 => 'payment-success.tpl',
-      1 => 1750633997,
+      1 => 1750634525,
       2 => 'file',
     ),
   ),
@@ -20,18 +20,18 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_68588e10258187_86754633 (\Smarty\Template $_smarty_tpl) {
+function content_6858902bdc9999_09911086 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_54334725568588e1024f1b1_72689461', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_18165027456858902bdc2484_64965484', "content");
 $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layouts/app.tpl", $_smarty_current_dir);
 }
 /* {block "content"} */
-class Block_54334725568588e1024f1b1_72689461 extends \Smarty\Runtime\Block
+class Block_18165027456858902bdc2484_64965484 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
@@ -229,9 +229,9 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                 <a href="/" class="bg-black text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors text-center">
                     Continue Shopping
                 </a>
-                <a href="/orders/<?php echo $_smarty_tpl->getValue('order')['id'];?>
-" class="bg-white text-gray-900 px-8 py-3 rounded-lg font-medium border border-gray-300 hover:bg-gray-50 transition-colors text-center">
-                    View Order Details
+                <a href="/order/<?php echo $_smarty_tpl->getValue('order')['id'];?>
+/pdf" class="bg-white text-gray-900 px-8 py-3 rounded-lg font-medium border border-gray-300 hover:bg-gray-50 transition-colors text-center">
+                    Download Order PDF
                 </a>
                 <?php if ($_smarty_tpl->getValue('user')) {?>
                 <a href="/account/orders" class="bg-white text-gray-900 px-8 py-3 rounded-lg font-medium border border-gray-300 hover:bg-gray-50 transition-colors text-center">

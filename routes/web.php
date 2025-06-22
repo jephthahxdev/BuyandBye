@@ -70,6 +70,7 @@ Route::middleware(['web'])->group(function () {
     Route::post('/payment', [PaymentController::class, 'redirectToGateway'])->name('payment.process');
     Route::get('/payment/callback', [PaymentController::class, 'handleGatewayCallback'])->name('payment.callback');
     Route::get('/payment/success/{order:id}', [PaymentController::class, 'paymentSuccess'])->name('payment.success');
+    Route::get('/order/{order:id}/pdf', [PaymentController::class, 'downloadOrderPdf'])->name('order.pdf');
 
     // Product routes
     Route::get('/product/{slug}', [ProductController::class, 'show']);

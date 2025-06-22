@@ -164,8 +164,8 @@
                 <a href="/" class="bg-black text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors text-center">
                     Continue Shopping
                 </a>
-                <a href="/orders/{$order.id}" class="bg-white text-gray-900 px-8 py-3 rounded-lg font-medium border border-gray-300 hover:bg-gray-50 transition-colors text-center">
-                    Save Order Details
+                <a href="/order/{$order.id}/pdf" class="bg-white text-gray-900 px-8 py-3 rounded-lg font-medium border border-gray-300 hover:bg-gray-50 transition-colors text-center">
+                    Download Order PDF
                 </a>
                 {if $user}
                 <a href="/account/orders" class="bg-white text-gray-900 px-8 py-3 rounded-lg font-medium border border-gray-300 hover:bg-gray-50 transition-colors text-center">
