@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Services\SmartyRenderer;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use App\Models\BillingAddress;
 
 class BillingController extends Controller
 {
@@ -16,26 +19,17 @@ class BillingController extends Controller
 
     public function show()
     {
+        /** @var User $user */
+
         $user = Auth::user();
         if (!$user) {
             return redirect('/login');
         }
 
-        // Example billing data; replace with real user billing info as needed
-        $billing_addresses = [
-            [
-                'id' => 1,
-                'name' => 'Wassim Samad',
-                'company' => 'Companyname',
-                'address' => '128 Rue de Vaugirard',
-                'city' => 'Paris',
-                'zip' => '75015',
-                'country' => 'France',
-                'is_default' => true,
-            ],
-            // ... more addresses
-        ];
+        // Get real billing addresses from database
+        $billing_addresses = $user->billingAddresses()->orderBy('is_default', 'desc')->get();
 
+        // Example payment methods (replace with real data when implementing payment methods)
         $payment_methods = [
             [
                 'id' => 1,
@@ -72,5 +66,52 @@ class BillingController extends Controller
 
         $content = $this->smarty->render('billing.tpl', $data);
         return response($content);
+    }
+
+    public function addBillingAddress(Request $request)
+    {
+        /** @var User $user */
+
+        $user = Auth::user();
+        if (!$user) {
+            return redirect('/login');
+        }
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'address' => 'required|string|max:500',
+            'city' => 'required|string|max:255',
+            'state' => 'required|string|max:255',
+            'zip' => 'required|string|max:20',
+            'phone' => 'required|string|max:20',
+            'country' => 'nullable|string|max:255',
+            'company' => 'nullable|string|max:255',
+            'is_default' => 'nullable|boolean',
+        ]);
+
+        // If this address is set as default, remove default from other addresses
+        if ($request->has('is_default') && $request->is_default) {
+            $user->billingAddresses()->update(['is_default' => false]);
+        }
+
+        // If this is the first address, make it default
+        $isDefault = $request->has('is_default') && $request->is_default || $user->billingAddresses()->count() === 0;
+
+        $billingAddress = BillingAddress::create([
+            'user_id' => $user->id,
+            'name' => $request->name,
+            'email' => $request->email,
+            'address' => $request->address,
+            'city' => $request->city,
+            'state' => $request->state,
+            'zip' => $request->zip,
+            'country' => $request->country ?? 'United States',
+            'phone' => $request->phone,
+            'company' => $request->company,
+            'is_default' => $isDefault,
+        ]);
+
+        return redirect('/account/billing')->with('success', 'Billing address added successfully!');
     }
 }

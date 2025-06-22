@@ -61,7 +61,10 @@ Route::middleware(['web'])->group(function () {
     Route::post('/cart/remove-item', [CartController::class, 'removeItem']);
     Route::post('/cart/clear', [CartController::class, 'clearCart']);
     Route::get('/cart/info', [CartController::class, 'getCartInfo']);
+
+    // Checkout routes
     Route::get('/checkout', [CheckoutController::class, 'show']);
+    Route::post('/checkout/process', [CheckoutController::class, 'processCheckout']);
     Route::get('/payment', [CheckoutController::class, 'payment']);
 
     // Product routes
@@ -84,6 +87,7 @@ Route::middleware(['web'])->group(function () {
 
     // Billing routes
     Route::get('/account/billing', [BillingController::class, 'show']);
+    Route::post('/account/billing/add', [BillingController::class, 'addBillingAddress']);
 
     // Profile routes
     Route::get('/account/profile', [ProfileController::class, 'show']);

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-18 21:24:04
+/* Smarty version 5.5.1, created on 2025-06-22 02:53:05
   from 'file:checkout.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_68532e74dc1781_09596392',
+  'unifunc' => 'content_685762011b2a51_01936810',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e77fc47b3ea1eb5aa2f27b043d998276a320fada' => 
     array (
       0 => 'checkout.tpl',
-      1 => 1750281841,
+      1 => 1750557179,
       2 => 'file',
     ),
   ),
@@ -20,18 +20,18 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_68532e74dc1781_09596392 (\Smarty\Template $_smarty_tpl) {
+function content_685762011b2a51_01936810 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_202830856568532e74dbf8f0_30066834', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_622422990685762011a45e8_23669783', "content");
 $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layouts/app.tpl", $_smarty_current_dir);
 }
 /* {block "content"} */
-class Block_202830856568532e74dbf8f0_30066834 extends \Smarty\Runtime\Block
+class Block_622422990685762011a45e8_23669783 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
@@ -112,58 +112,145 @@ $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smart
                             </button>
                         </div>
 
-                        <!-- Billing information -->
-                        <form method="post" action="/payment" class="space-y-6 bg-white py-6 px-4">
-                            <input type="hidden" name="_token" value="<?php echo $_smarty_tpl->getValue('csrf_token');?>
-">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                                <input type="text" name="name" required
-                                    class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black focus:border-transparent">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                                <input type="email" name="email" required
-                                    class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black focus:border-transparent">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Address</label>
-                                <input type="text" name="address" required
-                                    class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black focus:border-transparent">
-                            </div>
-                            <div class="flex space-x-4">
-                                <div class="flex-1">
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">City</label>
-                                    <input type="text" name="city" required
-                                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black focus:border-transparent">
-                                </div>
-                                <div class="flex-1">
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">State</label>
-                                    <input type="text" name="state" required
-                                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black focus:border-transparent">
-                                </div>
-                                <div class="flex-1">
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">Zip</label>
-                                    <input type="text" name="zip" required
-                                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black focus:border-transparent">
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
-                                <input type="text" name="phone" required
-                                    class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black focus:border-transparent">
-                            </div>
-                            <button type="submit"
-                                class="w-full bg-black text-white py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors">
-                                Continue to payment
-                            </button>
-                        </form>
+                        <?php if ($_smarty_tpl->getValue('is_logged_in') && $_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('billing_addresses')) > 0) {?>
+                            <!-- Existing Billing Addresses for Logged-in Users -->
+                            <div class="mb-6">
+                                <h2 class="text-lg font-medium text-gray-900 mb-4">Choose a billing address</h2>
+                                <div class="space-y-3">
+                                    <?php
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('billing_addresses'), 'address');
+$foreach0DoElse = true;
+foreach ($_from ?? [] as $_smarty_tpl->getVariable('address')->value) {
+$foreach0DoElse = false;
+?>
+                                        <div class="border rounded-lg p-4 <?php if ($_smarty_tpl->getValue('address')['is_default']) {?>border-gray-600 bg-gray-50<?php } else { ?>border-gray-200 bg-white<?php }?>">
+                                            <div class="flex items-start">
+                                                <input type="radio" name="selected_address" value="<?php echo $_smarty_tpl->getValue('address')['id'];?>
+" 
+                                                    <?php if ($_smarty_tpl->getValue('address')['is_default']) {?>checked<?php }?>
+                                                    class="mt-1 mr-3" onchange="selectAddress(<?php echo $_smarty_tpl->getValue('address')['id'];?>
+)">
+                                                <div class="flex-1">
+                                                    <div class="flex items-center mb-1">
+                                                        <?php if ($_smarty_tpl->getValue('address')['is_default']) {?>
+                                                            <span class="inline-block bg-gray-600 text-white text-xs px-2 py-1 rounded mr-2">Default</span>
+                                                        <?php }?>
+                                                        <span class="font-semibold text-gray-900"><?php echo $_smarty_tpl->getValue('address')['name'];?>
+</span>
+                                                        <?php if ($_smarty_tpl->getValue('address')['company']) {?>
+                                                            <span class="inline-block bg-gray-100 rounded-full px-2 py-1 ml-2 text-gray-700 text-xs"><?php echo $_smarty_tpl->getValue('address')['company'];?>
+</span>
+                                                        <?php }?>
+                                                    </div>
+                                                    <div class="text-sm text-gray-700">
+                                                        <?php echo $_smarty_tpl->getValue('address')['address'];?>
+<br>
+                                                        <?php echo $_smarty_tpl->getValue('address')['city'];?>
+, <?php echo $_smarty_tpl->getValue('address')['state'];?>
+ <?php echo $_smarty_tpl->getValue('address')['zip'];?>
+<br>
+                                                        <?php echo $_smarty_tpl->getValue('address')['country'];?>
+<br>
+                                                        Phone: <?php echo $_smarty_tpl->getValue('address')['phone'];?>
 
-                        <!-- Already have an account? -->
-                        <div class="mt-6 text-center">
-                            <span class="text-gray-600">Already have an account?</span>
-                            <a href="/login" class="ml-2 text-black font-medium hover:underline">Sign in instead</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php
+}
+$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
+                                </div>
+                                
+                                <div class="mt-4">
+                                    <button type="button" onclick="showNewAddressForm()" 
+                                        class="text-gray-700 font-medium hover:underline">
+                                        + Use a different address
+                                    </button>
+                                </div>
+                                <button type="submit"
+                                    class="mt-8 w-full bg-black text-white py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors"
+                                    onclick="continueToPayment(); return false;">
+                                    Continue to payment
+                                </button>
+                            </div>
+                        <?php }?>
+
+                        <!-- Billing Form -->
+                        <div id="billing-form" class="<?php if ($_smarty_tpl->getValue('is_logged_in') && $_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('billing_addresses')) > 0) {?>hidden<?php }?>">
+                            <form method="post" action="/checkout/process" class="space-y-6 bg-white py-6 px-4">
+                                <input type="hidden" name="_token" value="<?php echo $_smarty_tpl->getValue('csrf_token');?>
+">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                                    <input type="text" name="name" required value="<?php echo (($tmp = $_smarty_tpl->getValue('user')['name'] ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
+"
+                                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black focus:border-transparent">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                                    <input type="email" name="email" required value="<?php echo (($tmp = $_smarty_tpl->getValue('user')['email'] ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
+"
+                                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black focus:border-transparent">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Company (Optional)</label>
+                                    <input type="text" name="company"
+                                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black focus:border-transparent">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Address</label>
+                                    <input type="text" name="address" required
+                                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black focus:border-transparent">
+                                </div>
+                                <div class="flex space-x-4">
+                                    <div class="flex-1">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">City</label>
+                                        <input type="text" name="city" required
+                                            class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black focus:border-transparent">
+                                    </div>
+                                    <div class="flex-1">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">State</label>
+                                        <input type="text" name="state" required
+                                            class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black focus:border-transparent">
+                                    </div>
+                                    <div class="flex-1">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Zip</label>
+                                        <input type="text" name="zip" required
+                                            class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black focus:border-transparent">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Country</label>
+                                    <select name="country" required
+                                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black focus:border-transparent">
+                                        <option value="Nigeria" selected>Nigeria</option>
+                                        <option value="United States">United States</option>
+                                        <option value="United Kingdom">United Kingdom</option>
+                                        <option value="France">France</option>
+                                        <option value="Germany">Germany</option>
+                                        <option value="Canada">Canada</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                                    <input type="text" name="phone" required
+                                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black focus:border-transparent">
+                                </div>
+                                <button type="submit"
+                                    class="w-full bg-black text-white py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors">
+                                    Continue to payment
+                                </button>
+                            </form>
                         </div>
+
+                        <?php if (!$_smarty_tpl->getValue('is_logged_in')) {?>
+                            <!-- Already have an account? -->
+                            <div class="mt-6 text-center">
+                                <span class="text-gray-600">Already have an account?</span>
+                                <a href="/login" class="ml-2 text-black font-medium hover:underline">Sign in instead</a>
+                            </div>
+                        <?php }?>
                     </div>
                 </div>
 
@@ -185,58 +272,58 @@ $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smart
                         <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
                             <!-- Cart Items -->
                             <div class="p-6">
-                                <!-- PlayStation 5 Pro -->
-                                <div class="flex items-start space-x-2 justify-between pb-6 border-b border-gray-200 relative">
-                                    <button
-                                        class="absolute top-0 right-0 w-6 h-6 bg-black rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors">
-                                        <i class="fas fa-times text-white text-xs"></i>
-                                    </button>
-
-                                    <div class="flex-shrink-0">
-                                        <img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=100&h=100&fit=crop&crop=center"
-                                            alt="PlayStation 5 Pro" class="w-20 h-20 object-cover rounded-lg">
-                                    </div>
-
-                                    <div class="flex-1">
-                                        <h3 class="font-semibold text-base text-gray-900">Sony PlayStation 5 Pro</h3>
-                                        <p class="text-gray-600 text-sm mb-3">PlayStation consoles</p>
-
-                                        <div class="flex items-center justify-between mt-3">
-                                            <div class="flex items-center">
-                                                <span class="text-gray-600 text-sm">Qty</span>
-                                                <span class="underline px-2 py-1 text-sm">1</span>
+                                <?php if ($_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('cart')) > 0) {?>
+                                    <?php
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('cart'), 'item', true, 'product_id');
+$_smarty_tpl->getVariable('item')->iteration = 0;
+$foreach1DoElse = true;
+foreach ($_from ?? [] as $_smarty_tpl->getVariable('product_id')->value => $_smarty_tpl->getVariable('item')->value) {
+$foreach1DoElse = false;
+$_smarty_tpl->getVariable('item')->iteration++;
+$_smarty_tpl->getVariable('item')->last = $_smarty_tpl->getVariable('item')->iteration === $_smarty_tpl->getVariable('item')->total;
+$foreach1Backup = clone $_smarty_tpl->getVariable('item');
+?>
+                                        <div class="flex items-start space-x-2 justify-between pb-6 <?php if (!$_smarty_tpl->getVariable('item')->last) {?>border-b border-gray-200<?php }?> relative">
+                                            <div class="flex-shrink-0">
+                                                <?php if ((true && (true && null !== ($_smarty_tpl->getValue('item')['image'] ?? null))) && $_smarty_tpl->getValue('item')['image']) {?>
+                                                    <img src="<?php echo $_smarty_tpl->getSmarty()->getFunctionHandler('asset')->handle(array('path'=>$_smarty_tpl->getValue('item')['image']), $_smarty_tpl);?>
+" alt="<?php echo (($tmp = $_smarty_tpl->getValue('item')['name'] ?? null)===null||$tmp==='' ? 'Product' ?? null : $tmp);?>
+" class="w-20 h-20 object-cover rounded-lg">
+                                                <?php } else { ?>
+                                                    <div class="w-20 h-20 bg-gray-100 rounded-lg flex items-center justify-center">
+                                                        <div class="w-12 h-12 bg-gray-200 rounded"></div>
+                                                    </div>
+                                                <?php }?>
                                             </div>
-                                            <span class="text-base font-semibold text-gray-900">$499.99</span>
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <!-- PlayStation Pulse 3D Wireless Headset -->
-                                <div class="flex items-start space-x-2 pt-6 relative">
-                                    <button
-                                        class="absolute top-6 right-0 w-6 h-6 bg-black rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors">
-                                        <i class="fas fa-times text-white text-xs"></i>
-                                    </button>
+                                            <div class="flex-1">
+                                                <h3 class="font-semibold text-base text-gray-900"><?php echo (($tmp = $_smarty_tpl->getValue('item')['name'] ?? null)===null||$tmp==='' ? 'Product' ?? null : $tmp);?>
+</h3>
+                                                <?php if ((true && (true && null !== ($_smarty_tpl->getValue('item')['size'] ?? null))) && $_smarty_tpl->getValue('item')['size']) {?>
+                                                    <p class="text-gray-600 text-sm mb-3"><?php echo $_smarty_tpl->getValue('item')['size'];?>
+</p>
+                                                <?php }?>
 
-                                    <div class="flex-shrink-0">
-                                        <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=100&h=100&fit=crop&crop=center"
-                                            alt="PlayStation Pulse 3D Wireless Headset"
-                                            class="w-20 h-20 object-cover rounded-lg">
-                                    </div>
-
-                                    <div class="flex-1">
-                                        <h3 class="font-semibold text-base text-gray-900">Sony PlayStation Pulse 3D Wireless
-                                            Headset</h3>
-                                        <p class="text-gray-600 text-sm mb-3">Standard Edition</p>
-                                        <div class="flex items-center justify-between mt-3">
-                                            <div class="flex items-center">
-                                                <span class="text-gray-600 text-sm">Qty</span>
-                                                <span class="underline px-2 py-1 text-sm">1</span>
+                                                <div class="flex items-center justify-between mt-3">
+                                                    <div class="flex items-center">
+                                                        <span class="text-gray-600 text-sm">Qty</span>
+                                                        <span class="underline px-2 py-1 text-sm"><?php echo (($tmp = $_smarty_tpl->getValue('item')['quantity'] ?? null)===null||$tmp==='' ? 1 ?? null : $tmp);?>
+</span>
+                                                    </div>
+                                                    <span class="text-base font-semibold text-gray-900">$<?php echo ((($tmp = $_smarty_tpl->getValue('item')['price'] ?? null)===null||$tmp==='' ? 0 ?? null : $tmp))*sprintf("%.2f",((($tmp = $_smarty_tpl->getValue('item')['quantity'] ?? null)===null||$tmp==='' ? 1 ?? null : $tmp)));?>
+</span>
+                                                </div>
                                             </div>
-                                            <span class="text-base font-semibold text-gray-900">$99.99</span>
                                         </div>
+                                    <?php
+$_smarty_tpl->setVariable('item', $foreach1Backup);
+}
+$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
+                                <?php } else { ?>
+                                    <div class="text-center py-8">
+                                        <p class="text-gray-500">No items in cart</p>
                                     </div>
-                                </div>
+                                <?php }?>
                             </div>
 
                             <!-- Discount Code Section -->
@@ -257,7 +344,8 @@ $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smart
                                 <div class="space-y-3">
                                     <div class="flex justify-between">
                                         <span class="text-gray-600">Subtotal</span>
-                                        <span class="font-semibold">$599.98</span>
+                                        <span class="font-semibold">₦<?php echo sprintf("%.2f",(($tmp = $_smarty_tpl->getValue('cart_subtotal') ?? null)===null||$tmp==='' ? 0 ?? null : $tmp));?>
+</span>
                                     </div>
                                     <div class="flex justify-between">
                                         <span class="text-gray-600">Shipping</span>
@@ -268,12 +356,14 @@ $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smart
                                             <span class="text-gray-600">Tax</span>
                                             <i class="fas fa-info-circle text-gray-400 text-xs"></i>
                                         </div>
-                                        <span class="font-semibold">$10.00</span>
+                                        <span class="font-semibold">₦<?php echo sprintf("%.2f",(((($tmp = $_smarty_tpl->getValue('cart_subtotal') ?? null)===null||$tmp==='' ? 0 ?? null : $tmp))*0.075));?>
+</span>
                                     </div>
                                     <hr class="border-gray-300">
                                     <div class="flex justify-between items-center text-xl font-bold">
                                         <span>Total</span>
-                                        <span>$609.98</span>
+                                        <span>₦<?php echo sprintf("%.2f",(((($tmp = $_smarty_tpl->getValue('cart_subtotal') ?? null)===null||$tmp==='' ? 0 ?? null : $tmp))*1.075));?>
+</span>
                                     </div>
                                 </div>
                             </div>
@@ -283,6 +373,10 @@ $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smart
             </div>
         </div>
     </div>
+
+    <?php echo '<script'; ?>
+ src="/js/checkout.js"><?php echo '</script'; ?>
+>
 <?php
 }
 }

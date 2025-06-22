@@ -45,4 +45,12 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Get the billing addresses for the user.
+     */
+    public function billingAddresses()
+    {
+        return $this->hasMany(BillingAddress::class);
+    }
 }

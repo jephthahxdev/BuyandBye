@@ -184,16 +184,21 @@
                                 </div>
                             </div>
                         </div>
-                        <form method="post" action="/account/billing" class="space-y-6 bg-white py-6 px-4">
+                        <form method="post" action="/account/billing/add" class="space-y-6 bg-white py-6 px-4">
                             <input type="hidden" name="_token" value="{$csrf_token}">
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                                <input type="text" name="name" required
+                                <input type="text" name="name" required value="{$user.name|default:''}"
                                     class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                                <input type="email" name="email" required
+                                <input type="email" name="email" required value="{$user.email|default:''}"
+                                    class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Company (Optional)</label>
+                                <input type="text" name="company"
                                     class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black focus:border-transparent">
                             </div>
                             <div>
@@ -219,21 +224,36 @@
                                 </div>
                             </div>
                             <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Country</label>
+                                <select name="country" required
+                                    class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black focus:border-transparent">
+                                    <option value="United States" selected>United States</option>
+                                    <option value="Canada">Canada</option>
+                                    <option value="United Kingdom">United Kingdom</option>
+                                    <option value="France">France</option>
+                                    <option value="Germany">Germany</option>
+                                    <option value="Australia">Australia</option>
+                                </select>
+                            </div>
+                            <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
                                 <input type="text" name="phone" required
                                     class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black focus:border-transparent">
                             </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" name="is_default" id="is_default" class="mr-2">
+                                <label for="is_default" class="text-sm text-gray-700">Set as default billing address</label>
+                            </div>
                             <button type="submit"
                                 class="w-full bg-black text-white py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors">
-                                Submit
+                                Add Billing Address
                             </button>
                         </form>
                     </div>
-                {/if}
+                </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 
 <script>
