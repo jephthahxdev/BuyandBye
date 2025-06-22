@@ -29,21 +29,11 @@ class BillingController extends Controller
         // Get real billing addresses from database
         $billing_addresses = $user->billingAddresses()->orderBy('is_default', 'desc')->get();
 
-        // Example payment methods (replace with real data when implementing payment methods)
-        $payment_methods = [
-            [
-                'id' => 1,
-                'brand' => 'Mastercard',
-                'last4' => '1234',
-                'is_default' => true,
-            ],
-            [
-                'id' => 2,
-                'brand' => 'Mastercard',
-                'last4' => '5678',
-                'is_default' => false,
-            ],
-        ];
+        // Get saved payment methods (not transaction records) from database
+        $payment_methods = $user->paymentMethods()
+            ->whereNull('order_id') // Only saved payment methods, not transaction records
+            ->orderBy('is_default', 'desc')
+            ->get();
 
         $data = [
             'billing_addresses' => $billing_addresses,

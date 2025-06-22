@@ -108,21 +108,21 @@
                                                     {/if}
                                                     <span class="font-semibold text-gray-900">{$address.name}</span>
                                                     {if $address.company}
-                                                        <span
+                                        <span
                                                             class="inline-block bg-gray-100 rounded-full px-2 py-1 ml-2 text-gray-700 text-xs">{$address.company}</span>
                                                     {/if}
-                                                </div>
+                                    </div>
                                                 <div class="text-sm text-gray-700">
                                                     {$address.address}<br>
                                                     {$address.zip} {$address.city} - {$address.country}
-                                                </div>
-                                            </div>
+                                    </div>
+                                </div>
                                             <button class="ml-4 text-gray-400 hover:text-red-600" title="Delete">
                                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                         d="M6 18L18 6M6 6l12 12" />
-                                                </svg>
-                                            </button>
+                                    </svg>
+                                </button>
                                         </div>
                                     {/foreach}
                                     <a href="#billing-form"
@@ -132,7 +132,7 @@
                             </div>
 
                             <!-- Default Payment Method -->
-                            <div>
+                                    <div>
                                 <h3 class="text-lg font-semibold mb-4">Default payment method</h3>
                                 {if $payment_methods|@count == 0}
                                     <div class="flex items-center justify-between bg-gray-50 rounded-lg px-4 py-3 mb-4">
@@ -151,19 +151,19 @@
                                                         viewBox="0 0 24 24">
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                             d="M5 13l4 4L19 7" />
-                                                    </svg>
+                                            </svg>
                                                 {/if}
                                                 <span class="font-mono text-base tracking-widest">**** **** ****
                                                     {$method.last4}</span>
                                                 <span
                                                     class="ml-2 text-xs text-gray-700 font-medium uppercase">{$method.brand}</span>
-                                            </div>
+                                </div>
                                             <button class="ml-4 text-gray-400 hover:text-red-600" title="Delete">
                                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                         d="M6 18L18 6M6 6l12 12" />
-                                                </svg>
-                                            </button>
+                                    </svg>
+                                </button>
                                         </div>
                                     {/foreach}
                                 {/if}
@@ -278,9 +278,9 @@
             const allDropdowns = document.querySelectorAll('[id^="dropdown-"]');
             allDropdowns.forEach(dd => {
                 dd.classList.add('hidden');
-            });
-        }
-    });
-</script>
+                });
+            }
+        });
+    </script>
 
 {/block}

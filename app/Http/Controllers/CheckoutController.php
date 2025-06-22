@@ -74,8 +74,8 @@ class CheckoutController extends Controller
         }
 
         // Check if user selected an existing address
-        if ($request->has('selected_address_id') && $request->selected_address_id) {
-            $billingAddress = BillingAddress::where('id', $request->selected_address_id)
+        if ($request->has('billing_address_id') && $request->billing_address_id) {
+            $billingAddress = BillingAddress::where('id', $request->billing_address_id)
                 ->where('user_id', $user->id)
                 ->first();
             
@@ -86,7 +86,7 @@ class CheckoutController extends Controller
                         'user_id' => $user->id,
                         'billing_address_id' => $billingAddress->id,
                         'name' => $billingAddress->name,
-                        'email' => $billingAddress->email,
+                        'email' => $user->email, // Use user's primary email
                         'address' => $billingAddress->address,
                         'city' => $billingAddress->city,
                         'state' => $billingAddress->state,
@@ -109,7 +109,7 @@ class CheckoutController extends Controller
             'city' => 'required|string|max:255',
             'state' => 'required|string|max:255',
             'zip' => 'required|string|max:20',
-            'phone' => 'required|string|max:20',
+            'phone_number' => 'required|string|max:20',
             'country' => 'nullable|string|max:255',
             'company' => 'nullable|string|max:255',
         ]);
@@ -128,8 +128,8 @@ class CheckoutController extends Controller
                 'city' => $request->city,
                 'state' => $request->state,
                 'zip' => $request->zip,
-                'phone' => $request->phone,
-                'country' => $request->country ?? 'United States',
+                'phone' => $request->phone_number,
+                'country' => $request->country ?? 'Nigeria',
                 'company' => $request->company,
             ]
         ]);
@@ -168,8 +168,8 @@ class CheckoutController extends Controller
             'city' => $request->city,
             'state' => $request->state,
             'zip' => $request->zip,
-            'country' => $request->country ?? 'United States',
-            'phone' => $request->phone,
+            'country' => $request->country ?? 'Nigeria',
+            'phone' => $request->phone_number,
             'company' => $request->company,
             'is_default' => $isDefault,
         ]);
@@ -216,9 +216,36 @@ class CheckoutController extends Controller
 
     public function payment()
     {
+        $checkoutData = session('checkout_data');
+        $cart = session('cart', []);
+
+        if (empty($checkoutData) || empty($cart)) {
+            // If there's no checkout data or cart is empty, redirect back to cart
+            return redirect('/cart')->with('error', 'Your session has expired. Please start again.');
+        }
+
+        // Recalculate totals to be safe
+        $cart_subtotal = 0;
+        foreach ($cart as $item) {
+            $price = $item['price'] ?? 0;
+            $quantity = $item['quantity'] ?? 0;
+            $cart_subtotal += $price * $quantity;
+        }
+
+        $tax = $cart_subtotal * 0.075;
+        $cart_total = $cart_subtotal + $tax;
+
         $data = [
             'csrf_token' => csrf_token(),
+            'is_logged_in' => Auth::check(),
+            'user' => Auth::user(),
+            'cart' => $cart,
+            'checkout_data' => $checkoutData,
+            'cart_subtotal' => $cart_subtotal,
+            'tax' => $tax,
+            'cart_total' => $cart_total,
         ];
+        
         $content = $this->smarty->render('payment.tpl', $data);
         return response($content);
     }

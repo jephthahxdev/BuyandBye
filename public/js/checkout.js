@@ -1,78 +1,47 @@
 // Checkout Page JavaScript
-
+    
 // Global functions for inline HTML calls
-function selectAddress(addressId) {
-    // Store selected address ID for form submission
-    const selectedAddressInput = document.createElement('input');
-    selectedAddressInput.type = 'hidden';
-    selectedAddressInput.name = 'selected_address_id';
-    selectedAddressInput.value = addressId;
-    
-    // Remove any existing selected address input
-    const existingInput = document.querySelector('input[name="selected_address_id"]');
-    if (existingInput) {
-        existingInput.remove();
+    function selectAddress(addressId) {
+    document.getElementById('billing_address_id').value = addressId;
+    document.getElementById('new-address-form').style.display = 'none';
+    document.getElementById('continue-to-payment-btn').style.display = 'block';
+        
+    // Highlight the selected address
+    document.querySelectorAll('.address-card').forEach(card => {
+        card.classList.remove('ring-2', 'ring-black');
+    });
+    document.getElementById('address-card-' + addressId).classList.add('ring-2', 'ring-black');
     }
-    
-    // Add the new input to the form
-    const form = document.querySelector('form');
-    if (form) {
-        form.appendChild(selectedAddressInput);
-    }
-}
 
-function showNewAddressForm() {
-    // Hide the address selection section
-    const addressSelection = document.querySelector('.mb-6');
-    if (addressSelection) {
-        addressSelection.style.display = 'none';
-    }
-    
-    // Show the billing form
-    const billingForm = document.getElementById('billing-form');
-    if (billingForm) {
-        billingForm.classList.remove('hidden');
-    }
-}
+    function showNewAddressForm() {
+    // Unselect any selected address
+    document.getElementById('billing_address_id').value = '';
+    document.querySelectorAll('input[name="selected_address"]').forEach(radio => {
+        radio.checked = false;
+    });
+    document.querySelectorAll('.address-card').forEach(card => {
+        card.classList.remove('ring-2', 'ring-black');
+    });
 
+    // Show the new address form and hide the continue button
+    document.getElementById('new-address-form').style.display = 'block';
+    document.getElementById('continue-to-payment-btn').style.display = 'none';
+        }
+        
 function continueToPayment() {
-    // Get the selected address
-    const selectedAddress = document.querySelector('input[name="selected_address"]:checked');
-    
-    if (!selectedAddress) {
-        alert('Please select a billing address to continue.');
-        return;
-    }
-    
-    // Create a form to submit the selected address
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = '/checkout/process';
-    
-    // Add CSRF token
-    const csrfToken = document.querySelector('input[name="_token"]').value;
-    const csrfInput = document.createElement('input');
-    csrfInput.type = 'hidden';
-    csrfInput.name = '_token';
-    csrfInput.value = csrfToken;
-    form.appendChild(csrfInput);
-    
-    // Add selected address ID
-    const addressInput = document.createElement('input');
-    addressInput.type = 'hidden';
-    addressInput.name = 'selected_address_id';
-    addressInput.value = selectedAddress.value;
-    form.appendChild(addressInput);
-    
-    // Submit the form
-    document.body.appendChild(form);
+    const form = document.getElementById('checkout-form');
     form.submit();
 }
 
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize form with selected address if any
-    const selectedAddress = document.querySelector('input[name="selected_address"]:checked');
-    if (selectedAddress) {
-        selectAddress(selectedAddress.value);
-    }
-});
+        const selectedAddress = document.querySelector('input[name="selected_address"]:checked');
+        if (selectedAddress) {
+            selectAddress(selectedAddress.value);
+        }
+    });
+
+// Make functions globally available
+window.selectAddress = selectAddress;
+window.showNewAddressForm = showNewAddressForm;
+window.continueToPayment = continueToPayment;

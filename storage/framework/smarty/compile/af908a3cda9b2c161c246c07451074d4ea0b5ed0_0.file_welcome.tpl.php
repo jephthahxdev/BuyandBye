@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-22 00:08:06
+/* Smarty version 5.5.1, created on 2025-06-22 16:29:51
   from 'file:welcome.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_68573b560eac83_74041189',
+  'unifunc' => 'content_6858216fe26f12_38984372',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'af908a3cda9b2c161c246c07451074d4ea0b5ed0' => 
     array (
       0 => 'welcome.tpl',
-      1 => 1750547284,
+      1 => 1750606189,
       2 => 'file',
     ),
   ),
@@ -20,18 +20,18 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_68573b560eac83_74041189 (\Smarty\Template $_smarty_tpl) {
+function content_6858216fe26f12_38984372 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_184379267068573b560e2337_91941421', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_9228913386858216fdfa962_30367303', "content");
 $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layouts/app.tpl", $_smarty_current_dir);
 }
 /* {block "content"} */
-class Block_184379267068573b560e2337_91941421 extends \Smarty\Runtime\Block
+class Block_9228913386858216fdfa962_30367303 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
@@ -103,7 +103,7 @@ echo $_smarty_tpl->getSmarty()->getFunctionHandler('asset')->handle(array('path'
                                     <h3 class="font-medium mb-3 text-lg"><?php echo $_smarty_tpl->getValue('product')->name;?>
 </h3>
                                 </a>
-                                <p class="text-xl font-semibold text-gray-900 mb-4">$<?php echo sprintf("%.2f",$_smarty_tpl->getValue('product')->price);?>
+                                <p class="text-xl font-semibold text-gray-900 mb-4">₦<?php echo sprintf("%.2f",$_smarty_tpl->getValue('product')->price);?>
 </p>
                             </div>
                             <button

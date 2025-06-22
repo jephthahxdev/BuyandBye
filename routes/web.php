@@ -13,6 +13,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BillingController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PaymentController;
 
 
 /* BOL Checking Database connection */
@@ -63,9 +64,12 @@ Route::middleware(['web'])->group(function () {
     Route::get('/cart/info', [CartController::class, 'getCartInfo']);
 
     // Checkout routes
-    Route::get('/checkout', [CheckoutController::class, 'show']);
-    Route::post('/checkout/process', [CheckoutController::class, 'processCheckout']);
-    Route::get('/payment', [CheckoutController::class, 'payment']);
+    Route::get('/checkout', [CheckoutController::class, 'show'])->name('checkout.show');
+    Route::post('/checkout', [CheckoutController::class, 'processCheckout'])->name('checkout.process');
+    Route::get('/payment', [CheckoutController::class, 'payment'])->name('payment.show');
+    Route::post('/payment', [PaymentController::class, 'redirectToGateway'])->name('payment.process');
+    Route::get('/payment/callback', [PaymentController::class, 'handleGatewayCallback'])->name('payment.callback');
+    Route::get('/payment/success/{order:id}', [PaymentController::class, 'paymentSuccess'])->name('payment.success');
 
     // Product routes
     Route::get('/product/{slug}', [ProductController::class, 'show']);
@@ -86,7 +90,7 @@ Route::middleware(['web'])->group(function () {
     Route::get('/account', [DashboardController::class, 'show']);
 
     // Billing routes
-    Route::get('/account/billing', [BillingController::class, 'show']);
+    Route::get('/account/billing', [BillingController::class, 'show'])->name('billing.show');
     Route::post('/account/billing/add', [BillingController::class, 'addBillingAddress']);
 
     // Profile routes

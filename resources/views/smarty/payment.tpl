@@ -61,10 +61,10 @@
             </div>
 
             <div class="lg:grid lg:grid-cols-12 lg:gap-12">
-                <!-- Cart Items Section -->
+                <!-- Card Details Section -->
                 <div class="lg:col-span-8">
                     <div class="bg-white rounded-lg shadow-sm p-6">
-                        <!-- Cart Header -->
+                        <!-- Card Header -->
                         <div class="flex items-center justify-between mb-6">
                             <h1 class="text-2xl font-medium text-gray-900">Card Details</h1>
                             <button class="text-gray-500 hover:text-red-600 text-sm font-medium flex items-center gap-2"
@@ -74,18 +74,20 @@
                             </button>
                         </div>
 
-                        <form class="p-6 w-full space-y-6" method="post" action="/pay">
+                        <form class="p-6 w-full space-y-6" method="post" action="/payment" id="payment-form">
                             <input type="hidden" name="_token" value="{$csrf_token}">
+                            
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-1">Email address</label>
                                 <input type="email" name="email" required
                                     class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                                    value="jenny@examle.com">
+                                    value="{$checkout_data.email|default:''}">
                             </div>
+                            
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-1">Card number</label>
                                 <div class="flex items-center space-x-2">
-                                    <input type="text" name="card_number" required maxlength="19"
+                                    <input type="text" id="card_number" name="card_number" required maxlength="19"
                                         placeholder="1234 1234 1234 1234"
                                         class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                                     <span class="flex space-x-1">
@@ -96,27 +98,43 @@
                                     </span>
                                 </div>
                             </div>
+                            
                             <div class="flex space-x-4">
                                 <div class="flex-1">
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">Expiration date</label>
-                                    <input type="text" name="exp_date" required placeholder="MM / YYYY"
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Expiration month</label>
+                                    <input type="text" id="expiry_month" name="expiry_month" required placeholder="MM"
+                                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                </div>
+                                <div class="flex-1">
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Expiration year</label>
+                                    <input type="text" id="expiry_year" name="expiry_year" required placeholder="YYYY"
                                         class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                                 </div>
                                 <div class="flex-1">
                                     <label class="block text-sm font-medium text-gray-700 mb-1">Security code</label>
-                                    <input type="text" name="cvc" required maxlength="4"
+                                    <input type="text" id="cvv" name="cvv" required maxlength="4" placeholder="CVV"
                                         class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                                 </div>
                             </div>
+                            
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-1">Cardholder name</label>
                                 <input type="text" name="cardholder" required
                                     class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                            </div>                            
-                            <button type="submit"
-                                class="w-full bg-black text-white py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors">
-                                Pay {$total|default:'$609.98'}
+                            </div>
+
+                            <button type="submit" id="pay-button"
+                                class="w-full bg-black text-white py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                                <span id="pay-button-text">Pay ₦{$cart_total|string_format:"%.2f"}</span>
+                                <span id="pay-button-spinner" class="hidden">
+                                    <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                    </svg>
+                                    Processing...
+                                </span>
                             </button>
+                            
                             <div class="mt-4 text-center text-xs text-gray-400">
                                 Powered by Jephthah I. &bull; <a href="#" class="hover:underline">Terms</a> &bull; <a href="#"
                                     class="hover:underline">Privacy</a>
@@ -143,59 +161,38 @@
                         <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
                             <!-- Cart Items -->
                             <div class="p-6">
-                                <!-- PlayStation 5 Pro -->
-                                <div
-                                    class="flex items-start space-x-2 justify-between pb-6 border-b border-gray-200 relative">
-                                    <button
-                                        class="absolute top-0 right-0 w-6 h-6 bg-black rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors">
-                                        <i class="fas fa-times text-white text-xs"></i>
-                                    </button>
+                                {if $cart|@count > 0}
+                                    {foreach from=$cart item=item key=product_id}
+                                    <div class="flex items-start space-x-2 justify-between pb-6 {if !$item@last}border-b border-gray-200{/if} relative">
+                                        <div class="flex-shrink-0">
+                                            {if isset($item.image) && $item.image}
+                                                <img src="{asset path=$item.image}" alt="{$item.name|default:'Product'}" class="w-20 h-20 object-cover rounded-lg">
+                                            {else}
+                                                <div class="w-20 h-20 bg-gray-100 rounded-lg flex items-center justify-center">
+                                                    <div class="w-12 h-12 bg-gray-200 rounded"></div>
+                                                </div>
+                                            {/if}
+                                        </div>
 
-                                    <div class="flex-shrink-0">
-                                        <img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=100&h=100&fit=crop&crop=center"
-                                            alt="PlayStation 5 Pro" class="w-20 h-20 object-cover rounded-lg">
-                                    </div>
+                                        <div class="flex-1">
+                                            <h3 class="font-semibold text-base text-gray-900">{$item.name|default:'Product'}</h3>
+                                            {if isset($item.size) && $item.size}
+                                                <p class="text-gray-600 text-sm mb-3">{$item.size}</p>
+                                            {/if}
 
-                                    <div class="flex-1">
-                                        <h3 class="font-semibold text-base text-gray-900">Sony PlayStation 5 Pro</h3>
-                                        <p class="text-gray-600 text-sm mb-3">PlayStation consoles</p>
-
-                                        <div class="flex items-center justify-between mt-3">
-                                            <div class="flex items-center">
-                                                <span class="text-gray-600 text-sm">Qty</span>
-                                                <span class="underline px-2 py-1 text-sm">1</span>
+                                            <div class="flex items-center justify-between mt-3">
+                                                <div class="flex items-center">
+                                                    <span class="text-gray-600 text-sm">Qty</span>
+                                                    <span class="underline px-2 py-1 text-sm">{$item.quantity|default:1}</span>
+                                                </div>
+                                                <span class="text-base font-semibold text-gray-900">₦{($item.price|default:0) * ($item.quantity|default:1)|string_format:"%.2f"}</span>
                                             </div>
-                                            <span class="text-base font-semibold text-gray-900">$499.99</span>
                                         </div>
                                     </div>
-                                </div>
-
-                                <!-- PlayStation Pulse 3D Wireless Headset -->
-                                <div class="flex items-start space-x-2 pt-6 relative">
-                                    <button
-                                        class="absolute top-6 right-0 w-6 h-6 bg-black rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors">
-                                        <i class="fas fa-times text-white text-xs"></i>
-                                    </button>
-
-                                    <div class="flex-shrink-0">
-                                        <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=100&h=100&fit=crop&crop=center"
-                                            alt="PlayStation Pulse 3D Wireless Headset"
-                                            class="w-20 h-20 object-cover rounded-lg">
-                                    </div>
-
-                                    <div class="flex-1">
-                                        <h3 class="font-semibold text-base text-gray-900">Sony PlayStation Pulse 3D Wireless
-                                            Headset</h3>
-                                        <p class="text-gray-600 text-sm mb-3">Standard Edition</p>
-                                        <div class="flex items-center justify-between mt-3">
-                                            <div class="flex items-center">
-                                                <span class="text-gray-600 text-sm">Qty</span>
-                                                <span class="underline px-2 py-1 text-sm">1</span>
-                                            </div>
-                                            <span class="text-base font-semibold text-gray-900">$99.99</span>
-                                        </div>
-                                    </div>
-                                </div>
+                                    {/foreach}
+                                {else}
+                                    <p class="text-center text-gray-500">Your cart is empty.</p>
+                                {/if}
                             </div>
 
                             <!-- Discount Code Section -->
@@ -216,7 +213,7 @@
                                 <div class="space-y-3">
                                     <div class="flex justify-between">
                                         <span class="text-gray-600">Subtotal</span>
-                                        <span class="font-semibold">$599.98</span>
+                                        <span class="font-semibold">₦{$cart_subtotal|string_format:"%.2f"}</span>
                                     </div>
                                     <div class="flex justify-between">
                                         <span class="text-gray-600">Shipping</span>
@@ -227,12 +224,12 @@
                                             <span class="text-gray-600">Tax</span>
                                             <i class="fas fa-info-circle text-gray-400 text-xs"></i>
                                         </div>
-                                        <span class="font-semibold">$10.00</span>
+                                        <span class="font-semibold">₦{$tax|string_format:"%.2f"}</span>
                                     </div>
                                     <hr class="border-gray-300">
                                     <div class="flex justify-between items-center text-xl font-bold">
                                         <span>Total</span>
-                                        <span>$609.98</span>
+                                        <span>₦{$cart_total|string_format:"%.2f"}</span>
                                     </div>
                                 </div>
                             </div>
@@ -242,4 +239,7 @@
             </div>
         </div>
     </div>
+    
+    <script src="https://unpkg.com/imask"></script>
+    <script src="/js/payment.js"></script>
 {/block}

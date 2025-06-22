@@ -56,7 +56,7 @@
                                 <a href="/product/{$product->slug}" class="hover:underline">
                                     <h3 class="font-medium mb-3 text-lg">{$product->name}</h3>
                                 </a>
-                                <p class="text-xl font-semibold text-gray-900 mb-4">${$product->price|string_format:"%.2f"}</p>
+                                <p class="text-xl font-semibold text-gray-900 mb-4">₦{$product->price|string_format:"%.2f"}</p>
                             </div>
                             <button
                                 class="add-to-cart w-10 h-10 bg-gray-900 text-white rounded-sm hover:bg-gray-800 transition flex items-center justify-center"

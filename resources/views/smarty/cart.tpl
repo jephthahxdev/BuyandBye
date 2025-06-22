@@ -131,7 +131,7 @@
 
                                             <!-- Price -->
                                             <div class="md:col-span-3 text-right">
-                                                <span class="text-lg font-semibold text-gray-900 item-price">${($item.price|default:0) * ($item.quantity|default:1)|string_format:"%.2f"}</span>
+                                                <span class="text-lg font-semibold text-gray-900 item-price">₦{($item.price|default:0) * ($item.quantity|default:1)|string_format:"%.2f"}</span>
                                             </div>
 
                                             <!-- Remove Button -->
@@ -203,16 +203,16 @@
                             <div class="space-y-4">
                                 <div class="flex justify-between text-gray-600">
                                     <span>Subtotal</span>
-                                    <span class="cart-subtotal">${$cart_subtotal|default:0|string_format:"%.2f"}</span>
+                                    <span class="cart-subtotal">₦{$cart_subtotal|default:0|string_format:"%.2f"}</span>
                                 </div>
                                 <div class="flex justify-between text-gray-600">
                                     <span>Discount</span>
-                                    <span class="cart-discount">-$0.00</span>
+                                    <span class="cart-discount">-₦0.00</span>
                                 </div>
                                 <div class="border-t border-gray-200 pt-4">
                                     <div class="flex justify-between text-lg font-semibold text-gray-900">
                                         <span>Total</span>
-                                        <span class="cart-total">${$cart_total|default:0|string_format:"%.2f"}</span>
+                                        <span class="cart-total">₦{$cart_total|default:0|string_format:"%.2f"}</span>
                                     </div>
                                 </div>
                             </div>

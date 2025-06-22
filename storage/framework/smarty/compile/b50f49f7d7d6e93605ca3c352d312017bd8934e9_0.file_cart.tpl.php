@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-22 00:39:03
+/* Smarty version 5.5.1, created on 2025-06-22 16:30:44
   from 'file:cart.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_68574297f17729_21390377',
+  'unifunc' => 'content_685821a427fe44_73823276',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b50f49f7d7d6e93605ca3c352d312017bd8934e9' => 
     array (
       0 => 'cart.tpl',
-      1 => 1750549139,
+      1 => 1750606240,
       2 => 'file',
     ),
   ),
@@ -20,18 +20,18 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_68574297f17729_21390377 (\Smarty\Template $_smarty_tpl) {
+function content_685821a427fe44_73823276 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_141241222668574297f106d3_80804317', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_1585755355685821a4277039_30102424', "content");
 $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layouts/app.tpl", $_smarty_current_dir);
 }
 /* {block "content"} */
-class Block_141241222668574297f106d3_80804317 extends \Smarty\Runtime\Block
+class Block_1585755355685821a4277039_30102424 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
@@ -182,7 +182,7 @@ $foreach0DoElse = false;
 
                                             <!-- Price -->
                                             <div class="md:col-span-3 text-right">
-                                                <span class="text-lg font-semibold text-gray-900 item-price">$<?php echo ((($tmp = $_smarty_tpl->getValue('item')['price'] ?? null)===null||$tmp==='' ? 0 ?? null : $tmp))*sprintf("%.2f",((($tmp = $_smarty_tpl->getValue('item')['quantity'] ?? null)===null||$tmp==='' ? 1 ?? null : $tmp)));?>
+                                                <span class="text-lg font-semibold text-gray-900 item-price">₦<?php echo ((($tmp = $_smarty_tpl->getValue('item')['price'] ?? null)===null||$tmp==='' ? 0 ?? null : $tmp))*sprintf("%.2f",((($tmp = $_smarty_tpl->getValue('item')['quantity'] ?? null)===null||$tmp==='' ? 1 ?? null : $tmp)));?>
 </span>
                                             </div>
 
@@ -258,17 +258,17 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                             <div class="space-y-4">
                                 <div class="flex justify-between text-gray-600">
                                     <span>Subtotal</span>
-                                    <span class="cart-subtotal">$<?php echo sprintf("%.2f",(($tmp = $_smarty_tpl->getValue('cart_subtotal') ?? null)===null||$tmp==='' ? 0 ?? null : $tmp));?>
+                                    <span class="cart-subtotal">₦<?php echo sprintf("%.2f",(($tmp = $_smarty_tpl->getValue('cart_subtotal') ?? null)===null||$tmp==='' ? 0 ?? null : $tmp));?>
 </span>
                                 </div>
                                 <div class="flex justify-between text-gray-600">
                                     <span>Discount</span>
-                                    <span class="cart-discount">-$0.00</span>
+                                    <span class="cart-discount">-₦0.00</span>
                                 </div>
                                 <div class="border-t border-gray-200 pt-4">
                                     <div class="flex justify-between text-lg font-semibold text-gray-900">
                                         <span>Total</span>
-                                        <span class="cart-total">$<?php echo sprintf("%.2f",(($tmp = $_smarty_tpl->getValue('cart_total') ?? null)===null||$tmp==='' ? 0 ?? null : $tmp));?>
+                                        <span class="cart-total">₦<?php echo sprintf("%.2f",(($tmp = $_smarty_tpl->getValue('cart_total') ?? null)===null||$tmp==='' ? 0 ?? null : $tmp));?>
 </span>
                                     </div>
                                 </div>

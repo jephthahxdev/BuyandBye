@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-22 02:27:29
+/* Smarty version 5.5.1, created on 2025-06-23 00:17:10
   from 'file:billing.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_68575c010af798_35242987',
+  'unifunc' => 'content_68588ef68d9ca5_82032046',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7656b19389d9f22262521c5a4a4c0830b7a85dff' => 
     array (
       0 => 'billing.tpl',
-      1 => 1750552756,
+      1 => 1750631313,
       2 => 'file',
     ),
   ),
@@ -21,23 +21,23 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:partials/account-sidebar.tpl' => 1,
   ),
 ))) {
-function content_68575c010af798_35242987 (\Smarty\Template $_smarty_tpl) {
+function content_68588ef68d9ca5_82032046 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_116544641568575c0109a2d7_46961346', "title");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_156399188668588ef68aa351_53460931', "title");
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_152578817868575c0109adb4_24059807', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_15412150068588ef68aab36_22203101', "content");
 $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layouts/app.tpl", $_smarty_current_dir);
 }
 /* {block "title"} */
-class Block_116544641568575c0109a2d7_46961346 extends \Smarty\Runtime\Block
+class Block_156399188668588ef68aa351_53460931 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
@@ -47,7 +47,7 @@ Billing - Buyandbye<?php
 }
 /* {/block "title"} */
 /* {block "content"} */
-class Block_152578817868575c0109adb4_24059807 extends \Smarty\Runtime\Block
+class Block_15412150068588ef68aab36_22203101 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
@@ -162,11 +162,11 @@ $foreach0DoElse = false;
                                                     <span class="font-semibold text-gray-900"><?php echo $_smarty_tpl->getValue('address')['name'];?>
 </span>
                                                     <?php if ($_smarty_tpl->getValue('address')['company']) {?>
-                                                        <span
+                                        <span
                                                             class="inline-block bg-gray-100 rounded-full px-2 py-1 ml-2 text-gray-700 text-xs"><?php echo $_smarty_tpl->getValue('address')['company'];?>
 </span>
                                                     <?php }?>
-                                                </div>
+                                    </div>
                                                 <div class="text-sm text-gray-700">
                                                     <?php echo $_smarty_tpl->getValue('address')['address'];?>
 <br>
@@ -174,14 +174,14 @@ $foreach0DoElse = false;
  <?php echo $_smarty_tpl->getValue('address')['city'];?>
  - <?php echo $_smarty_tpl->getValue('address')['country'];?>
 
-                                                </div>
-                                            </div>
+                                    </div>
+                                </div>
                                             <button class="ml-4 text-gray-400 hover:text-red-600" title="Delete">
                                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                         d="M6 18L18 6M6 6l12 12" />
-                                                </svg>
-                                            </button>
+                                    </svg>
+                                </button>
                                         </div>
                                     <?php
 }
@@ -193,7 +193,7 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                             </div>
 
                             <!-- Default Payment Method -->
-                            <div>
+                                    <div>
                                 <h3 class="text-lg font-semibold mb-4">Default payment method</h3>
                                 <?php if ($_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('payment_methods')) == 0) {?>
                                     <div class="flex items-center justify-between bg-gray-50 rounded-lg px-4 py-3 mb-4">
@@ -218,7 +218,7 @@ $foreach1DoElse = false;
                                                         viewBox="0 0 24 24">
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                             d="M5 13l4 4L19 7" />
-                                                    </svg>
+                                            </svg>
                                                 <?php }?>
                                                 <span class="font-mono text-base tracking-widest">**** **** ****
                                                     <?php echo $_smarty_tpl->getValue('method')['last4'];?>
@@ -226,13 +226,13 @@ $foreach1DoElse = false;
                                                 <span
                                                     class="ml-2 text-xs text-gray-700 font-medium uppercase"><?php echo $_smarty_tpl->getValue('method')['brand'];?>
 </span>
-                                            </div>
+                                </div>
                                             <button class="ml-4 text-gray-400 hover:text-red-600" title="Delete">
                                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                         d="M6 18L18 6M6 6l12 12" />
-                                                </svg>
-                                            </button>
+                                    </svg>
+                                </button>
                                         </div>
                                     <?php
 }
@@ -352,10 +352,10 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
             const allDropdowns = document.querySelectorAll('[id^="dropdown-"]');
             allDropdowns.forEach(dd => {
                 dd.classList.add('hidden');
-            });
-        }
-    });
-<?php echo '</script'; ?>
+                });
+            }
+        });
+    <?php echo '</script'; ?>
 >
 
 <?php
