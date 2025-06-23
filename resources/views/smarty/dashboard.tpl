@@ -281,7 +281,7 @@
                                         {foreach $active_orders as $order}
                                             <tr class="hover:bg-gray-50">
                                                 <td class="px-6 py-4 whitespace-nowrap">
-                                                    <span class="text-sm font-medium text-blue-600 hover:text-blue-800">
+                                                    <span class="text-sm font-medium text-gray-600 hover:text-blue-800">
                                                         #{$order.order_number|default:'N/A'}
                                                     </span>
                                                 </td>
@@ -402,6 +402,13 @@
                                     </tbody>
                                 </table>
                             </div>
+                            {if $has_more_active_orders}
+                                <div class="flex justify-start px-6 py-8">
+                                    <a href="/account/orders" class="inline-block bg-black text-white px-6 py-2 rounded-lg font-medium hover:bg-gray-800 transition-colors">
+                                        View more orders
+                                    </a>
+                                </div>
+                            {/if}
                         {else}
                             <div class="p-12 text-center">
                                 <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor"

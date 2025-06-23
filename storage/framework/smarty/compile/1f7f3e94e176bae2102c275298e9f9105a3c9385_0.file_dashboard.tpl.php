@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-23 15:45:50
+/* Smarty version 5.5.1, created on 2025-06-23 16:40:22
   from 'file:dashboard.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_6859689e1a1a60_30708458',
+  'unifunc' => 'content_685975661956b3_66919890',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1f7f3e94e176bae2102c275298e9f9105a3c9385' => 
     array (
       0 => 'dashboard.tpl',
-      1 => 1750689948,
+      1 => 1750693218,
       2 => 'file',
     ),
   ),
@@ -21,23 +21,23 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:partials/account-sidebar.tpl' => 1,
   ),
 ))) {
-function content_6859689e1a1a60_30708458 (\Smarty\Template $_smarty_tpl) {
+function content_685975661956b3_66919890 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_11613798646859689e194d25_72440324', "title");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_128442973168597566180f13_46635250', "title");
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_11874612606859689e195342_73355566', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_182627464868597566181809_19522203', "content");
 $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layouts/app.tpl", $_smarty_current_dir);
 }
 /* {block "title"} */
-class Block_11613798646859689e194d25_72440324 extends \Smarty\Runtime\Block
+class Block_128442973168597566180f13_46635250 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
@@ -47,7 +47,7 @@ Accounts - Buyandbye<?php
 }
 /* {/block "title"} */
 /* {block "content"} */
-class Block_11874612606859689e195342_73355566 extends \Smarty\Runtime\Block
+class Block_182627464868597566181809_19522203 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
@@ -339,7 +339,7 @@ $foreach0DoElse = false;
 ?>
                                             <tr class="hover:bg-gray-50">
                                                 <td class="px-6 py-4 whitespace-nowrap">
-                                                    <span class="text-sm font-medium text-blue-600 hover:text-blue-800">
+                                                    <span class="text-sm font-medium text-gray-600 hover:text-blue-800">
                                                         #<?php echo (($tmp = $_smarty_tpl->getValue('order')['order_number'] ?? null)===null||$tmp==='' ? 'N/A' ?? null : $tmp);?>
 
                                                     </span>
@@ -475,6 +475,13 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                                     </tbody>
                                 </table>
                             </div>
+                            <?php if ($_smarty_tpl->getValue('has_more_active_orders')) {?>
+                                <div class="flex justify-start px-6 py-8">
+                                    <a href="/account/orders" class="inline-block bg-black text-white px-6 py-2 rounded-lg font-medium hover:bg-gray-800 transition-colors">
+                                        View more orders
+                                    </a>
+                                </div>
+                            <?php }?>
                         <?php } else { ?>
                             <div class="p-12 text-center">
                                 <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor"

@@ -58,6 +58,10 @@ class DashboardController extends Controller
             return !in_array($order['status'], ['completed', 'cancelled']);
         });
 
+        // Limit active orders to 10 for dashboard display
+        $limitedActiveOrders = array_slice($activeOrders, 0, 5);
+        $hasMoreActiveOrders = count($activeOrders) > 5;
+
         $data = [
             'user' => [
                 'name' => $user->name ?? 'Unknown User',
@@ -76,7 +80,9 @@ class DashboardController extends Controller
                 'orders_completed' => $completedCount,
                 'orders_cancelled' => $cancelledCount,
             ],
-            'active_orders' => array_values($activeOrders), // Ensure indexed array
+            'active_orders' => array_values($limitedActiveOrders), // Limited to 10 orders
+            'has_more_active_orders' => $hasMoreActiveOrders,
+            'total_active_orders' => count($activeOrders),
             'base_url' => url('/'),
             'csrf_token' => csrf_token(),
             'is_logged_in' => Auth::check(),
