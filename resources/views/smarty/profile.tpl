@@ -33,7 +33,7 @@
                                 d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
                                 clip-rule="evenodd" />
                         </svg>
-                        <span class="ml-4 text-black font-medium">Overview</span>
+                        <span class="ml-4 text-black font-medium">Profile</span>
                     </li>
                 </ol>
             </nav>
@@ -72,17 +72,23 @@
                 {* Main Content *}
                 <div class="flex-1">
                     {* User Profile Template *}
-                    <div class="max-w-4xl mx-auto p-6 bg-white rounded-lg border border-gray-200 mb-8">
+                    <form action="{$base_url}/account/profile/update" method="POST" enctype="multipart/form-data" class="max-w-4xl mx-auto p-6 bg-white rounded-lg border border-gray-200 mb-8">
+                        <input type="hidden" name="_token" value="{$csrf_token}">
+                        
                         {* Header Section *}
                         <div class="flex items-center justify-between mb-8">
                             <div class="flex items-center space-x-4">
                                 <div class="relative">
-                                    <div class="w-20 h-20 bg-black rounded-full flex items-center justify-center">
-                                        <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                            <path
-                                                d="M3 3h4v4H3V3zm6 0h4v4H9V3zm6 0h4v4h-4V3zM3 9h4v4H3V9zm6 0h4v4H9V9zm6 0h4v4h-4V9zM3 15h4v4H3v-4zm6 0h4v4H9v-4zm6 0h4v4h-4v-4z" />
-                                        </svg>
-                                    </div>
+                                    {if $user.avatar}
+                                        <img src="{$base_url}/storage/{$user.avatar}" alt="{$user.name}" class="w-20 h-20 rounded-full object-cover">
+                                    {else}
+                                        <div class="w-20 h-20 bg-black rounded-full flex items-center justify-center">
+                                            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                                <path
+                                                    d="M3 3h4v4H3V3zm6 0h4v4H9V3zm6 0h4v4h-4V3zM3 9h4v4H3V9zm6 0h4v4H9V9zm6 0h4v4h-4V9zM3 15h4v4H3v-4zm6 0h4v4H9v-4zm6 0h4v4h-4v-4z" />
+                                            </svg>
+                                        </div>
+                                    {/if}
                                     <div
                                         class="absolute -bottom-1 -right-1 w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center">
                                         <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -93,19 +99,16 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <h1 class="text-2xl font-semibold text-gray-900">Sisyphus Ventures</h1>
-                                    <p class="text-gray-500 text-sm">untitledui.com/sisyphus</p>
+                                    <h1 class="text-2xl font-semibold text-gray-900">{$user.name}</h1>
+                                    <p class="text-gray-500 text-sm">{$profile_url}</p>
                                 </div>
                             </div>
-                            <button class="px-4 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50">
-                                View profile
-                            </button>
                         </div>
 
                         {* Company Profile Section *}
                         <div class="mb-8">
-                            <h2 class="text-lg font-semibold text-gray-900 mb-2">Company profile</h2>
-                            <p class="text-gray-600 text-sm mb-6">Update your company photo and details here.</p>
+                            <h2 class="text-lg font-semibold text-gray-900 mb-2">User profile</h2>
+                            <p class="text-gray-600 text-sm mb-6">Update your profile photo and details here.</p>
 
                             <div class="space-y-6">
                                 {* Public Profile *}
@@ -114,36 +117,40 @@
                                     <p class="text-sm text-gray-600 mb-4">This will be displayed on your profile.</p>
 
                                     <div class="space-y-4">
-                                        <input type="text" value="{$company_name|default:'Sisyphus Ventures'}"
+                                        <input type="text" name="name" value="{$user.name|default:''}"
                                             class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-gray-500"
-                                            placeholder="Company name">
+                                            placeholder="Your name">
 
                                         <div class="flex">
                                             <span
                                                 class="inline-flex items-center px-3 py-2 border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm rounded-l-lg">
-                                                untitledui.com/
+                                                {$base_url}/
                                             </span>
-                                            <input type="text" value="{$company_slug|default:'sisyphus'}"
-                                                class="flex-1 px-3 py-2 border border-gray-300 rounded-r-lg focus:ring-2 focus:ring-gray-500 focus:border-gray-500"
-                                                placeholder="company-url">
+                                            <input type="text" value="{$profile_slug}" readonly
+                                                class="flex-1 px-3 py-2 border border-gray-300 rounded-r-lg bg-gray-50 text-gray-500"
+                                                placeholder="profile-url">
                                         </div>
                                     </div>
                                 </div>
 
-                                {* Company Logo *}
+                                {* User Photo *}
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-3">Company logo</label>
-                                    <p class="text-sm text-gray-600 mb-4">Update your company logo and then choose where
+                                    <label class="block text-sm font-medium text-gray-700 mb-3">User photo</label>
+                                    <p class="text-sm text-gray-600 mb-4">Update your user photo and then choose where
                                         you want it to display.</p>
 
                                     <div class="flex items-center space-x-6">
-                                        <div
-                                            class="w-16 h-16 bg-black rounded-full flex items-center justify-center flex-shrink-0">
-                                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                                <path
-                                                    d="M3 3h4v4H3V3zm6 0h4v4H9V3zm6 0h4v4h-4V3zM3 9h4v4H3V9zm6 0h4v4H9V9zm6 0h4v4h-4V9zM3 15h4v4H3v-4zm6 0h4v4H9v-4zm6 0h4v4h-4v-4z" />
-                                            </svg>
-                                        </div>
+                                        {if $user.avatar}
+                                            <img src="{$base_url}/storage/{$user.avatar}" alt="{$user.name}" class="w-16 h-16 rounded-full object-cover flex-shrink-0">
+                                        {else}
+                                            <div
+                                                class="w-16 h-16 bg-black rounded-full flex items-center justify-center flex-shrink-0">
+                                                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path
+                                                        d="M3 3h4v4H3V3zm6 0h4v4H9V3zm6 0h4v4h-4V3zM3 9h4v4H3V9zm6 0h4v4H9V9zm6 0h4v4h-4V9zM3 15h4v4H3v-4zm6 0h4v4H9v-4zm6 0h4v4h-4v-4z" />
+                                                </svg>
+                                            </div>
+                                        {/if}
 
                                         <div class="flex-1">
                                             <div class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
@@ -156,42 +163,16 @@
                                                     </svg>
                                                 </div>
                                                 <p class="text-sm text-gray-600">
-                                                    <button class="text-gray-600 hover:text-gray-500 font-medium">Click
-                                                        to upload</button>
+                                                    <label for="avatar" class="text-gray-600 hover:text-gray-500 font-medium cursor-pointer">Click
+                                                        to upload</label>
                                                     <span> or drag and drop</span>
                                                 </p>
                                                 <p class="text-xs text-gray-500 mt-1">SVG, PNG, JPG or GIF (max.
                                                     800x400px)</p>
+                                                <input type="file" id="avatar" name="avatar" accept="image/*" class="hidden">
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-
-                                {* Branding *}
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-3">Branding</label>
-                                    <p class="text-sm text-gray-600 mb-4">Add your logo to reports and emails.</p>
-
-                                    <div class="space-y-3">
-                                        <label class="flex items-center">
-                                            <input type="checkbox" name="branding_reports"
-                                                {if $branding_reports|default:true}checked{/if}
-                                                class="rounded border-gray-300 text-gray-600 focus:ring-gray-500">
-                                            <span class="ml-3 text-sm text-gray-700">Reports</span>
-                                        </label>
-                                        <p class="text-sm text-gray-500 ml-6">Include my logo in summary reports.</p>
-
-                                        <label class="flex items-center">
-                                            <input type="checkbox" name="branding_emails"
-                                                {if $branding_emails|default:true}checked{/if}
-                                                class="rounded border-gray-300 text-gray-600 focus:ring-gray-500">
-                                            <span class="ml-3 text-sm text-gray-700">Emails</span>
-                                        </label>
-                                        <p class="text-sm text-gray-500 ml-6">Include my logo in customer emails.</p>
-                                    </div>
-
-                                    <button class="mt-3 text-sm text-gray-600 hover:text-gray-500">View
-                                        examples</button>
                                 </div>
 
                                 {* Social Profiles *}
@@ -204,7 +185,7 @@
                                                 class="inline-flex items-center px-3 py-2 border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm rounded-l-lg">
                                                 twitter.com/
                                             </span>
-                                            <input type="text" value="{$twitter_handle|default:'sisyphusvc'}"
+                                            <input type="text" name="twitter_handle" value="{$user.twitter_handle|default:''}"
                                                 class="flex-1 px-3 py-2 border border-gray-300 rounded-r-lg focus:ring-2 focus:ring-gray-500 focus:border-gray-500"
                                                 placeholder="username">
                                         </div>
@@ -214,7 +195,7 @@
                                                 class="inline-flex items-center px-3 py-2 border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm rounded-l-lg">
                                                 facebook.com/
                                             </span>
-                                            <input type="text" value="{$facebook_handle|default:'sisyphusvc'}"
+                                            <input type="text" name="facebook_handle" value="{$user.facebook_handle|default:''}"
                                                 class="flex-1 px-3 py-2 border border-gray-300 rounded-r-lg focus:ring-2 focus:ring-gray-500 focus:border-gray-500"
                                                 placeholder="username">
                                         </div>
@@ -224,7 +205,7 @@
                                                 class="inline-flex items-center px-3 py-2 border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm rounded-l-lg">
                                                 linkedin.com/company/
                                             </span>
-                                            <input type="text" value="{$linkedin_handle|default:'sisyphusvc'}"
+                                            <input type="text" name="linkedin_handle" value="{$user.linkedin_handle|default:''}"
                                                 class="flex-1 px-3 py-2 border border-gray-300 rounded-r-lg focus:ring-2 focus:ring-gray-500 focus:border-gray-500"
                                                 placeholder="company-name">
                                         </div>
@@ -235,46 +216,20 @@
 
                         {* Action Buttons *}
                         <div class="flex justify-end space-x-3 pt-6 border-t border-gray-200">
-                            <button type="button"
+                            <a href="{$base_url}/account/profile" type="button"
                                 class="px-4 py-2 text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50">
                                 Cancel
-                            </button>
+                            </a>
                             <button type="submit" class="px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800">
                                 Save changes
                             </button>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<script>
-    function toggleDropdown(id) {
-        const dropdown = document.getElementById(id);
-        const allDropdowns = document.querySelectorAll('[id^="dropdown-"]');
-
-        // Close all other dropdowns
-        allDropdowns.forEach(dd => {
-            if (dd.id !== id) {
-                dd.classList.add('hidden');
-            }
-        });
-
-        // Toggle current dropdown
-        dropdown.classList.toggle('hidden');
-    }
-
-    // Close dropdowns when clicking outside
-    document.addEventListener('click', function(event) {
-        if (!event.target.closest('[onclick*="toggleDropdown"]')) {
-            const allDropdowns = document.querySelectorAll('[id^="dropdown-"]');
-            allDropdowns.forEach(dd => {
-                dd.classList.add('hidden');
-                });
-            }
-        });
-    </script>
-
+<script src="{$base_url}/js/profile.js"></script>
 {/block}

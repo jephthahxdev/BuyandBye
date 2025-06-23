@@ -50,8 +50,6 @@ Route::get('/table/{table}', function ($table) {
 
 /* EOL Checking Database Connection */
 
-Auth::routes();
-
 Route::middleware(['web'])->group(function () {
     Route::get('/', [WelcomeController::class, 'index']);
     Route::post('/cart/add', [WelcomeController::class, 'addToCart']);
@@ -87,6 +85,11 @@ Route::middleware(['web'])->group(function () {
 
     Route::get('/login', [LoginController::class, 'show']);
     Route::post('/login', [LoginController::class, 'login']);
+    
+    Route::post('/logout', function () {
+        Auth::logout();
+        return redirect('/');
+    })->name('logout');
 
     // Dashboard routes
     Route::get('/account', [DashboardController::class, 'show']);
@@ -97,6 +100,7 @@ Route::middleware(['web'])->group(function () {
 
     // Profile routes
     Route::get('/account/profile', [ProfileController::class, 'show']);
+    Route::post('/account/profile/update', [ProfileController::class, 'update']);
 
     // Orders page (paginated)
     Route::get('/account/orders', [OrdersController::class, 'index']);

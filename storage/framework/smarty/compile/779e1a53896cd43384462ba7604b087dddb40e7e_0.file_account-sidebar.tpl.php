@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-20 23:11:16
+/* Smarty version 5.5.1, created on 2025-06-23 21:53:30
   from 'file:partials/account-sidebar.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_6855ea94201aa5_01908364',
+  'unifunc' => 'content_6859beca2d0203_08488185',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '779e1a53896cd43384462ba7604b087dddb40e7e' => 
     array (
       0 => 'partials/account-sidebar.tpl',
-      1 => 1750460061,
+      1 => 1750712007,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6855ea94201aa5_01908364 (\Smarty\Template $_smarty_tpl) {
+function content_6859beca2d0203_08488185 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty/partials';
 ?><nav>
     <ul class="py-2">
@@ -59,7 +59,7 @@ $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smart
         </li>
         <li>
             <a href="<?php echo $_smarty_tpl->getValue('base_url');?>
-/account/recently-viewed"
+/account/profile"
                 class="flex items-center px-4 py-3 <?php if ($_smarty_tpl->getValue('active_page') == 'profile') {?>bg-gray-50 text-black font-medium<?php } else { ?>text-gray-700 hover:bg-gray-50<?php }?>">
                 <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />

@@ -22,6 +22,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'avatar',
+        'twitter_handle',
+        'facebook_handle',
+        'linkedin_handle',
     ];
 
     /**
@@ -63,5 +67,21 @@ class User extends Authenticatable
     public function orders(): HasMany
     {
         return $this->hasMany(Order::class);
+    }
+
+    /**
+     * Get the user's profile slug
+     */
+    public function getProfileSlugAttribute(): string
+    {
+        return strtolower(str_replace(' ', '-', $this->name));
+    }
+
+    /**
+     * Get the user's profile URL
+     */
+    public function getProfileUrlAttribute(): string
+    {
+        return url('/') . '/' . $this->profile_slug;
     }
 }
