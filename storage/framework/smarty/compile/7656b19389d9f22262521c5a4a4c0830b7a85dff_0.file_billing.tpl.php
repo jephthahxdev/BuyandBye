@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-23 00:17:10
+/* Smarty version 5.5.1, created on 2025-06-23 09:23:50
   from 'file:billing.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_68588ef68d9ca5_82032046',
+  'unifunc' => 'content_68590f163da334_83563315',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7656b19389d9f22262521c5a4a4c0830b7a85dff' => 
     array (
       0 => 'billing.tpl',
-      1 => 1750631313,
+      1 => 1750667028,
       2 => 'file',
     ),
   ),
@@ -21,23 +21,23 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:partials/account-sidebar.tpl' => 1,
   ),
 ))) {
-function content_68588ef68d9ca5_82032046 (\Smarty\Template $_smarty_tpl) {
+function content_68590f163da334_83563315 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_156399188668588ef68aa351_53460931', "title");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_96618245368590f163d2035_11780735', "title");
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_15412150068588ef68aab36_22203101', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_122197045068590f163d28f5_26645687', "content");
 $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layouts/app.tpl", $_smarty_current_dir);
 }
 /* {block "title"} */
-class Block_156399188668588ef68aa351_53460931 extends \Smarty\Runtime\Block
+class Block_96618245368590f163d2035_11780735 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
@@ -47,7 +47,7 @@ Billing - Buyandbye<?php
 }
 /* {/block "title"} */
 /* {block "content"} */
-class Block_15412150068588ef68aab36_22203101 extends \Smarty\Runtime\Block
+class Block_122197045068590f163d28f5_26645687 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
@@ -198,10 +198,6 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                                 <?php if ($_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('payment_methods')) == 0) {?>
                                     <div class="flex items-center justify-between bg-gray-50 rounded-lg px-4 py-3 mb-4">
                                         <span class="text-gray-700">There is no payment method yet</span>
-                                        <a href="<?php echo $_smarty_tpl->getValue('base_url');?>
-/account/payment/add"
-                                            class="bg-gray-600 text-white px-4 py-2 rounded-lg font-medium shadow hover:bg-gray-700 transition">Add
-                                            Payment Method</a>
                                     </div>
                                 <?php } else { ?>
                                     <?php

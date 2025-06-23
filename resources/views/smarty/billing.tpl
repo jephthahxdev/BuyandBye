@@ -137,9 +137,6 @@
                                 {if $payment_methods|@count == 0}
                                     <div class="flex items-center justify-between bg-gray-50 rounded-lg px-4 py-3 mb-4">
                                         <span class="text-gray-700">There is no payment method yet</span>
-                                        <a href="{$base_url}/account/payment/add"
-                                            class="bg-gray-600 text-white px-4 py-2 rounded-lg font-medium shadow hover:bg-gray-700 transition">Add
-                                            Payment Method</a>
                                     </div>
                                 {else}
                                     {foreach $payment_methods as $method}

@@ -19,7 +19,7 @@ class CheckoutController extends Controller
     }
 
     public function show()
-    {        
+    {
         /** @var User $user */
 
         // Get cart from session

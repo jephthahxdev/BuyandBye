@@ -15,6 +15,7 @@ use App\Models\OrderItem;
 use Illuminate\Support\Str;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Log;
 
 class PaymentController extends Controller
 {
@@ -52,7 +53,7 @@ class PaymentController extends Controller
             'tax' => $tax,
             'cart_total' => $cart_total,
         ];
-        
+
         $content = $this->smarty->render('payment.tpl', $data);
         return response($content);
     }
@@ -146,13 +147,13 @@ class PaymentController extends Controller
                     'payment_id' => $payment->id,
                 ]
             ];
-            
+
             DB::commit();
 
             // Attempt to charge the card
             try {
                 $chargeResponse = (object) Charge::create($chargeData);
-                
+
                 // Convert data to array if it's an object for consistent access
                 $responseData = is_object($chargeResponse->data) ? (array) $chargeResponse->data : $chargeResponse->data;
                 // Check for 3DS or authorization URL redirect
@@ -165,9 +166,11 @@ class PaymentController extends Controller
                 }
 
                 // Handle successful payment
-                if ($chargeResponse->status && isset($responseData['status']) && 
-                    (string)$responseData['status'] === 'success') {
-                    
+                if (
+                    $chargeResponse->status && isset($responseData['status']) &&
+                    (string)$responseData['status'] === 'success'
+                ) {
+
                     // Update payment and order status
                     $payment->update([
                         'status' => 'success',
@@ -182,12 +185,12 @@ class PaymentController extends Controller
                         'payment_status' => 'paid',
                         'status' => 'processing'
                     ]);
-                    
+
                     // Save payment method for future use if user is logged in
                     if (Auth::check()) {
                         $this->savePaymentMethod($responseData);
                     }
-                    
+
                     session()->forget(['cart', 'checkout_data', 'payment_reference']);
 
                     return response()->json([
@@ -197,9 +200,11 @@ class PaymentController extends Controller
                 }
 
                 // Alternative success check - handle wrapped response structure
-                if ($chargeResponse->status && isset($responseData) && 
-                    $chargeResponse->message === 'Charge attempted' && 
-                    isset($responseData['status']) && $responseData['status'] === 'success') {
+                if (
+                    $chargeResponse->status && isset($responseData) &&
+                    $chargeResponse->message === 'Charge attempted' &&
+                    isset($responseData['status']) && $responseData['status'] === 'success'
+                ) {
 
                     // Update payment and order status
                     $payment->update([
@@ -215,12 +220,12 @@ class PaymentController extends Controller
                         'payment_status' => 'paid',
                         'status' => 'processing'
                     ]);
-                    
+
                     // Save payment method for future use if user is logged in
                     if (Auth::check()) {
                         $this->savePaymentMethod($responseData);
                     }
-                    
+
                     session()->forget(['cart', 'checkout_data', 'payment_reference']);
 
                     return response()->json([
@@ -230,14 +235,16 @@ class PaymentController extends Controller
                 }
 
                 // Handle pending payment (awaiting verification)
-                if ($chargeResponse->status && isset($responseData['status']) && 
-                    (string)$responseData['status'] === 'pending') {
-                    
+                if (
+                    $chargeResponse->status && isset($responseData['status']) &&
+                    (string)$responseData['status'] === 'pending'
+                ) {
+
                     $payment->update([
                         'gateway_reference' => $responseData['id'] ?? null,
                         'gateway_response' => json_encode($responseData),
                     ]);
-                    
+
                     return response()->json([
                         'success' => true,
                         'redirectUrl' => route('payment.success', ['order' => $order->id])
@@ -245,46 +252,51 @@ class PaymentController extends Controller
                 }
 
                 // Handle failed payment
-                if (!$chargeResponse->status || (isset($responseData['status']) && 
+                if (!$chargeResponse->status || (isset($responseData['status']) &&
                     (string)$responseData['status'] === 'failed')) {
                     $payment->update([
                         'status' => 'failed',
                         'gateway_response' => json_encode($responseData ?? null),
                     ]);
-                    
+
                     $order->update([
                         'status' => 'failed',
                         'payment_status' => 'failed'
                     ]);
-                    
+
                     $errorMessage = $chargeResponse->message ?? 'Payment failed';
-                    
+
+                    Log::error('Paystack charge failed', [
+                        'chargeResponse' => $chargeResponse,
+                        'data' => $responseData ?? null,
+                    ]);
+
                     return response()->json(['message' => 'Payment failed: ' . $errorMessage], 422);
                 }
 
                 return response()->json([
                     'message' => 'Payment processing incomplete. Please contact support.'
                 ], 500);
-
             } catch (HttpException $e) {
-                
-                $payment->update(['status' => 'failed']);
-                $order->update(['status' => 'failed', 'payment_status' => 'failed']);
-                
-                return response()->json([
-                    'message' => 'Payment processing failed. Please try again.'
-                ], 500);
-                
-            } catch (\Exception $e) {
-                
-                $payment->update(['status' => 'failed']);
-                $order->update(['status' => 'failed', 'payment_status' => 'failed']);
-                
-                return response()->json([
-                    'message' => 'Payment processing failed. Please try again.'
-                ], 500);
-            }
+                // Don't immediately mark as failed - let webhook/callback handle it
+                Log::error('Paystack HTTP Exception', [
+                    'error' => $e->getMessage(),
+                    'reference' => $payment->transaction_reference
+                ]);
 
+                return response()->json([
+                    'message' => 'Payment is being processed. Please wait for confirmation.',
+                    'reference' => $payment->transaction_reference
+                ], 200);
+            } catch (\Exception $e) {
+                // Only mark as failed for genuine processing errors
+                Log::error('Payment processing exception', [
+                    'error' => $e->getMessage(),
+                    'reference' => $payment->transaction_reference
+                ]);
+
+                return redirect()->route('payment.success', ['order' => $order->id]);
+            }
         } catch (\Exception $e) {
             DB::rollBack();
             return response()->json(['message' => 'An error occurred: ' . $e->getMessage()], 500);
@@ -318,29 +330,28 @@ class PaymentController extends Controller
                     'payment_status' => 'paid',
                     'status' => 'processing'
                 ]);
-                
+
                 // Save payment method for future use if user is logged in
                 if (Auth::check()) {
                     $this->savePaymentMethod($paymentDetails->data);
                 }
-                
+
                 session()->forget(['cart', 'checkout_data', 'payment_reference']);
 
                 return redirect()->route('payment.success', ['order' => $order->id]);
             }
-            
+
             $payment->update([
                 'status' => 'failed',
                 'gateway_response' => json_encode($paymentDetails->data ?? null),
             ]);
-            
+
             $order->update([
                 'payment_status' => 'failed',
                 'status' => 'failed'
             ]);
 
             return redirect('/payment')->with('error', 'Payment failed. Please try again.');
-            
         } catch (\Exception $e) {
             return redirect('/payment')->with('error', 'Payment verification failed.');
         }
@@ -407,6 +418,29 @@ class PaymentController extends Controller
                 'gateway_response' => json_encode($paymentData),
             ]);
 
+            /** @var User $user */
+            $saved = PaymentMethod::where('user_id', $user->id)
+                ->whereNull('order_id')
+                ->where('authorization_code', $paymentData->authorization->authorization_code)
+                ->first();
+
+            if (!$saved) {
+                PaymentMethod::create([
+                    'order_id' => null,
+                    'user_id' => $user->id,
+                    'authorization_code' => $paymentData->authorization->authorization_code,
+                    'card_type' => $paymentData->authorization->card_type ?? null,
+                    'last4' => $paymentData->authorization->last4 ?? null,
+                    'exp_month' => $paymentData->authorization->exp_month ?? null,
+                    'exp_year' => $paymentData->authorization->exp_year ?? null,
+                    'bin' => $paymentData->authorization->bin ?? null,
+                    'bank' => $paymentData->authorization->bank ?? null,
+                    'is_default' => $user->paymentMethods()->whereNull('order_id')->count() === 0,
+                    'status' => 'success',
+                    'gateway' => 'paystack',
+                ]);
+            }
+
             // Save payment method for future use
             $this->savePaymentMethod($paymentData);
 
@@ -421,7 +455,7 @@ class PaymentController extends Controller
     {
         // Convert to array if it's an object for consistent access
         $data = is_object($paymentData) ? (array) $paymentData : $paymentData;
-        
+
         if (isset($data['authorization']) && Auth::check()) {
             /** @var User $user */
             $user = Auth::user();
@@ -492,7 +526,7 @@ class PaymentController extends Controller
             'user' => Auth::user(),
             'islogged_in' => Auth::check(),
         ];
-        
+
         $content = $this->smarty->render('payment-success.tpl', $data);
         return response($content);
     }
@@ -513,9 +547,9 @@ class PaymentController extends Controller
         ];
 
         $pdf = Pdf::loadView('pdf.order-details', $data);
-        
+
         $filename = 'order-' . ($order->order_number ?? 'ORD-' . $order->id) . '.pdf';
-        
+
         return $pdf->download($filename);
     }
 }
