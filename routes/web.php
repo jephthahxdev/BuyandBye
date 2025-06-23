@@ -15,6 +15,7 @@ use App\Http\Controllers\BillingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\SettingsController;
 
 
 /* BOL Checking Database connection */
@@ -100,7 +101,11 @@ Route::middleware(['web'])->group(function () {
 
     // Profile routes
     Route::get('/account/profile', [ProfileController::class, 'show']);
-    Route::post('/account/profile/update', [ProfileController::class, 'update']);
+    Route::post('/account/profile/update', [ProfileController::class, 'update'])->middleware('auth');
+
+    // Settings routes
+    Route::get('/account/settings', [SettingsController::class, 'show'])->middleware('auth');
+    Route::post('/account/settings/password', [SettingsController::class, 'updatePassword'])->middleware('auth');
 
     // Orders page (paginated)
     Route::get('/account/orders', [OrdersController::class, 'index']);

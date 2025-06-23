@@ -39,7 +39,7 @@
             </nav>
 
             {* Page Title *}
-            <h1 class="text-3xl font-bold text-black mb-8">My account</h1>
+            <h1 class="text-3xl font-bold text-black mb-8">My profile</h1>
 
             <div class="flex gap-8">
                 {* Sidebar *}
@@ -231,5 +231,5 @@
     </div>
 </div>
 
-<script src="{$base_url}/js/profile.js"></script>
+<script src="/js/profile.js"></script>
 {/block}
