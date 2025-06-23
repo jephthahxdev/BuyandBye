@@ -9,3 +9,75 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+/* Remove Firefox spinner arrows */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* Remove Chrome/Safari spinner arrows */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.hero-overlay {
+    background: rgba(0, 0, 0, 0.1);
+}
+.category-overlay {
+    background: rgba(0, 0, 0, 0.4);
+}
+.badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 2px;
+    letter-spacing: 0.5px;
+    z-index: 10;
+}
+.badge-new {
+    background-color: #f59e0b;
+    color: white;
+}
+.badge-popular {
+    background-color: #ef4444;
+    color: white;
+}
+.badge-recipe {
+    background-color: #10b981;
+    color: white;
+}
+.badge-candles {
+    background-color: #8b5cf6;
+    color: white;
+}
+.badge-exclusive {
+    background-color: #1f2937;
+    color: white;
+    left: auto;
+    right: 12px;
+}
+.glass-container {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.vertical-button {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+}
+
+.arrow-translate {
+    transition: transform 0.3s ease;
+}
+
+.vertical-button:hover .arrow-translate {
+    transform: translateY(16px);
+}
