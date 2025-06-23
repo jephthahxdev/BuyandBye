@@ -295,7 +295,10 @@ class PaymentController extends Controller
                     'reference' => $payment->transaction_reference
                 ]);
 
-                return redirect()->route('payment.success', ['order' => $order->id]);
+                return response()->json([
+                    'success' => true,
+                    'redirectUrl' => route('payment.success', ['order' => $order->id])
+                ]);
             }
         } catch (\Exception $e) {
             DB::rollBack();
@@ -418,30 +421,6 @@ class PaymentController extends Controller
                 'gateway_response' => json_encode($paymentData),
             ]);
 
-            /** @var User $user */
-            $saved = PaymentMethod::where('user_id', $user->id)
-                ->whereNull('order_id')
-                ->where('authorization_code', $paymentData->authorization->authorization_code)
-                ->first();
-
-            if (!$saved) {
-                PaymentMethod::create([
-                    'order_id' => null,
-                    'user_id' => $user->id,
-                    'authorization_code' => $paymentData->authorization->authorization_code,
-                    'card_type' => $paymentData->authorization->card_type ?? null,
-                    'last4' => $paymentData->authorization->last4 ?? null,
-                    'exp_month' => $paymentData->authorization->exp_month ?? null,
-                    'exp_year' => $paymentData->authorization->exp_year ?? null,
-                    'bin' => $paymentData->authorization->bin ?? null,
-                    'bank' => $paymentData->authorization->bank ?? null,
-                    'is_default' => $user->paymentMethods()->whereNull('order_id')->count() === 0,
-                    'status' => 'success',
-                    'gateway' => 'paystack',
-                ]);
-            }
-
-            // Save payment method for future use
             $this->savePaymentMethod($paymentData);
 
             // Clear session data
@@ -453,46 +432,113 @@ class PaymentController extends Controller
 
     private function savePaymentMethod($paymentData)
     {
+        // Early return if user is not authenticated
+        if (!Auth::check()) {
+            Log::info('User not authenticated, skipping payment method save');
+            return;
+        }
+
         // Convert to array if it's an object for consistent access
         $data = is_object($paymentData) ? (array) $paymentData : $paymentData;
 
-        if (isset($data['authorization']) && Auth::check()) {
-            /** @var User $user */
-            $user = Auth::user();
-            $authorization = is_object($data['authorization']) ? (array) $data['authorization'] : $data['authorization'];
+        // Log the data structure for debugging
+        Log::info('Payment data structure in savePaymentMethod:', [
+            'data_keys' => array_keys($data),
+            'has_authorization' => isset($data['authorization']),
+            'data_structure' => $data
+        ]);
 
-            // Check if payment method already exists
-            $existingMethod = PaymentMethod::where('user_id', $user->id)
-                ->whereNull('order_id') // Only check saved payment methods
-                ->where('authorization_code', $authorization['authorization_code'])
-                ->first();
+        // Handle different data structures from Paystack responses
+        $authorization = null;
 
-            if (!$existingMethod) {
-                // Make other payment methods not default if this is the first one
-                if ($user->paymentMethods()->whereNull('order_id')->count() === 0) {
-                    $isDefault = true;
-                } else {
-                    $isDefault = false;
-                    // Optionally make this the default
-                    // $user->paymentMethods()->whereNull('order_id')->update(['is_default' => false]);
-                    // $isDefault = true;
-                }
+        // Direct authorization in response
+        if (isset($data['authorization']) && is_array($data['authorization'])) {
+            $authorization = $data['authorization'];
+        }
+        // Authorization as object
+        elseif (isset($data['authorization']) && is_object($data['authorization'])) {
+            $authorization = (array) $data['authorization'];
+        }
+        // No authorization found
+        else {
+            Log::warning('No authorization data found in payment response', [
+                'available_keys' => array_keys($data),
+                'data_sample' => array_slice($data, 0, 3, true)
+            ]);
+            return;
+        }
 
-                PaymentMethod::create([
-                    'user_id' => $user->id,
-                    'order_id' => null, // Saved payment method, not tied to specific order
-                    'authorization_code' => $authorization['authorization_code'],
-                    'card_type' => $authorization['card_type'],
-                    'last4' => $authorization['last4'],
-                    'exp_month' => $authorization['exp_month'],
-                    'exp_year' => $authorization['exp_year'],
-                    'bin' => $authorization['bin'],
-                    'bank' => $authorization['bank'],
-                    'is_default' => $isDefault,
-                    'status' => 'success',
-                    'gateway' => 'paystack',
-                ]);
-            }
+        // Validate required authorization fields
+        if (!isset($authorization['authorization_code']) || empty($authorization['authorization_code'])) {
+            Log::warning('Authorization code missing or empty', ['authorization' => $authorization]);
+            return;
+        }
+
+        /** @var User $user */
+        $user = Auth::user();
+
+        // Check if payment method already exists
+        $existingMethod = PaymentMethod::where('user_id', $user->id)
+            ->whereNull('order_id') // Only check saved payment methods
+            ->where('authorization_code', $authorization['authorization_code'])
+            ->first();
+
+        if ($existingMethod) {
+            Log::info('Payment method already exists for user', [
+                'user_id' => $user->id,
+                'authorization_code' => $authorization['authorization_code']
+            ]);
+            return;
+        }
+
+        // Check if this is the user's first payment method
+        $existingPaymentMethodsCount = PaymentMethod::where('user_id', $user->id)
+            ->whereNull('order_id')
+            ->count();
+
+        $isDefault = $existingPaymentMethodsCount === 0;
+
+        Log::info('Attempting to create payment method', [
+            'user_id' => $user->id,
+            'existing_count' => $existingPaymentMethodsCount,
+            'will_be_default' => $isDefault,
+            'auth_code' => $authorization['authorization_code']
+        ]);
+
+        try {
+            $paymentMethod = PaymentMethod::create([
+                'user_id' => $user->id,
+                'order_id' => null, // This indicates it's a saved payment method
+                'authorization_code' => $authorization['authorization_code'],
+                'card_type' => $authorization['card_type'] ?? 'unknown',
+                'last4' => $authorization['last4'] ?? null,
+                'exp_month' => $authorization['exp_month'] ?? null,
+                'exp_year' => $authorization['exp_year'] ?? null,
+                'bin' => $authorization['bin'] ?? null,
+                'bank' => $authorization['bank'] ?? null,
+                'is_default' => $isDefault,
+                'status' => 'success',
+                'gateway' => 'paystack',
+                'currency' => 'NGN',
+            ]);
+
+            Log::info('Payment method saved successfully', [
+                'user_id' => $user->id,
+                'payment_method_id' => $paymentMethod->id,
+                'is_default' => $isDefault,
+                'card_type' => $paymentMethod->card_type,
+                'last4' => $paymentMethod->last4
+            ]);
+
+            return $paymentMethod;
+        } catch (\Exception $e) {
+            Log::error('Failed to save payment method', [
+                'user_id' => $user->id,
+                'error' => $e->getMessage(),
+                'authorization_sample' => array_slice($authorization, 0, 5, true),
+                'trace' => $e->getTraceAsString()
+            ]);
+            throw $e;
         }
     }
 
