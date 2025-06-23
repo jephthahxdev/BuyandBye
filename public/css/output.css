@@ -644,6 +644,9 @@
   .my-3 {
     margin-block: calc(var(--spacing) * 3);
   }
+  .my-8 {
+    margin-block: calc(var(--spacing) * 8);
+  }
   .-mt-2 {
     margin-top: calc(var(--spacing) * -2);
   }
@@ -1105,6 +1108,13 @@
       --tw-space-y-reverse: 0;
       margin-block-start: calc(calc(var(--spacing) * 6) * var(--tw-space-y-reverse));
       margin-block-end: calc(calc(var(--spacing) * 6) * calc(1 - var(--tw-space-y-reverse)));
+    }
+  }
+  .-space-x-px {
+    :where(& > :not(:last-child)) {
+      --tw-space-x-reverse: 0;
+      margin-inline-start: calc(-1px * var(--tw-space-x-reverse));
+      margin-inline-end: calc(-1px * calc(1 - var(--tw-space-x-reverse)));
     }
   }
   .space-x-1 {

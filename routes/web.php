@@ -14,6 +14,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BillingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\OrdersController;
 
 
 /* BOL Checking Database connection */
@@ -96,4 +97,7 @@ Route::middleware(['web'])->group(function () {
 
     // Profile routes
     Route::get('/account/profile', [ProfileController::class, 'show']);
+
+    // Orders page (paginated)
+    Route::get('/account/orders', [OrdersController::class, 'index']);
 });

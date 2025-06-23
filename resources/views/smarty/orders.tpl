@@ -1,4 +1,4 @@
-{* Account Overview Template *}
+{* Orders Overview Template *}
 {extends file="layouts/app.tpl"}
 
 {block name="title"}Orders - Buyandbye{/block}
@@ -33,13 +33,13 @@
                                 d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
                                 clip-rule="evenodd" />
                         </svg>
-                        <span class="ml-4 text-black font-medium">Overview</span>
+                        <span class="ml-4 text-black font-medium">Orders</span>
                     </li>
                 </ol>
             </nav>
 
             {* Page Title *}
-            <h1 class="text-3xl font-bold text-black mb-8">My account</h1>
+            <h1 class="text-3xl font-bold text-black mb-8">My orders</h1>
 
             <div class="flex gap-8">
                 {* Sidebar *}
@@ -66,181 +66,13 @@
                     </div>
 
                     {* Navigation Menu *}
-                    {include file="partials/account-sidebar.tpl" active_page="overview"}
+                    {include file="partials/account-sidebar.tpl" active_page="orders"}
                 </div>
 
                 {* Main Content *}
                 <div class="flex-1">
-                    {* Stats Cards *}
-                    <div class="grid grid-cols-4 gap-6 mb-8 bg-white rounded-lg border border-gray-200 p-4">
-                        <div class="flex items-center">
-                            <div class="p-3 bg-gray-100 rounded-lg">
-                                <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-                                    <path
-                                        d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
-                                </svg>
-                            </div>
-                            <div class="ml-4">
-                                <p class="text-sm text-gray-600">Total Orders</p>
-                                <p class="text-2xl font-bold text-black">{$stats.total_orders}</p>
-                            </div>
-                        </div>
-
-
-                        <div class="flex items-center">
-                            <div class="p-3 bg-gray-100 rounded-lg">
-                                <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                            <div class="ml-4">
-                                <p class="text-sm text-gray-600">Orders processing</p>
-                                <p class="text-2xl font-bold text-black">{$stats.orders_processing}</p>
-                            </div>
-                        </div>
-
-
-                        <div class="flex items-center">
-                            <div class="p-3 bg-gray-100 rounded-lg">
-                                <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                </svg>
-                            </div>
-                            <div class="ml-4">
-                                <p class="text-sm text-gray-600">Completed Orders</p>
-                                <p class="text-2xl font-bold text-black">{$stats.orders_completed}</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center">
-                            <div class="p-3 bg-gray-100 rounded-lg">
-                                <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                            <div class="ml-4">
-                                <p class="text-sm text-gray-600">Cancelled Orders</p>
-                                <p class="text-2xl font-bold text-black">{$stats.orders_cancelled}</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-white rounded-lg border border-gray-200">
-                        {* Account Data *}
-
-                        <div class="p-6 border-b border-gray-200">
-                            <h2 class="text-xl font-bold text-black">Account data</h2>
-                        </div>
-                        <div class="grid grid-cols-2 gap-8 ">
-                            <div class="p-6">
-                                <div class="flex items-start mb-6">
-                                    <div class="w-16 h-16 bg-gray-200 rounded-lg overflow-hidden mr-4">
-                                        {if $account.avatar}
-                                            <img src="{$account.avatar}" alt="{$account.name}"
-                                                class="w-full h-full object-cover">
-                                        {else}
-                                            <div class="w-full h-full bg-gray-300 flex items-center justify-center">
-                                                <svg class="w-8 h-8 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
-                                                    <path fill-rule="evenodd"
-                                                        d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                                                        clip-rule="evenodd" />
-                                                </svg>
-                                            </div>
-                                        {/if}
-                                    </div>
-                                    <div class="flex-1">
-                                        <span
-                                            class="inline-block bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded-full mb-2">Essentials</span>
-                                        <h3 class="text-lg font-semibold text-black">{$account.name}</h3>
-                                    </div>
-                                </div>
-                                <div class="space-y-4">
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-1">Email
-                                            Address</label>
-                                        <p class="text-gray-600">{$account.email}</p>
-                                    </div>
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-1">Delivery
-                                            Address</label>
-                                        <p class="text-gray-600">{$account.address}</p>
-                                    </div>
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                                        <p class="text-gray-600">{$account.phone}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            {* Buyandbye PRO *}
-                            <div class="p-6">
-                                <div class="flex items-center mb-4">
-                                    <div class="w-8 h-8 bg-gray-600 rounded flex items-center justify-center mr-3">
-                                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd"
-                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <h3 class="text-lg font-semibold text-black">Buyandbye.</h3>
-                                        <span class="bg-gray-800 text-white text-xs px-2 py-1 rounded">PRO</span>
-                                    </div>
-                                </div>
-                                <div class="mb-6">
-                                    <p class="text-2xl font-bold text-black">Smile, be happy, be healthy.</p>
-                                </div>
-                                <div class="mb-6">
-                                    <h4 class="font-semibold text-black mb-3">PRO skin benefits</h4>
-                                    <ul class="space-y-2">
-                                        <li class="flex items-center text-sm text-gray-600">
-                                            <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor"
-                                                viewBox="0 0 20 20">
-                                                <path fill-rule="evenodd"
-                                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                                    clip-rule="evenodd" />
-                                            </svg>
-                                            Free shipping all over the country
-                                        </li>
-                                        <li class="flex items-center text-sm text-gray-600">
-                                            <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor"
-                                                viewBox="0 0 20 20">
-                                                <path fill-rule="evenodd"
-                                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                                    clip-rule="evenodd" />
-                                            </svg>
-                                            Testing the product for 5 days
-                                        </li>
-                                        <li class="flex items-center text-sm text-gray-600">
-                                            <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor"
-                                                viewBox="0 0 20 20">
-                                                <path fill-rule="evenodd"
-                                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                                    clip-rule="evenodd" />
-                                            </svg>
-                                            Exclusive offers
-                                        </li>
-                                    </ul>
-                                </div>
-                                <button
-                                    class="w-full bg-black text-white py-2 px-4 rounded-lg hover:bg-gray-800 flex items-center justify-center">
-                                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    Subscribe to PRO
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
                     {* Active Orders *}
-                    <div class="mt-8 bg-white rounded-lg border border-gray-200">
+                    <div class="bg-white rounded-lg border border-gray-200">
                         <div class="p-6 border-b border-gray-200">
                             <div class="flex items-center">
                                 <h2 class="text-xl font-bold text-black">Active orders</h2>
@@ -402,11 +234,28 @@
                                     </tbody>
                                 </table>
                             </div>
-                            {if $has_more_active_orders}
-                                <div class="flex justify-start px-6 py-8">
-                                    <a href="/account/orders" class="inline-block bg-black text-white px-6 py-2 rounded-lg font-medium hover:bg-gray-800 transition-colors">
-                                        View more orders
-                                    </a>
+                            {if isset($pagination) && $pagination.last_page > 1}
+                                <div class="flex justify-center py-8">
+                                    <nav class="inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                                        {if $pagination.prev_page_url}
+                                            <a href="{$pagination.prev_page_url}" class="relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">Previous</a>
+                                        {else}
+                                            <span class="relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 bg-gray-100 text-sm font-medium text-gray-400 cursor-not-allowed">Previous</span>
+                                        {/if}
+                                        {section name=page start=1 loop=$pagination.last_page+1}
+                                            {assign var=pageNum value=$smarty.section.page.index}
+                                            {if $pageNum == $pagination.current_page}
+                                                <span class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-black text-white text-sm font-medium">{$pageNum}</span>
+                                            {else}
+                                                <a href="?page={$pageNum}" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">{$pageNum}</a>
+                                            {/if}
+                                        {/section}
+                                        {if $pagination.next_page_url}
+                                            <a href="{$pagination.next_page_url}" class="relative inline-flex items-center px-4 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">Next</a>
+                                        {else}
+                                            <span class="relative inline-flex items-center px-4 py-2 rounded-r-md border border-gray-300 bg-gray-100 text-sm font-medium text-gray-400 cursor-not-allowed">Next</span>
+                                        {/if}
+                                    </nav>
                                 </div>
                             {/if}
                         {else}
