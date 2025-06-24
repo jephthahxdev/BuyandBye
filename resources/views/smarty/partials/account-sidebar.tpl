@@ -75,14 +75,15 @@
             </a>
         </li>
         <li>
-            <a href="{$base_url}/logout" class="flex items-center px-4 py-3 text-red-600 hover:bg-red-50">
-                <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd"
-                        d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z"
-                        clip-rule="evenodd" />
-                </svg>
-                Log out
-            </a>
+            <form id="logout-form" action="{$base_url}/logout" method="POST" style="display:none;">
+                <input type="hidden" name="_token" value="{$csrf_token}">
+            </form>
+            <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="flex items-center px-4 py-3 text-red-600 hover:bg-red-50">
+            <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd"
+                    d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z"
+                    clip-rule="evenodd" />
+            </svg>Logout</a>
         </li>
     </ul>
 </nav>
