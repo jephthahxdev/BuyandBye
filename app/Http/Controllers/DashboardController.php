@@ -72,7 +72,7 @@ class DashboardController extends Controller
                 'email' => $user->email ?? 'No Email',
                 'address' => $defaultAddress ? $defaultAddress->address : 'No address provided',
                 'phone' => $defaultAddress ? $defaultAddress->phone : 'No phone provided',
-                'avatar' => $user->avatar ?? null,
+                'avatar' => $user->avatar ? url('storage/' . $user->avatar) : null,
             ],
             'stats' => [
                 'total_orders' => count($ordersArray),
