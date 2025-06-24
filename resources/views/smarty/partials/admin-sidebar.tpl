@@ -21,7 +21,7 @@
                 Orders
             </a>
         </li>
-        <li>
+        {* <li>
             <a href="{$base_url}/admin/billing" class="flex items-center px-4 py-3 {if $active_page == 'billing'}bg-gray-50 text-black font-medium{else}text-gray-700 hover:bg-gray-50{/if}">
                 <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd"
@@ -30,17 +30,15 @@
                 </svg>
                 All users
             </a>
-        </li>
+        </li> *}
         <li>
-            <a href="{$base_url}/admin/profile"
-                class="flex items-center px-4 py-3 {if $active_page == 'profile'}bg-gray-50 text-black font-medium{else}text-gray-700 hover:bg-gray-50{/if}">
+            <a href="{$base_url}/admin/users" class="flex items-center px-4 py-3 {if $active_page == 'users'}bg-gray-50 text-black font-medium{else}text-gray-700 hover:bg-gray-50{/if}">
                 <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
                     <path fill-rule="evenodd"
-                        d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                        d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
                         clip-rule="evenodd" />
                 </svg>
-                Profile
+                All users
             </a>
         </li>
         {* <li>
@@ -64,7 +62,7 @@
             Favorite items
         </a>
     </li> *}
-        <li class="border-t border-gray-200 mt-2">
+        {* <li class="border-t border-gray-200 mt-2">
             <a href="{$base_url}/admin/settings" class="flex items-center px-4 py-3 {if $active_page == 'settings'}bg-gray-50 text-black font-medium{else}text-gray-700 hover:bg-gray-50{/if}">
                 <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd"
@@ -73,7 +71,7 @@
                 </svg>
                 Settings
             </a>
-        </li>
+        </li> *}
         <li>
             <form id="logout-form" action="{$base_url}/admin/logout" method="POST" style="display:none;">
                 <input type="hidden" name="_token" value="{$csrf_token}">
