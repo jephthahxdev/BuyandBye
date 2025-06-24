@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-23 22:36:43
+/* Smarty version 5.5.1, created on 2025-06-24 14:02:37
   from 'file:profile.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_6859c8eb323168_09441483',
+  'unifunc' => 'content_685aa1edb2da38_49260338',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f06b2b5db9d1de6715ac90de5715dd47b7442e4a' => 
     array (
       0 => 'profile.tpl',
-      1 => 1750714600,
+      1 => 1750715371,
       2 => 'file',
     ),
   ),
@@ -21,23 +21,23 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:partials/account-sidebar.tpl' => 1,
   ),
 ))) {
-function content_6859c8eb323168_09441483 (\Smarty\Template $_smarty_tpl) {
+function content_685aa1edb2da38_49260338 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_17445632876859c8eb31c267_67998168', "title");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_1138348782685aa1edb24392_91313542', "title");
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_18754624896859c8eb31cd76_05009447', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_179908277685aa1edb24e11_09880757', "content");
 $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layouts/app.tpl", $_smarty_current_dir);
 }
 /* {block "title"} */
-class Block_17445632876859c8eb31c267_67998168 extends \Smarty\Runtime\Block
+class Block_1138348782685aa1edb24392_91313542 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
@@ -47,7 +47,7 @@ Profile - Buyandbye<?php
 }
 /* {/block "title"} */
 /* {block "content"} */
-class Block_18754624896859c8eb31cd76_05009447 extends \Smarty\Runtime\Block
+class Block_179908277685aa1edb24e11_09880757 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
@@ -87,7 +87,7 @@ $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smart
                 </ol>
             </nav>
 
-                        <h1 class="text-3xl font-bold text-black mb-8">My account</h1>
+                        <h1 class="text-3xl font-bold text-black mb-8">My profile</h1>
 
             <div class="flex gap-8">
                                 <div class="w-80 h-[60%] bg-white flex-shrink-0 rounded-lg border border-gray-200">
