@@ -90,7 +90,7 @@
 
             <!-- Hero Section -->
             <div
-                class="flex-1 relative bg-cover bg-center" style="background-image: url({asset path='/images/auth-img.jpg'});">
+                class="hidden lg:flex md:flex flex-1 relative bg-cover bg-center" style="background-image: url({asset path='/images/auth-img.jpg'});">
                 <!-- Decorative elements -->
                 <div class="absolute top-10 right-10 w-20 h-20 bg-white/10 rounded-full"></div>
                 <div class="absolute bottom-10 left-10 w-16 h-16 bg-white/10 rounded-full"></div>
