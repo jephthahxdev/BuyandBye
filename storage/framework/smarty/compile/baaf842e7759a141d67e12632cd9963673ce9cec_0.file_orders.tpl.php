@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-23 17:17:44
+/* Smarty version 5.5.1, created on 2025-06-25 21:14:08
   from 'file:orders.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_68597e28718685_47325947',
+  'unifunc' => 'content_685c58902ed118_09479035',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'baaf842e7759a141d67e12632cd9963673ce9cec' => 
     array (
       0 => 'orders.tpl',
-      1 => 1750695462,
+      1 => 1750882446,
       2 => 'file',
     ),
   ),
@@ -21,23 +21,23 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:partials/account-sidebar.tpl' => 1,
   ),
 ))) {
-function content_68597e28718685_47325947 (\Smarty\Template $_smarty_tpl) {
+function content_685c58902ed118_09479035 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_76116456868597e286e5169_94262731', "title");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_1045560837685c58902cdbf9_13386483', "title");
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_125579415968597e286e5f53_00424303', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_2076918649685c58902cf257_95735509', "content");
 $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layouts/app.tpl", $_smarty_current_dir);
 }
 /* {block "title"} */
-class Block_76116456868597e286e5169_94262731 extends \Smarty\Runtime\Block
+class Block_1045560837685c58902cdbf9_13386483 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
@@ -47,15 +47,15 @@ Orders - Buyandbye<?php
 }
 /* {/block "title"} */
 /* {block "content"} */
-class Block_125579415968597e286e5f53_00424303 extends \Smarty\Runtime\Block
+class Block_2076918649685c58902cf257_95735509 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
 ?>
 
 
-    <div class="bg-gray-50 min-h-screen py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div class="bg-gray-50 min-h-screen py-10 md:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-4 md:px-6 lg:px-8 py-4 md:py-6">
                         <nav class="flex mb-6" aria-label="Breadcrumb">
                 <ol class="flex items-center space-x-4">
                     <li>
@@ -89,8 +89,8 @@ $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smart
 
                         <h1 class="text-3xl font-bold text-black mb-8">My orders</h1>
 
-            <div class="flex gap-8">
-                                <div class="w-80 h-[60%] bg-white flex-shrink-0 rounded-lg border border-gray-200">
+            <div class="flex flex-col md:flex-row gap-8">
+                                <div class="w-full md:w-80 md:h-[60%] bg-white flex-shrink-0 rounded-lg border border-gray-200 mb-6 md:mb-0">
                                         <div class="p-6 mb-6 border-b border-gray-200">
                         <div class="flex items-center">
                             <div
@@ -135,7 +135,7 @@ $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smart
 
                                                 <?php if ($_smarty_tpl->getValue('active_orders') && is_array($_smarty_tpl->getValue('active_orders')) && $_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('active_orders')) > 0) {?>
                             <div class="overflow-x-auto">
-                                <table class="w-full">
+                                <table class="w-full min-w-[600px]">
                                     <thead class="bg-gray-50">
                                         <tr>
                                             <th
@@ -301,13 +301,14 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                                 </table>
                             </div>
                             <?php if ((true && ($_smarty_tpl->hasVariable('pagination') && null !== ($_smarty_tpl->getValue('pagination') ?? null))) && $_smarty_tpl->getValue('pagination')['last_page'] > 1) {?>
-                                <div class="flex justify-center py-8">
-                                    <nav class="inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                                <div class="py-8 px-6">
+                                    <div class="flex justify-center">
+                                        <nav class="inline-flex rounded-md -space-x-px" aria-label="Pagination">
                                         <?php if ($_smarty_tpl->getValue('pagination')['prev_page_url']) {?>
                                             <a href="<?php echo $_smarty_tpl->getValue('pagination')['prev_page_url'];?>
-" class="relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">Previous</a>
+" class="relative inline-flex items-center px-3 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">Previous</a>
                                         <?php } else { ?>
-                                            <span class="relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 bg-gray-100 text-sm font-medium text-gray-400 cursor-not-allowed">Previous</span>
+                                            <span class="relative inline-flex items-center px-3 py-2 rounded-l-md border border-gray-300 bg-gray-100 text-sm font-medium text-gray-400 cursor-not-allowed">Previous</span>
                                         <?php }?>
                                         <?php
 $__section_page_0_loop = (is_array(@$_loop=$_smarty_tpl->getValue('pagination')['last_page']+1) ? count($_loop) : max(0, (int) $_loop));
@@ -319,11 +320,11 @@ for ($__section_page_0_iteration = 1, $_smarty_tpl->tpl_vars['__smarty_section_p
 ?>
                                             <?php $_smarty_tpl->assign('pageNum', ($_smarty_tpl->getValue('__smarty_section_page')['index'] ?? null), false, NULL);?>
                                             <?php if ($_smarty_tpl->getValue('pageNum') == $_smarty_tpl->getValue('pagination')['current_page']) {?>
-                                                <span class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-black text-white text-sm font-medium"><?php echo $_smarty_tpl->getValue('pageNum');?>
+                                                <span class="relative inline-flex items-center px-3 py-2 border border-gray-300 bg-black text-white text-sm font-medium"><?php echo $_smarty_tpl->getValue('pageNum');?>
 </span>
                                             <?php } else { ?>
                                                 <a href="?page=<?php echo $_smarty_tpl->getValue('pageNum');?>
-" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50"><?php echo $_smarty_tpl->getValue('pageNum');?>
+" class="relative inline-flex items-center px-3 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50"><?php echo $_smarty_tpl->getValue('pageNum');?>
 </a>
                                             <?php }?>
                                         <?php
@@ -332,11 +333,12 @@ for ($__section_page_0_iteration = 1, $_smarty_tpl->tpl_vars['__smarty_section_p
 ?>
                                         <?php if ($_smarty_tpl->getValue('pagination')['next_page_url']) {?>
                                             <a href="<?php echo $_smarty_tpl->getValue('pagination')['next_page_url'];?>
-" class="relative inline-flex items-center px-4 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">Next</a>
+" class="relative inline-flex items-center px-3 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">Next</a>
                                         <?php } else { ?>
-                                            <span class="relative inline-flex items-center px-4 py-2 rounded-r-md border border-gray-300 bg-gray-100 text-sm font-medium text-gray-400 cursor-not-allowed">Next</span>
+                                            <span class="relative inline-flex items-center px-3 py-2 rounded-r-md border border-gray-300 bg-gray-100 text-sm font-medium text-gray-400 cursor-not-allowed">Next</span>
                                         <?php }?>
-                                    </nav>
+                                        </nav>
+                                    </div>
                                 </div>
                             <?php }?>
                         <?php } else { ?>

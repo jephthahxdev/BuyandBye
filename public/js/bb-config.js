@@ -4,6 +4,8 @@ function toggleMobileMenu() {
     menu.classList.toggle('hidden');
 }
 
+// Close mobile menu when clicking outside
+// (Don't close if clicking the hamburger button)
 document.addEventListener('click', function(event) {
     const menu = document.getElementById('mobile-menu');
     const button = event.target.closest('button');

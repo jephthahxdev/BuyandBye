@@ -5,8 +5,8 @@
 
 {block name="content"}
 
-    <div class="bg-gray-50 min-h-screen py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div class="bg-gray-50 min-h-screen py-10 md:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-4 md:px-6 lg:px-8 py-4 md:py-6">
             {* Breadcrumb *}
             <nav class="flex mb-6" aria-label="Breadcrumb">
                 <ol class="flex items-center space-x-4">
@@ -41,9 +41,9 @@
             {* Page Title *}
             <h1 class="text-3xl font-bold text-black mb-8">My account</h1>
 
-            <div class="flex gap-8">
+            <div class="flex flex-col md:flex-row gap-8">
                 {* Sidebar *}
-                <div class="w-80 h-[60%] bg-white flex-shrink-0 rounded-lg border border-gray-200">
+                <div class="w-full md:w-80 md:h-[60%] bg-white flex-shrink-0 rounded-lg border border-gray-200 mb-6 md:mb-0">
                     {* Profile Card *}
                     <div class="p-6 mb-6 border-b border-gray-200">
                         <div class="flex items-center">
@@ -70,10 +70,10 @@
                 </div>
 
                 {* Main Content *}
-                <div class="flex-1">
+                <div class="flex-1 flex flex-col gap-8">
                     {* Stats Cards *}
-                    <div class="grid grid-cols-4 gap-6 mb-8 bg-white rounded-lg border border-gray-200 p-4">
-                        <div class="flex items-center">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 bg-white rounded-lg border border-gray-200 p-4">
+                        <div class="flex items-center mb-4 sm:mb-0">
                             <div class="p-3 bg-gray-100 rounded-lg">
                                 <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
                                     <path
@@ -85,9 +85,7 @@
                                 <p class="text-2xl font-bold text-black">{$stats.total_orders}</p>
                             </div>
                         </div>
-
-
-                        <div class="flex items-center">
+                        <div class="flex items-center mb-4 sm:mb-0">
                             <div class="p-3 bg-gray-100 rounded-lg">
                                 <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
@@ -100,9 +98,7 @@
                                 <p class="text-2xl font-bold text-black">{$stats.orders_processing}</p>
                             </div>
                         </div>
-
-
-                        <div class="flex items-center">
+                        <div class="flex items-center mb-4 sm:mb-0">
                             <div class="p-3 bg-gray-100 rounded-lg">
                                 <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
                                     <path
@@ -114,7 +110,6 @@
                                 <p class="text-2xl font-bold text-black">{$stats.orders_completed}</p>
                             </div>
                         </div>
-
                         <div class="flex items-center">
                             <div class="p-3 bg-gray-100 rounded-lg">
                                 <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
@@ -132,11 +127,10 @@
 
                     <div class="bg-white rounded-lg border border-gray-200">
                         {* Account Data *}
-
                         <div class="p-6 border-b border-gray-200">
                             <h2 class="text-xl font-bold text-black">Account data</h2>
                         </div>
-                        <div class="grid grid-cols-2 gap-8 ">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 ">
                             <div class="p-6">
                                 <div class="flex items-start mb-6">
                                     <div class="w-16 h-16 bg-gray-200 rounded-lg overflow-hidden mr-4">
@@ -257,7 +251,7 @@
                         {* Active Orders Table Section - Improved Version *}
                         {if $active_orders && is_array($active_orders) && count($active_orders) > 0}
                             <div class="overflow-x-auto">
-                                <table class="w-full">
+                                <table class="w-full min-w-[600px]">
                                     <thead class="bg-gray-50">
                                         <tr>
                                             <th

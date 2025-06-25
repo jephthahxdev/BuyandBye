@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     this.innerHTML = originalText;
                     this.classList.remove('bg-gray-600');
                     this.classList.add('bg-gray-900', 'hover:bg-gray-800');
-                    this.disabled = false;
+                this.disabled = false;
                 }, 2000);
             })
             .catch(error => {
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 this.classList.add('bg-red-600');
                 
                 setTimeout(() => {
-                    this.innerHTML = originalText;
+                this.innerHTML = originalText;
                     this.classList.remove('bg-red-600');
                     this.classList.add('bg-gray-900', 'hover:bg-gray-800');
                     this.disabled = false;

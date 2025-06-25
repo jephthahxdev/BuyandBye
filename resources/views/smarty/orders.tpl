@@ -5,8 +5,8 @@
 
 {block name="content"}
 
-    <div class="bg-gray-50 min-h-screen py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div class="bg-gray-50 min-h-screen py-10 md:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-4 md:px-6 lg:px-8 py-4 md:py-6">
             {* Breadcrumb *}
             <nav class="flex mb-6" aria-label="Breadcrumb">
                 <ol class="flex items-center space-x-4">
@@ -41,9 +41,9 @@
             {* Page Title *}
             <h1 class="text-3xl font-bold text-black mb-8">My orders</h1>
 
-            <div class="flex gap-8">
+            <div class="flex flex-col md:flex-row gap-8">
                 {* Sidebar *}
-                <div class="w-80 h-[60%] bg-white flex-shrink-0 rounded-lg border border-gray-200">
+                <div class="w-full md:w-80 md:h-[60%] bg-white flex-shrink-0 rounded-lg border border-gray-200 mb-6 md:mb-0">
                     {* Profile Card *}
                     <div class="p-6 mb-6 border-b border-gray-200">
                         <div class="flex items-center">
@@ -89,7 +89,7 @@
                         {* Active Orders Table Section - Improved Version *}
                         {if $active_orders && is_array($active_orders) && count($active_orders) > 0}
                             <div class="overflow-x-auto">
-                                <table class="w-full">
+                                <table class="w-full min-w-[600px]">
                                     <thead class="bg-gray-50">
                                         <tr>
                                             <th
@@ -235,27 +235,29 @@
                                 </table>
                             </div>
                             {if isset($pagination) && $pagination.last_page > 1}
-                                <div class="flex justify-center py-8">
-                                    <nav class="inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                                <div class="py-8 px-6">
+                                    <div class="flex justify-center">
+                                        <nav class="inline-flex rounded-md -space-x-px" aria-label="Pagination">
                                         {if $pagination.prev_page_url}
-                                            <a href="{$pagination.prev_page_url}" class="relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">Previous</a>
+                                            <a href="{$pagination.prev_page_url}" class="relative inline-flex items-center px-3 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">Previous</a>
                                         {else}
-                                            <span class="relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 bg-gray-100 text-sm font-medium text-gray-400 cursor-not-allowed">Previous</span>
+                                            <span class="relative inline-flex items-center px-3 py-2 rounded-l-md border border-gray-300 bg-gray-100 text-sm font-medium text-gray-400 cursor-not-allowed">Previous</span>
                                         {/if}
                                         {section name=page start=1 loop=$pagination.last_page+1}
                                             {assign var=pageNum value=$smarty.section.page.index}
                                             {if $pageNum == $pagination.current_page}
-                                                <span class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-black text-white text-sm font-medium">{$pageNum}</span>
+                                                <span class="relative inline-flex items-center px-3 py-2 border border-gray-300 bg-black text-white text-sm font-medium">{$pageNum}</span>
                                             {else}
-                                                <a href="?page={$pageNum}" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">{$pageNum}</a>
+                                                <a href="?page={$pageNum}" class="relative inline-flex items-center px-3 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">{$pageNum}</a>
                                             {/if}
                                         {/section}
                                         {if $pagination.next_page_url}
-                                            <a href="{$pagination.next_page_url}" class="relative inline-flex items-center px-4 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">Next</a>
+                                            <a href="{$pagination.next_page_url}" class="relative inline-flex items-center px-3 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">Next</a>
                                         {else}
-                                            <span class="relative inline-flex items-center px-4 py-2 rounded-r-md border border-gray-300 bg-gray-100 text-sm font-medium text-gray-400 cursor-not-allowed">Next</span>
+                                            <span class="relative inline-flex items-center px-3 py-2 rounded-r-md border border-gray-300 bg-gray-100 text-sm font-medium text-gray-400 cursor-not-allowed">Next</span>
                                         {/if}
-                                    </nav>
+                                        </nav>
+                                    </div>
                                 </div>
                             {/if}
                         {else}

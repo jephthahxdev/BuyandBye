@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-23 17:12:57
+/* Smarty version 5.5.1, created on 2025-06-25 17:35:35
   from 'file:dashboard.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_68597d093c4cf0_98535177',
+  'unifunc' => 'content_685c2557aa4e05_10559221',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1f7f3e94e176bae2102c275298e9f9105a3c9385' => 
     array (
       0 => 'dashboard.tpl',
-      1 => 1750695156,
+      1 => 1750869333,
       2 => 'file',
     ),
   ),
@@ -21,23 +21,23 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:partials/account-sidebar.tpl' => 1,
   ),
 ))) {
-function content_68597d093c4cf0_98535177 (\Smarty\Template $_smarty_tpl) {
+function content_685c2557aa4e05_10559221 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_166199950568597d09397779_89629905', "title");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_508284616685c2557a77aa4_47408947', "title");
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_211402455568597d09398ae7_36774996', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_1956178231685c2557a7a118_01316881', "content");
 $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layouts/app.tpl", $_smarty_current_dir);
 }
 /* {block "title"} */
-class Block_166199950568597d09397779_89629905 extends \Smarty\Runtime\Block
+class Block_508284616685c2557a77aa4_47408947 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
@@ -47,15 +47,15 @@ Orders - Buyandbye<?php
 }
 /* {/block "title"} */
 /* {block "content"} */
-class Block_211402455568597d09398ae7_36774996 extends \Smarty\Runtime\Block
+class Block_1956178231685c2557a7a118_01316881 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
 ?>
 
 
-    <div class="bg-gray-50 min-h-screen py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div class="bg-gray-50 min-h-screen py-10 md:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-4 md:px-6 lg:px-8 py-4 md:py-6">
                         <nav class="flex mb-6" aria-label="Breadcrumb">
                 <ol class="flex items-center space-x-4">
                     <li>
@@ -89,8 +89,8 @@ $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smart
 
                         <h1 class="text-3xl font-bold text-black mb-8">My account</h1>
 
-            <div class="flex gap-8">
-                                <div class="w-80 h-[60%] bg-white flex-shrink-0 rounded-lg border border-gray-200">
+            <div class="flex flex-col md:flex-row gap-8">
+                                <div class="w-full md:w-80 md:h-[60%] bg-white flex-shrink-0 rounded-lg border border-gray-200 mb-6 md:mb-0">
                                         <div class="p-6 mb-6 border-b border-gray-200">
                         <div class="flex items-center">
                             <div
@@ -118,9 +118,9 @@ $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smart
 ?>
                 </div>
 
-                                <div class="flex-1">
-                                        <div class="grid grid-cols-4 gap-6 mb-8 bg-white rounded-lg border border-gray-200 p-4">
-                        <div class="flex items-center">
+                                <div class="flex-1 flex flex-col gap-8">
+                                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 bg-white rounded-lg border border-gray-200 p-4">
+                        <div class="flex items-center mb-4 sm:mb-0">
                             <div class="p-3 bg-gray-100 rounded-lg">
                                 <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
                                     <path
@@ -133,9 +133,7 @@ $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smart
 </p>
                             </div>
                         </div>
-
-
-                        <div class="flex items-center">
+                        <div class="flex items-center mb-4 sm:mb-0">
                             <div class="p-3 bg-gray-100 rounded-lg">
                                 <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
@@ -149,9 +147,7 @@ $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smart
 </p>
                             </div>
                         </div>
-
-
-                        <div class="flex items-center">
+                        <div class="flex items-center mb-4 sm:mb-0">
                             <div class="p-3 bg-gray-100 rounded-lg">
                                 <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
                                     <path
@@ -164,7 +160,6 @@ $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smart
 </p>
                             </div>
                         </div>
-
                         <div class="flex items-center">
                             <div class="p-3 bg-gray-100 rounded-lg">
                                 <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
@@ -182,11 +177,10 @@ $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smart
                     </div>
 
                     <div class="bg-white rounded-lg border border-gray-200">
-                        
-                        <div class="p-6 border-b border-gray-200">
+                                                <div class="p-6 border-b border-gray-200">
                             <h2 class="text-xl font-bold text-black">Account data</h2>
                         </div>
-                        <div class="grid grid-cols-2 gap-8 ">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 ">
                             <div class="p-6">
                                 <div class="flex items-start mb-6">
                                     <div class="w-16 h-16 bg-gray-200 rounded-lg overflow-hidden mr-4">
@@ -310,7 +304,7 @@ $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smart
 
                                                 <?php if ($_smarty_tpl->getValue('active_orders') && is_array($_smarty_tpl->getValue('active_orders')) && $_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('active_orders')) > 0) {?>
                             <div class="overflow-x-auto">
-                                <table class="w-full">
+                                <table class="w-full min-w-[600px]">
                                     <thead class="bg-gray-50">
                                         <tr>
                                             <th
