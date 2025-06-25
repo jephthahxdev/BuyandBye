@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
             })
             .then(data => {
                 const badge = document.getElementById('cart-count');
+                const mobileBadge = document.getElementById('mobile-cart-count');
                 if (badge) {
                     if (data.count > 0) {
                         badge.textContent = data.count;
@@ -29,6 +30,16 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 } else {
                     console.error('Cart count badge not found');
+                }
+                if (mobileBadge) {
+                    if (data.count > 0) {
+                        mobileBadge.textContent = data.count;
+                        mobileBadge.style.display = '';
+                    } else {
+                        mobileBadge.style.display = 'none';
+                    }
+                } else {
+                    console.error('Mobile cart count badge not found');
                 }
             })
             .catch(error => {
