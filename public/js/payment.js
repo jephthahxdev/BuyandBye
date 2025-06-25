@@ -94,11 +94,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
             fetch('/payment', {
                 method: 'POST',
-                body: formData, // Send as FormData directly, not URLSearchParams
+                body: formData,
                 headers: {
                     'X-CSRF-TOKEN': csrfToken.content,
                     'Accept': 'application/json',
-                    'X-Requested-With': 'XMLHttpRequest' // This helps Laravel identify AJAX requests
+                    'X-Requested-With': 'XMLHttpRequest'
                 }
             })
                 .then(response => {
@@ -115,13 +115,12 @@ document.addEventListener('DOMContentLoaded', function () {
                             return data;
                         });
                     } else {
-                        // If not JSON, get text and try to parse or show error
                         return response.text().then(text => {
                             console.error('Non-JSON response:', text);
                             if (!response.ok) {
                                 throw new Error(`HTTP ${response.status}: ${response.statusText}. Server returned: ${text.substring(0, 200)}...`);
                             }
-                            // Try to parse as JSON anyway
+                            
                             try {
                                 return JSON.parse(text);
                             } catch (e) {

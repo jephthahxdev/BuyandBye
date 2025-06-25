@@ -278,7 +278,7 @@ class PaymentController extends Controller
                     'message' => 'Payment processing incomplete. Please contact support.'
                 ], 500);
             } catch (HttpException $e) {
-                // Don't immediately mark as failed - let webhook/callback handle it
+                // Not immediately marking as failed - letting webhook/callback handle it
                 Log::error('Paystack HTTP Exception', [
                     'error' => $e->getMessage(),
                     'reference' => $payment->transaction_reference
@@ -438,7 +438,6 @@ class PaymentController extends Controller
             return;
         }
 
-        // Convert to array if it's an object for consistent access
         $data = is_object($paymentData) ? (array) $paymentData : $paymentData;
 
         // Log the data structure for debugging
