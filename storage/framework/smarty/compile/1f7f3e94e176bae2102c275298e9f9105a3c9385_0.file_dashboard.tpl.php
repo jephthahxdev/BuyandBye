@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-20 14:47:30
+/* Smarty version 5.5.1, created on 2025-06-25 17:35:35
   from 'file:dashboard.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_68557482d2df89_79282917',
+  'unifunc' => 'content_685c2557aa4e05_10559221',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1f7f3e94e176bae2102c275298e9f9105a3c9385' => 
     array (
       0 => 'dashboard.tpl',
-      1 => 1750430126,
+      1 => 1750869333,
       2 => 'file',
     ),
   ),
@@ -21,41 +21,41 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:partials/account-sidebar.tpl' => 1,
   ),
 ))) {
-function content_68557482d2df89_79282917 (\Smarty\Template $_smarty_tpl) {
+function content_685c2557aa4e05_10559221 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_179211463968557482d0a023_44526480', "title");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_508284616685c2557a77aa4_47408947', "title");
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_164703398368557482d0d813_98312044', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_1956178231685c2557a7a118_01316881', "content");
 $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layouts/app.tpl", $_smarty_current_dir);
 }
 /* {block "title"} */
-class Block_179211463968557482d0a023_44526480 extends \Smarty\Runtime\Block
+class Block_508284616685c2557a77aa4_47408947 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
 ?>
-Accounts - Buyandbye<?php
+Orders - Buyandbye<?php
 }
 }
 /* {/block "title"} */
 /* {block "content"} */
-class Block_164703398368557482d0d813_98312044 extends \Smarty\Runtime\Block
+class Block_1956178231685c2557a7a118_01316881 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty';
 ?>
 
 
-    <div class="bg-gray-50 min-h-screen py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div class="bg-gray-50 min-h-screen py-10 md:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-4 md:px-6 lg:px-8 py-4 md:py-6">
                         <nav class="flex mb-6" aria-label="Breadcrumb">
                 <ol class="flex items-center space-x-4">
                     <li>
@@ -89,8 +89,8 @@ $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smart
 
                         <h1 class="text-3xl font-bold text-black mb-8">My account</h1>
 
-            <div class="flex gap-8">
-                                <div class="w-80 h-[60%] bg-white flex-shrink-0 rounded-lg border border-gray-200">
+            <div class="flex flex-col md:flex-row gap-8">
+                                <div class="w-full md:w-80 md:h-[60%] bg-white flex-shrink-0 rounded-lg border border-gray-200 mb-6 md:mb-0">
                                         <div class="p-6 mb-6 border-b border-gray-200">
                         <div class="flex items-center">
                             <div
@@ -118,9 +118,9 @@ $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smart
 ?>
                 </div>
 
-                                <div class="flex-1">
-                                        <div class="grid grid-cols-4 gap-6 mb-8 bg-white rounded-lg border border-gray-200 p-4">
-                        <div class="flex items-center">
+                                <div class="flex-1 flex flex-col gap-8">
+                                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 bg-white rounded-lg border border-gray-200 p-4">
+                        <div class="flex items-center mb-4 sm:mb-0">
                             <div class="p-3 bg-gray-100 rounded-lg">
                                 <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
                                     <path
@@ -133,9 +133,7 @@ $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smart
 </p>
                             </div>
                         </div>
-
-
-                        <div class="flex items-center">
+                        <div class="flex items-center mb-4 sm:mb-0">
                             <div class="p-3 bg-gray-100 rounded-lg">
                                 <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
@@ -144,14 +142,12 @@ $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smart
                                 </svg>
                             </div>
                             <div class="ml-4">
-                                <p class="text-sm text-gray-600">Orders in transit</p>
-                                <p class="text-2xl font-bold text-black"><?php echo $_smarty_tpl->getValue('stats')['favorite_products'];?>
+                                <p class="text-sm text-gray-600">Orders processing</p>
+                                <p class="text-2xl font-bold text-black"><?php echo $_smarty_tpl->getValue('stats')['orders_processing'];?>
 </p>
                             </div>
                         </div>
-
-
-                        <div class="flex items-center">
+                        <div class="flex items-center mb-4 sm:mb-0">
                             <div class="p-3 bg-gray-100 rounded-lg">
                                 <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
                                     <path
@@ -160,11 +156,10 @@ $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smart
                             </div>
                             <div class="ml-4">
                                 <p class="text-sm text-gray-600">Completed Orders</p>
-                                <p class="text-2xl font-bold text-black"><?php echo $_smarty_tpl->getValue('stats')['reviews_added'];?>
+                                <p class="text-2xl font-bold text-black"><?php echo $_smarty_tpl->getValue('stats')['orders_completed'];?>
 </p>
                             </div>
                         </div>
-
                         <div class="flex items-center">
                             <div class="p-3 bg-gray-100 rounded-lg">
                                 <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
@@ -175,18 +170,17 @@ $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smart
                             </div>
                             <div class="ml-4">
                                 <p class="text-sm text-gray-600">Cancelled Orders</p>
-                                <p class="text-2xl font-bold text-black"><?php echo $_smarty_tpl->getValue('stats')['returns'];?>
+                                <p class="text-2xl font-bold text-black"><?php echo $_smarty_tpl->getValue('stats')['orders_cancelled'];?>
 </p>
                             </div>
                         </div>
                     </div>
 
                     <div class="bg-white rounded-lg border border-gray-200">
-                        
-                        <div class="p-6 border-b border-gray-200">
+                                                <div class="p-6 border-b border-gray-200">
                             <h2 class="text-xl font-bold text-black">Account data</h2>
                         </div>
-                        <div class="grid grid-cols-2 gap-8 ">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 ">
                             <div class="p-6">
                                 <div class="flex items-start mb-6">
                                     <div class="w-16 h-16 bg-gray-200 rounded-lg overflow-hidden mr-4">
@@ -231,14 +225,6 @@ $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smart
 </p>
                                     </div>
                                 </div>
-                                <button
-                                    class="mt-6 bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-700 flex items-center">
-                                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-                                    </svg>
-                                    Edit your data
-                                </button>
                             </div>
                                                         <div class="p-6">
                                 <div class="flex items-center mb-4">
@@ -316,14 +302,14 @@ $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smart
                             </div>
                         </div>
 
-                        <?php if ($_smarty_tpl->getValue('active_orders')) {?>
+                                                <?php if ($_smarty_tpl->getValue('active_orders') && is_array($_smarty_tpl->getValue('active_orders')) && $_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('active_orders')) > 0) {?>
                             <div class="overflow-x-auto">
-                                <table class="w-full">
+                                <table class="w-full min-w-[600px]">
                                     <thead class="bg-gray-50">
                                         <tr>
                                             <th
                                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Order ID</th>
+                                                Order Number</th>
                                             <th
                                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                 Date</th>
@@ -335,7 +321,7 @@ $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smart
                                                 Status</th>
                                             <th
                                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Actions</th>
+                                                Items</th>
                                         </tr>
                                     </thead>
                                     <tbody class="bg-white divide-y divide-gray-200">
@@ -347,19 +333,30 @@ $foreach0DoElse = false;
 ?>
                                             <tr class="hover:bg-gray-50">
                                                 <td class="px-6 py-4 whitespace-nowrap">
-                                                    <span class="text-sm font-medium text-black"><?php echo $_smarty_tpl->getValue('order')['id'];?>
-</span>
+                                                    <span class="text-sm font-medium text-gray-600 hover:text-blue-800">
+                                                        #<?php echo (($tmp = $_smarty_tpl->getValue('order')['order_number'] ?? null)===null||$tmp==='' ? 'N/A' ?? null : $tmp);?>
+
+                                                    </span>
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-nowrap">
-                                                    <span class="text-sm text-gray-600"><?php echo $_smarty_tpl->getValue('order')['date'];?>
-</span>
+                                                    <span class="text-sm text-gray-600">
+                                                        <?php if ((true && (true && null !== ($_smarty_tpl->getValue('order')['created_at'] ?? null))) && $_smarty_tpl->getValue('order')['created_at']) {?>
+                                                            <?php echo $_smarty_tpl->getSmarty()->getModifierCallback('date_format')($_smarty_tpl->getValue('order')['created_at'],"%b %d, %Y");?>
+
+                                                        <?php } else { ?>
+                                                            N/A
+                                                        <?php }?>
+                                                    </span>
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-nowrap">
-                                                    <span class="text-sm font-semibold text-black"><?php echo $_smarty_tpl->getValue('order')['price'];?>
-</span>
+                                                    <span class="text-sm font-semibold text-gray-900">
+                                                        ₦<?php echo $_smarty_tpl->getSmarty()->getModifierCallback('number_format')((($tmp = $_smarty_tpl->getValue('order')['total'] ?? null)===null||$tmp==='' ? 0 ?? null : $tmp),2);?>
+
+                                                    </span>
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-nowrap">
-                                                    <?php if ($_smarty_tpl->getValue('order')['status'] == 'in_transit') {?>
+                                                    <?php $_smarty_tpl->assign('status', (($tmp = $_smarty_tpl->getValue('order')['status'] ?? null)===null||$tmp==='' ? 'unknown' ?? null : $tmp), false, NULL);?>
+                                                    <?php if ($_smarty_tpl->getValue('status') == 'pending') {?>
                                                         <span
                                                             class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
                                                             <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
@@ -367,19 +364,30 @@ $foreach0DoElse = false;
                                                                     d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
                                                                     clip-rule="evenodd" />
                                                             </svg>
-                                                            In transit
+                                                            Pending
                                                         </span>
-                                                    <?php } elseif ($_smarty_tpl->getValue('order')['status'] == 'preorder') {?>
+                                                    <?php } elseif ($_smarty_tpl->getValue('status') == 'processing') {?>
                                                         <span
-                                                            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                                                            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
                                                             <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
                                                                 <path fill-rule="evenodd"
-                                                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                                                                    d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
                                                                     clip-rule="evenodd" />
                                                             </svg>
-                                                            Preorder
+                                                            Processing
                                                         </span>
-                                                    <?php } elseif ($_smarty_tpl->getValue('order')['status'] == 'completed') {?>
+                                                    <?php } elseif ($_smarty_tpl->getValue('status') == 'shipped') {?>
+                                                        <span
+                                                            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                                                            <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                                                <path
+                                                                    d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
+                                                                <path
+                                                                    d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v6.05A2.5 2.5 0 0115.95 16H17a1 1 0 001-1v-5a1 1 0 00-.293-.707L16 7.586A1 1 0 0015.414 7H14z" />
+                                                            </svg>
+                                                            Shipped
+                                                        </span>
+                                                    <?php } elseif ($_smarty_tpl->getValue('status') == 'delivered') {?>
                                                         <span
                                                             class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
                                                             <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
@@ -387,47 +395,71 @@ $foreach0DoElse = false;
                                                                     d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                                                                     clip-rule="evenodd" />
                                                             </svg>
-                                                            Completed
+                                                            Delivered
+                                                        </span>
+                                                    <?php } elseif ($_smarty_tpl->getValue('status') == 'cancelled') {?>
+                                                        <span
+                                                            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                                            <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                                                <path fill-rule="evenodd"
+                                                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                                                    clip-rule="evenodd" />
+                                                            </svg>
+                                                            Cancelled
+                                                        </span>
+                                                    <?php } else { ?>
+                                                        <span
+                                                            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                                                            <?php echo $_smarty_tpl->getSmarty()->getModifierCallback('capitalize')($_smarty_tpl->getValue('status'));?>
+
                                                         </span>
                                                     <?php }?>
                                                 </td>
-                                                <td class="px-6 py-4 whitespace-nowrap">
-                                                    <div class="relative">
-                                                        <button class="text-gray-400 hover:text-gray-600"
-                                                            onclick="toggleDropdown('dropdown-<?php echo $_smarty_tpl->getValue('order')['id'];?>
-')">
-                                                            <span class="sr-only">Actions</span>
-                                                            <span class="text-sm font-medium">Actions</span>
-                                                            <svg class="w-4 h-4 inline ml-1" fill="currentColor"
-                                                                viewBox="0 0 20 20">
-                                                                <path fill-rule="evenodd"
-                                                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                                                    clip-rule="evenodd" />
-                                                            </svg>
-                                                        </button>
-                                                        <div id="dropdown-<?php echo $_smarty_tpl->getValue('order')['id'];?>
-"
-                                                            class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10 border border-gray-200">
-                                                            <div class="py-1">
-                                                                <a href="<?php echo $_smarty_tpl->getValue('base_url');?>
-/orders/<?php echo $_smarty_tpl->getValue('order')['id'];?>
-"
-                                                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">View
-                                                                    details</a>
-                                                                <a href="<?php echo $_smarty_tpl->getValue('base_url');?>
-/orders/<?php echo $_smarty_tpl->getValue('order')['id'];?>
-/track"
-                                                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Track
-                                                                    order</a>
-                                                                <?php if ($_smarty_tpl->getValue('order')['status'] != 'completed') {?>
-                                                                    <a href="<?php echo $_smarty_tpl->getValue('base_url');?>
-/orders/<?php echo $_smarty_tpl->getValue('order')['id'];?>
-/cancel"
-                                                                        class="block px-4 py-2 text-sm text-red-600 hover:bg-red-50">Cancel
-                                                                        order</a>
-                                                                <?php }?>
-                                                            </div>
-                                                        </div>
+                                                <td class="px-6 py-4">
+                                                    <div class="max-w-xs">
+                                                        <?php if ((true && (true && null !== ($_smarty_tpl->getValue('order')['items'] ?? null))) && is_array($_smarty_tpl->getValue('order')['items']) && $_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('order')['items']) > 0) {?>
+                                                            <?php $_smarty_tpl->assign('itemCount', $_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('order')['items']), false, NULL);?>
+                                                            <?php if ($_smarty_tpl->getValue('itemCount') == 1) {?>
+                                                                <span class="text-sm text-gray-900">
+                                                                    <?php echo (($tmp = $_smarty_tpl->getValue('order')['items'][0]['name'] ?? null)===null||$tmp==='' ? 'Unknown Item' ?? null : $tmp);?>
+
+                                                                    <?php if ($_smarty_tpl->getValue('order')['items'][0]['quantity'] > 1) {?>
+                                                                        <span class="text-gray-500">(×<?php echo $_smarty_tpl->getValue('order')['items'][0]['quantity'];?>
+)</span>
+                                                                    <?php }?>
+                                                                </span>
+                                                            <?php } elseif ($_smarty_tpl->getValue('itemCount') == 2) {?>
+                                                                <span class="text-sm text-gray-900">
+                                                                    <?php echo (($tmp = $_smarty_tpl->getValue('order')['items'][0]['name'] ?? null)===null||$tmp==='' ? 'Unknown Item' ?? null : $tmp);?>
+
+                                                                    <?php if ($_smarty_tpl->getValue('order')['items'][0]['quantity'] > 1) {?>
+                                                                        <span class="text-gray-500">(×<?php echo $_smarty_tpl->getValue('order')['items'][0]['quantity'];?>
+)</span>
+                                                                    <?php }?>
+                                                                    <br>
+                                                                    <?php echo (($tmp = $_smarty_tpl->getValue('order')['items'][1]['name'] ?? null)===null||$tmp==='' ? 'Unknown Item' ?? null : $tmp);?>
+
+                                                                    <?php if ($_smarty_tpl->getValue('order')['items'][1]['quantity'] > 1) {?>
+                                                                        <span class="text-gray-500">(×<?php echo $_smarty_tpl->getValue('order')['items'][1]['quantity'];?>
+)</span>
+                                                                    <?php }?>
+                                                                </span>
+                                                            <?php } else { ?>
+                                                                <span class="text-sm text-gray-900">
+                                                                    <?php echo (($tmp = $_smarty_tpl->getValue('order')['items'][0]['name'] ?? null)===null||$tmp==='' ? 'Unknown Item' ?? null : $tmp);?>
+
+                                                                    <?php if ($_smarty_tpl->getValue('order')['items'][0]['quantity'] > 1) {?>
+                                                                        <span class="text-gray-500">(×<?php echo $_smarty_tpl->getValue('order')['items'][0]['quantity'];?>
+)</span>
+                                                                    <?php }?>
+                                                                    <br>
+                                                                    <span class="text-gray-500">+<?php echo $_smarty_tpl->getValue('itemCount')-1;?>
+ more items</span>
+                                                                </span>
+                                                            <?php }?>
+                                                        <?php } else { ?>
+                                                            <span class="text-sm text-gray-400">No items</span>
+                                                        <?php }?>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -437,6 +469,13 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                                     </tbody>
                                 </table>
                             </div>
+                            <?php if ($_smarty_tpl->getValue('has_more_active_orders')) {?>
+                                <div class="flex justify-start px-6 py-8">
+                                    <a href="/account/orders" class="inline-block bg-black text-white px-6 py-2 rounded-lg font-medium hover:bg-gray-800 transition-colors">
+                                        View more orders
+                                    </a>
+                                </div>
+                            <?php }?>
                         <?php } else { ?>
                             <div class="p-12 text-center">
                                 <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor"

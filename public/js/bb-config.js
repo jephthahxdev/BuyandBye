@@ -1,3 +1,25 @@
+// Mobile menu logic from header.tpl
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('hidden');
+}
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', function(event) {
+    const menu = document.getElementById('mobile-menu');
+    const button = event.target.closest('button');
+    if (!menu.contains(event.target) && !button) {
+        menu.classList.add('hidden');
+    }
+});
+
+// Close mobile menu when window resizes to desktop
+window.addEventListener('resize', function() {
+    if (window.innerWidth >= 768) {
+        document.getElementById('mobile-menu').classList.add('hidden');
+    }
+});
+
 document.addEventListener('DOMContentLoaded', function () {
     const toggleButtons = document.querySelectorAll('.toggle-password-button');
 

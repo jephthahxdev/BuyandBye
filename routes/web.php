@@ -14,6 +14,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BillingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\SettingsController;
 
 
 /* BOL Checking Database connection */
@@ -48,8 +50,6 @@ Route::get('/table/{table}', function ($table) {
 });
 
 /* EOL Checking Database Connection */
-
-Auth::routes();
 
 Route::middleware(['web'])->group(function () {
     Route::get('/', [WelcomeController::class, 'index']);
@@ -86,6 +86,11 @@ Route::middleware(['web'])->group(function () {
 
     Route::get('/login', [LoginController::class, 'show']);
     Route::post('/login', [LoginController::class, 'login']);
+    
+    Route::post('/logout', function () {
+        Auth::logout();
+        return redirect('/');
+    })->name('logout');
 
     // Dashboard routes
     Route::get('/account', [DashboardController::class, 'show']);
@@ -96,4 +101,12 @@ Route::middleware(['web'])->group(function () {
 
     // Profile routes
     Route::get('/account/profile', [ProfileController::class, 'show']);
+    Route::post('/account/profile/update', [ProfileController::class, 'update'])->middleware('auth');
+
+    // Settings routes
+    Route::get('/account/settings', [SettingsController::class, 'show'])->middleware('auth');
+    Route::post('/account/settings/password', [SettingsController::class, 'updatePassword'])->middleware('auth');
+
+    // Orders page (paginated)
+    Route::get('/account/orders', [OrdersController::class, 'index']);
 });

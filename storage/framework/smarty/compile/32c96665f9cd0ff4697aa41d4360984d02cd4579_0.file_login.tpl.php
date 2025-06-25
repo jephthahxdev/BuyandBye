@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-20 11:51:32
+/* Smarty version 5.5.1, created on 2025-06-25 15:28:51
   from 'file:auth/login.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_68554b441a8f79_15999811',
+  'unifunc' => 'content_685c07a30fc484_22941614',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '32c96665f9cd0ff4697aa41d4360984d02cd4579' => 
     array (
       0 => 'auth/login.tpl',
-      1 => 1750420258,
+      1 => 1750861728,
       2 => 'file',
     ),
   ),
@@ -20,23 +20,23 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_68554b441a8f79_15999811 (\Smarty\Template $_smarty_tpl) {
+function content_685c07a30fc484_22941614 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty/auth';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_175196786668554b441a31a6_52121356', "title");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_853685968685c07a30f7019_40182336', "title");
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_54901853668554b441a41f4_89977960', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_1705584809685c07a30f8613_72290939', "content");
 $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "../layouts/app.tpl", $_smarty_current_dir);
 }
 /* {block "title"} */
-class Block_175196786668554b441a31a6_52121356 extends \Smarty\Runtime\Block
+class Block_853685968685c07a30f7019_40182336 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty/auth';
@@ -46,7 +46,7 @@ Login - Buyandbye<?php
 }
 /* {/block "title"} */
 /* {block "content"} */
-class Block_54901853668554b441a41f4_89977960 extends \Smarty\Runtime\Block
+class Block_1705584809685c07a30f8613_72290939 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smarty/auth';
@@ -144,7 +144,7 @@ $_smarty_current_dir = '/Users/user/dev/projects/Buyandbye/resources/views/smart
 
             <!-- Hero Section -->
             <div
-                class="flex-1 relative bg-cover bg-center" style="background-image: url(<?php echo $_smarty_tpl->getSmarty()->getFunctionHandler('asset')->handle(array('path'=>'/images/auth-img.jpg'), $_smarty_tpl);?>
+                class="hidden lg:flex md:flex flex-1 relative bg-cover bg-center" style="background-image: url(<?php echo $_smarty_tpl->getSmarty()->getFunctionHandler('asset')->handle(array('path'=>'/images/auth-img.jpg'), $_smarty_tpl);?>
 );">
                 <!-- Decorative elements -->
                 <div class="absolute top-10 right-10 w-20 h-20 bg-white/10 rounded-full"></div>

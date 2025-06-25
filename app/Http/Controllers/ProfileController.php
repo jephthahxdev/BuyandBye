@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Services\SmartyRenderer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ProfileController extends Controller
 {
@@ -22,47 +24,65 @@ class ProfileController extends Controller
             return redirect('/login');
         }
 
-        // Example data - replace with real data from your database
         $data = [
             'user' => [
                 'name' => $user->name,
                 'email' => $user->email,
+                'avatar' => $user->avatar,
+                'twitter_handle' => $user->twitter_handle,
+                'facebook_handle' => $user->facebook_handle,
+                'linkedin_handle' => $user->linkedin_handle,
             ],
-            'account' => [
-                'name' => $user->name,
-                'email' => $user->email,
-                'address' => '123 Frontend St, Dev City',
-                'phone' => '+1 (555) 123-4567',
-                'avatar' => null, // or a path to an avatar image
-            ],
-            'active_orders' => [
-                [
-                    'id' => '#3066',
-                    'date' => 'Dec 1, 2023',
-                    'price' => '$150.00',
-                    'status' => 'in_transit'
-                ],
-                [
-                    'id' => '#2984',
-                    'date' => 'Nov 25, 2023',
-                    'price' => '$55.00',
-                    'status' => 'preorder'
-                ],
-            ],
-            'company_name' => 'Sisyphus Ventures',
-            'company_slug' => 'sisyphus',
-            'branding_reports' => true,
-            'branding_emails' => true,
-            'twitter_handle' => 'sisyphusvc',
-            'facebook_handle' => 'sisyphusvc',
-            'linkedin_handle' => 'sisyphusvc',
+            'profile_slug' => $user->profile_slug,
+            'profile_url' => $user->profile_url,
             'base_url' => url('/'),
             'csrf_token' => csrf_token(),
             'is_logged_in' => Auth::check(),
-            'user' => Auth::user(),
         ];
 
         $content = $this->smarty->render('profile.tpl', $data);
         return response($content);
+    }
+
+    public function update(Request $request)
+    {
+        $user = Auth::user();
+        if (!$user) {
+            return redirect('/login');
+        }
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'twitter_handle' => 'nullable|string|max:255',
+            'facebook_handle' => 'nullable|string|max:255',
+            'linkedin_handle' => 'nullable|string|max:255',
+            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $user->name = $request->name;
+        $user->twitter_handle = $request->twitter_handle;
+        $user->facebook_handle = $request->facebook_handle;
+        $user->linkedin_handle = $request->linkedin_handle;
+
+        // Handle avatar upload
+        if ($request->hasFile('avatar')) {
+            // Delete old avatar if exists
+            if ($user->avatar && Storage::disk('public')->exists($user->avatar)) {
+                Storage::disk('public')->delete($user->avatar);
+            }
+
+            $avatar = $request->file('avatar');
+            $filename = 'avatars/' . time() . '_' . Str::random(10) . '.' . $avatar->getClientOriginalExtension();
+            
+            // Store the file in the public disk
+            $avatar->storeAs('public', $filename);
+            $user->avatar = $filename;
+        }
+        
+        /** @var User $user */
+
+        $user->save();
+
+        return redirect('/account/profile')->with('success', 'Profile updated successfully!');
     }
 }

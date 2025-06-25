@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
             })
             .then(data => {
                 const badge = document.getElementById('cart-count');
+                const mobileBadge = document.getElementById('mobile-cart-count');
                 if (badge) {
                     if (data.count > 0) {
                         badge.textContent = data.count;
@@ -29,6 +30,16 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 } else {
                     console.error('Cart count badge not found');
+                }
+                if (mobileBadge) {
+                    if (data.count > 0) {
+                        mobileBadge.textContent = data.count;
+                        mobileBadge.style.display = '';
+                    } else {
+                        mobileBadge.style.display = 'none';
+                    }
+                } else {
+                    console.error('Mobile cart count badge not found');
                 }
             })
             .catch(error => {
@@ -110,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     this.innerHTML = originalText;
                     this.classList.remove('bg-gray-600');
                     this.classList.add('bg-gray-900', 'hover:bg-gray-800');
-                    this.disabled = false;
+                this.disabled = false;
                 }, 2000);
             })
             .catch(error => {
@@ -122,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 this.classList.add('bg-red-600');
                 
                 setTimeout(() => {
-                    this.innerHTML = originalText;
+                this.innerHTML = originalText;
                     this.classList.remove('bg-red-600');
                     this.classList.add('bg-gray-900', 'hover:bg-gray-800');
                     this.disabled = false;
