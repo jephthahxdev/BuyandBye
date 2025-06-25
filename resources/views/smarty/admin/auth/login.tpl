@@ -59,11 +59,16 @@
                             Login
                         </button>
                     </form>
+                    <p class="text-gray-600 mt-4 text-base mb-10 leading-relaxed">
+                        Username: admin@buyandbye.com
+                        <br>
+                        Password: admin1234
+                    </p>
                 </div>
             </div>
 
             <!-- Hero Section -->
-            <div class="flex-1 relative bg-cover bg-center"
+            <div class="hidden lg:flex flex-1 relative bg-cover bg-center"
                 style="background-image: url({asset path='/images/auth-img.jpg'});">
                 <!-- Decorative elements -->
                 <div class="absolute top-10 right-10 w-20 h-20 bg-white/10 rounded-full"></div>
